@@ -1,1 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep and Intelligent Communications Laboratory</title>
+       <style>
+       body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+        }
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 220px;
+            background: #2c3e50;
+            color: #fff;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            min-height: 100vh;
+            position: sticky;
+            top: 0;
+        }
+        .sidebar h2 {
+            color: #fff;
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        .sidebar nav a {
+            display: block;
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 10px 0;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            border-left: 4px solid transparent;
+            transition: 0.2s;
+        }
+        .sidebar nav a.active, .sidebar nav a:hover {
+            color: #3498db;
+            border-left: 4px solid #3498db;
+            background: #222d36;
+            padding-left: 16px;
+        }
+        .main-content {
+            flex: 1;
+            background: #fff;
+            padding: 40px 50px;
+            box-sizing: border-box;
+            min-width: 0;
+        }
+        @media (max-width: 800px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+                position: static;
+                padding: 20px 10px;
+            }
+            .main-content {
+                padding: 20px 10px;
+            }
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .intro {
+            margin-bottom: 30px;
+        }
+        .research-topics {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #333;
+            margin: 20px 0;
+        }
+       ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        } 
+    </style>
+</head>
 
+<body>
+       
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Menu</h2>
+            <nav>
+                <a href="index.html" class="active">Home</a>
+                <a href="team.html">Team</a>
+                <a href="publications.html">Publications</a>
+                <a href="research.html">Research</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </aside>
+    <main class="main-content">
+        <h2>Publications</h2>
+        <h3>Selected Journal Papers</h3>
+            <ul>
+                <li>Author1, Author2, "Paper Title," <em>Journal Name</em>, vol. X, no. Y, pp. Z-W, Year.</li>
+                <li>Author1, Author2, "Another Paper Title," <em>Another Journal</em>, vol. X, no. Y, pp. Z-W, Year.</li>
+            </ul>
+        <h3>Conference Papers</h3>
+            <ul>
+                <li>Author1, Author2, "Conference Paper Title," <em>Conference Name</em>, Location, Year.</li>
+                <li>Author1, Author2, "Another Conference Paper," <em>Another Conference</em>, Location, Year.</li>
+            </ul>  
+      </main>
+    </div>
+</body>
+</html>
