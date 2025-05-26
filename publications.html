@@ -134,33 +134,25 @@
             display: none;
         }
         
-        /* 카테고리별 아이콘 */
+          /* 알파벳 기반 간단한 아이콘 */
         .publication-box:nth-of-type(1) summary::before {
-            content: "📄";
-            position: absolute;
-            left: clamp(15px, 2.5vw, 20px);
-            font-size: clamp(1rem, 2vw, 1.4rem);
+            content: "[J]"; /* Journal */
+            color: #1e3a8a;
         }
         
         .publication-box:nth-of-type(2) summary::before {
-            content: "🌍";
-            position: absolute;
-            left: clamp(15px, 2.5vw, 20px);
-            font-size: clamp(1rem, 2vw, 1.4rem);
+            content: "[C]"; /* Conference */
+            color: #3b82f6;
         }
         
         .publication-box:nth-of-type(3) summary::before {
-            content: "🏛️";
-            position: absolute;
-            left: clamp(15px, 2.5vw, 20px);
-            font-size: clamp(1rem, 2vw, 1.4rem);
+            content: "[D]"; /* Domestic */
+            color: #60a5fa;
         }
         
         .publication-box:nth-of-type(4) summary::before {
-            content: "⚖️";
-            position: absolute;
-            left: clamp(15px, 2.5vw, 20px);
-            font-size: clamp(1rem, 2vw, 1.4rem);
+            content: "[P]"; /* Patents */
+            color: #93c5fd;
         }
         
         .publication-box summary::after {
