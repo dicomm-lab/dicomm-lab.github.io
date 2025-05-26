@@ -93,30 +93,83 @@
         li {
             margin-bottom: 8px;
         }
-       .team-member {
-            display: inline-block;
-            margin: 20px;
-            text-align: center;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+        /* PI 섹션 스타일 */
+        .pi-section {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 5px solid #3498db;
         }
         
-        .team-member img {
+        .pi-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .pi-photo {
             width: 150px;
             height: 150px;
             border-radius: 50%;
+            margin-right: 30px;
             object-fit: cover;
-            margin-bottom: 10px;
+            border: 4px solid #3498db;
         }
         
-        .team-member h3 {
-            margin: 10px 0 5px 0;
-            color: #333;
+        .pi-info h2 {
+            margin: 0 0 10px 0;
+            border: none;
+            padding: 0;
+            font-size: 1.8em;
         }
         
-        .team-member p {
+        .pi-info p {
+            margin: 5px 0;
             color: #666;
+            font-size: 1.1em;
+        }
+        
+        .detail-section {
+            margin-bottom: 25px;
+        }
+        
+        .detail-section h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .bio-text {
+            line-height: 1.6;
+            text-align: justify;
+            color: #444;
+        }
+        
+        .education-item, .experience-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            border-left: 3px solid #3498db;
+        }
+        
+        .degree, .position {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .institution, .duration {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .thesis-info {
+            margin-top: 8px;
+            font-style: italic;
+            color: #555;
             font-size: 0.9em;
         }
     </style>
@@ -137,13 +190,26 @@
             </nav>
         </aside>
         <main class="main-content">
-            <h1>Team</h1>
-            <div class="team-member">
-                <img src="images/PI.jpg" alt="Prof. Jinyoung Lee" width="200" height="200">
-                    <h3>Prof. Jinyoung Lee (PI)</h3>
-                    <p>Principal Investigator</p>
+            <h1>Team Members</h1>
+            <div class="pi-section">
+                <div class="pi-header">
+                    <img src="images/PI.jpg" alt="Prof. Jinyoung Lee" class="pi-photo">
+                        <div class="pi-info">
+                            <h2>Prof. Jinyoung Lee (PI)</h2>
+                            <p><strong>Principal Investigator</strong></p>
+                            <p>Assistant Professor</p>
+                            <p>Department of Electronics and Electrical Information Engineering</p>
+                        </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Bio</h3>
+                    <p class="bio-text">
+                        Jinyoung Lee received the B.S. degree in electronics and information engineering from Kwangwoon University, Seoul, South Korea, in 2016, the M.S. degree in electrical engineering and computer science engineering from the Gwangju Institute of Science and Technology (GIST), Gwangju, South Korea, in 2018, and the Ph.D. degree in electrical engineering from the Korea Advanced Institute of Science and Technology (KAIST), Daejeon, South Korea, in 2023. He is currently an Assistant Professor with the Department of Radio Communication Engineering, National Korea Maritime & Ocean University, Busan, South Korea. He was a System Engineer with the System Structure Group, Samsung Electronics Research and Development Team, Samsung Networks, Suwon, South Korea from 2023 to 2025. His research interests include wireless communications, communication signal processing, physical layer security, machine learning.
+                    </p>
+                </div>
             </div>
-        <!--
+                        <!--
             <div class="team-member">
                 <img src="images/student1.jpg" alt="Student A" width="200" height="200">
                     <h3>Student A</h3>
