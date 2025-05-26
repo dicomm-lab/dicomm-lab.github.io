@@ -92,7 +92,33 @@
         }
         li {
             margin-bottom: 8px;
-        } 
+        }
+       .team-member {
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        
+        .team-member h3 {
+            margin: 10px 0 5px 0;
+            color: #333;
+        }
+        
+        .team-member p {
+            color: #666;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 
@@ -112,12 +138,18 @@
         </aside>
         <main class="main-content">
             <h1>Team</h1>
-            <ul>
-                <li>Prof. Jinyoung Lee (PI)</li>
-                <!-- <li>Student A</li>
-                <li>Student B</li> -->
-                <!-- Add more team members as needed -->
-            </ul>
+            <div class="team-member"
+                <img src="images/PI.jpg" alt="Prof. Jinyoung Lee" width="200" height="200">
+                    <h3>Prof. Jinyoung Lee (PI)</h3>
+                    <p>Principal Investigator</p>
+            </div>
+            <!--
+            <div class="team-member">
+                <img src="images/student1.jpg" alt="Student A" width="200" height="200">
+                    <h3>Student A</h3>
+                    <p>Ph.D. Student</p>
+            </div>
+            -->
         </main>
     </div>
 </body>
