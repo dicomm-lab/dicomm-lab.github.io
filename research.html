@@ -14,7 +14,7 @@
             margin: 0;
             font-family: Arial, sans-serif;
             background: #f7f7f7;
-            font-size: clamp(14px, 1.8vw, 18px); /* 기본 폰트도 유동적 */
+            font-size: clamp(14px, 1.8vw, 18px);
             line-height: 1.6;
         }
         
@@ -25,7 +25,7 @@
         
         /* 완전 유동적 사이드바 */
         .sidebar {
-            width: clamp(180px, 22vw, 280px); /* 유동적 너비 */
+            width: clamp(180px, 22vw, 280px);
             background: #2c3e50;
             color: #fff;
             padding: clamp(20px, 4vw, 50px) clamp(15px, 2.5vw, 30px);
@@ -37,7 +37,7 @@
         
         .sidebar h2 {
             color: #fff;
-            font-size: clamp(1.1rem, 2.5vw, 1.8rem); /* 유동적 제목 크기 */
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
             margin-bottom: clamp(20px, 4vw, 40px);
             letter-spacing: clamp(0.5px, 0.1vw, 1.5px);
         }
@@ -48,7 +48,7 @@
             text-decoration: none;
             padding: clamp(8px, 1.5vw, 15px) 0;
             margin-bottom: clamp(6px, 1.2vw, 12px);
-            font-size: clamp(0.9rem, 1.8vw, 1.3rem); /* 유동적 메뉴 폰트 */
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem);
             border-left: clamp(3px, 0.5vw, 6px) solid transparent;
             transition: all 0.3s ease;
             border-radius: clamp(2px, 0.3vw, 4px);
@@ -116,8 +116,9 @@
             box-shadow: 0 clamp(4px, 1vw, 10px) clamp(20px, 3vw, 30px) rgba(0,0,0,0.15);
         }
         
-        /* 완전 유동적 리스트 */
+        /* 완전 유동적 리스트 - 기본 bullet 제거 */
         ul {
+            list-style-type: none; /* 기본 bullet 제거 */
             padding-left: clamp(20px, 4vw, 40px);
             margin: clamp(10px, 2vw, 20px) 0;
         }
@@ -129,6 +130,8 @@
             color: #333;
             transition: all 0.2s ease;
             padding: clamp(4px, 0.8vw, 8px) 0;
+            padding-left: clamp(20px, 3vw, 30px); /* 화살표 공간 확보 */
+            position: relative;
         }
         
         li:hover {
@@ -137,13 +140,16 @@
             font-weight: 500;
         }
         
-        /* 리스트 아이템에 아이콘 효과 추가 */
+        /* 리스트 아이템에 아이콘 효과 - 위치 최적화 */
         li::before {
             content: "▶";
             color: #3498db;
-            margin-right: clamp(6px, 1vw, 12px);
             font-size: clamp(0.8rem, 1.5vw, 1rem);
             transition: all 0.3s ease;
+            position: absolute;
+            left: 0;
+            top: clamp(4px, 0.8vw, 8px);
+            font-weight: bold;
         }
         
         li:hover::before {
@@ -151,7 +157,7 @@
             transform: scale(clamp(1.1, 0.05vw + 1.05, 1.2));
         }
         
-        /* 반응형 미디어 쿼리 (추가 조정용) */
+        /* 반응형 미디어 쿼리 */
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -168,7 +174,6 @@
                 padding: clamp(15px, 4vw, 30px) clamp(15px, 4vw, 30px);
             }
             
-            /* 모바일에서 사이드바 메뉴 가로 배치 */
             .sidebar nav {
                 display: flex;
                 flex-wrap: wrap;
@@ -217,10 +222,10 @@
             
             li {
                 font-size: clamp(1rem, 3.5vw, 1.15rem);
+                padding-left: clamp(18px, 4vw, 25px);
             }
         }
         
-        /* 큰 화면에서의 최적화 */
         @media (min-width: 1600px) {
             .container {
                 max-width: 1800px;
@@ -229,13 +234,11 @@
             }
         }
         
-        /* 접근성 및 포커스 스타일 */
         .sidebar nav a:focus {
             outline: clamp(2px, 0.3vw, 3px) solid #3498db;
             outline-offset: clamp(2px, 0.3vw, 4px);
         }
         
-        /* 다크모드 대응 (선택사항) */
         @media (prefers-color-scheme: dark) {
             body {
                 background: #1a1a1a;
