@@ -110,18 +110,17 @@
             box-shadow: 0 clamp(4px, 0.8vw, 10px) clamp(15px, 3vw, 30px) rgba(0,0,0,0.15);
         }
         
-        /* Summary 패딩 조정 - 아이콘 공간 제거 */
+        /* Summary 스타일 - 카테고리 아이콘 제거 */
         .publication-box summary {
             background: #ffffff;
             color: #333;
-            padding: clamp(15px, 3vw, 25px); /* 기본 패딩으로 복원 */
+            padding: clamp(15px, 3vw, 25px); /* 아이콘 공간 제거된 기본 패딩 */
             cursor: pointer;
             font-weight: bold;
             font-size: clamp(1.1rem, 2.3vw, 1.6rem);
             list-style: none;
             transition: all 0.3s ease;
             position: relative;
-            /* padding-left 제거 - 아이콘 공간이 필요 없음 */
             border: 1px solid #ddd;
             border-left: clamp(5px, 1vw, 8px) solid #3498db;
         }
@@ -135,7 +134,6 @@
             display: none;
         }
         
-          
         .publication-box summary::after {
             content: " ▼";
             float: right;
@@ -212,7 +210,7 @@
             line-height: clamp(1.5, 0.3vw + 1.4, 1.8);
             color: #333;
             padding: clamp(8px, 1.5vw, 15px);
-            padding-left: clamp(30px, 5vw, 45px);
+            padding-left: clamp(30px, 5vw, 45px); /* 화살표 공간 확보 */
             background: #ffffff;
             border-radius: clamp(4px, 0.8vw, 8px);
             transition: all 0.3s ease;
@@ -244,6 +242,7 @@
             border-left: clamp(3px, 0.5vw, 5px) solid #93c5fd;
         }
         
+        /* 리스트 아이템 화살표 아이콘 유지 */
         li::before {
             content: "▸";
             color: #3498db;
@@ -255,12 +254,12 @@
         }
         
         li strong {
-            color: #3498db;
+            color: #1e3a8a; /* 학구적인 진한 파란색 */
             font-weight: 700;
             background: none;
             padding: 0;
             border-radius: 0;
-            text-shadow: 0 0 1px rgba(52, 152, 219, 0.3);
+            text-shadow: 0 0 1px rgba(30, 58, 138, 0.4);
         }
         
         li em, li i {
@@ -310,14 +309,7 @@
             }
             
             .publication-box summary {
-                padding-left: clamp(50px, 9vw, 60px);
-            }
-            
-            .publication-box:nth-of-type(1) summary::before,
-            .publication-box:nth-of-type(2) summary::before,
-            .publication-box:nth-of-type(3) summary::before,
-            .publication-box:nth-of-type(4) summary::before {
-                left: clamp(18px, 3.5vw, 25px);
+                padding: clamp(12px, 2.5vw, 20px); /* 모바일에서 기본 패딩 */
             }
             
             li {
@@ -344,14 +336,7 @@
             }
             
             .publication-box summary {
-                padding-left: clamp(45px, 10vw, 55px);
-            }
-            
-            .publication-box:nth-of-type(1) summary::before,
-            .publication-box:nth-of-type(2) summary::before,
-            .publication-box:nth-of-type(3) summary::before,
-            .publication-box:nth-of-type(4) summary::before {
-                left: clamp(15px, 4vw, 20px);
+                padding: clamp(10px, 2vw, 18px); /* 작은 화면에서 기본 패딩 */
             }
             
             li {
@@ -431,9 +416,9 @@
             }
             
             li strong {
-                color: #4fc3f7;
+                color: #2563eb; /* 다크모드에서 적절한 파란색 */
                 background: none;
-                text-shadow: 0 0 1px rgba(79, 195, 247, 0.3);
+                text-shadow: 0 0 1px rgba(37, 99, 235, 0.4);
             }
         }
     </style>
@@ -456,7 +441,7 @@
         <main class="main-content">
             <h1>Publications</h1>
             
-            <!-- 주요 4개 섹션 - 박스 형태 유지 -->
+            <!-- 주요 4개 섹션 - 박스 형태 유지, 카테고리 아이콘 제거 -->
             <details class="publication-box" open>
                 <summary>International Journal Papers</summary>
                 <div class="publication-content">
@@ -508,17 +493,6 @@
                     </ul>
                 </div>
             </details>
-            
-            <!-- 향후 추가될 심플한 목록 섹션 예시 -->
-            <!--
-            <div class="simple-section">
-                <h3>Additional Publications</h3>
-                <ul>
-                    <li>Simple list item without collapsible box</li>
-                    <li>Another simple list item</li>
-                </ul>
-            </div>
-            -->
         </main>
     </div>
 </body>
