@@ -571,61 +571,15 @@
                 <p class="recruitment-text">
                     "Unlock the mysteries of deep learning and wireless communications with us. Our lab welcomes passionate students who dare to explore uncharted territories of knowledge."
                 </p>
-                <button onclick="showForm()" class="apply-button">Apply Now</button>
+                <!-- Apply Now 버튼을 Google Form 링크로 변경 -->
+                <a href="https://docs.google.com/forms/d/e/1_hMs3tiUy_b_ZdSBGCENHvAo4KYMZwPTqTT-nrZEEIQ/viewform" 
+                   class="apply-button" target="_blank" rel="noopener">
+                   Apply Now
+                </a>
             </div>
             
-            <!-- Application Form 섹션 -->
-            <div class="application-form" id="applicationForm">
-                <h3>Application Form</h3>
-                <form action="https://docs.google.com/forms/d/e/1_hMs3tiUy_b_ZdSBGCENHvAo4KYMZwPTqTT-nrZEEIQ/edit#responses" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-                    <div class="form-group">
-                        <label for="name">Full Name:</label>
-                        <input type="text" id="name" name="entry.57095328" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="entry.26835233" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number:</label>
-                        <input type="tel" id="phone" name="entry.1161935647">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="program">Program:</label>
-                        <select id="program" name="entry.476752619" required>
-                            <option value="">Select Program</option>
-                            <option value="Master's">Master's Program</option>
-                            <option value="PhD">PhD Program</option>
-                            <option value="Research Intern">Research Internship</option>
-                            <option value="Visiting Scholar">Visiting Scholar</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="university">Current University/Institution:</label>
-                        <input type="text" id="university" name="entry.885280180">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="research-interest">Research Interest:</label>
-                        <textarea id="research-interest" name="entry.1165361333" rows="4" placeholder="Please describe your research interests and why you want to join our lab..." required></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="background">Academic Background:</label>
-                        <textarea id="background" name="entry.1403954022" rows="3" placeholder="Please briefly describe your academic background and relevant experience..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-button">Submit Application</button>
-                    <button type="button" class="cancel-button" onclick="hideForm()">Cancel</button>
-                </form>
-                
-                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {showSuccessMessage();}"></iframe>
-            </div>
-            
+            <!-- Application Form 섹션 완전히 제거 -->
+
             <!-- Research Topics 섹션 -->
             <div class="research-topics">
                 <h3>Some of my current research topics are:</h3>
@@ -639,33 +593,5 @@
             </div>
         </main>
     </div>
-
-    <script>
-        var submitted = false;
-
-        function showForm() {
-            document.getElementById('applicationForm').style.display = 'block';
-            document.getElementById('applicationForm').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function hideForm() {
-            document.getElementById('applicationForm').style.display = 'none';
-            // 폼 초기화
-            document.querySelector('#applicationForm form').reset();
-            submitted = false;
-        }
-
-        function showSuccessMessage() {
-            alert('Application submitted successfully! We will contact you soon.');
-            hideForm();
-        }
-
-        // 페이지 로드 시 성공 메시지 확인
-        window.addEventListener('load', function() {
-            if (window.location.hash === '#success') {
-                showSuccessMessage();
-            }
-        });
-    </script>
 </body>
 </html>
