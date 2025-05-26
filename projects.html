@@ -138,21 +138,21 @@
             transform: rotate(180deg);
         }
         
-        /* 파란색 명도로 카테고리 구분 */
+        /* paste.txt의 색상 그라데이션을 paste-2.txt에 적용 */
         .project-box:nth-of-type(1) summary {
-            border-left-color: #1e3a8a; /* 어두운 파란색 - Ongoing Projects */
+            border-left-color: #2c3e50; /* paste.txt의 첫 번째 색상 (메뉴 색상, 가장 어두운) */
         }
         
         .project-box:nth-of-type(1) summary:hover {
-            border-left-color: #1e40af;
+            border-left-color: #253544; /* 호버 시 약간 어두운 색 */
         }
         
         .project-box:nth-of-type(2) summary {
-            border-left-color: #60a5fa; /* 밝은 파란색 - Finished Projects */
+            border-left-color: #3d4f65; /* paste.txt의 두 번째 색상 (125% 명도) */
         }
         
         .project-box:nth-of-type(2) summary:hover {
-            border-left-color: #3b82f6;
+            border-left-color: #34495e; /* 호버 시 색상 */
         }
         
         .project-content {
@@ -202,13 +202,13 @@
             background: #f8f9fa;
         }
         
-        /* 카테고리별 border-left 색상 */
+       /* 카테고리별 리스트 아이템 border-left 색상도 동일하게 적용 */
         .project-box:nth-of-type(1) li {
-            border-left: clamp(4px, 0.8vw, 8px) solid #1e3a8a; /* Ongoing Projects */
+            border-left: clamp(4px, 0.8vw, 8px) solid #2c3e50; /* Ongoing Projects */
         }
         
         .project-box:nth-of-type(2) li {
-            border-left: clamp(4px, 0.8vw, 8px) solid #60a5fa; /* Finished Projects */
+            border-left: clamp(4px, 0.8vw, 8px) solid #3d4f65; /* Finished Projects */
         }
         
         /* 화살표 아이콘 */
@@ -390,6 +390,23 @@
             
             li:hover::before {
                 color: #93c5fd;
+            }
+                /* 다크모드에서는 paste.txt와 동일한 밝은 파란색 계열 사용 */
+            .project-box:nth-of-type(1) summary {
+                border-left-color: #4169e1; /* Royal Blue - Ongoing Projects */
+            }
+            
+            .project-box:nth-of-type(2) summary {
+                border-left-color: #5a7df5; /* 밝은 파란색 - Finished Projects */
+            }
+            
+            /* 리스트 아이템도 동일하게 적용 */
+            .project-box:nth-of-type(1) li {
+                border-left-color: #4169e1;
+            }
+            
+            .project-box:nth-of-type(2) li {
+                border-left-color: #5a7df5;
             }
         }
     </style>
