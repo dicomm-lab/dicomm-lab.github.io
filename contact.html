@@ -90,14 +90,14 @@
             font-size: clamp(1.4rem, 3vw, 2.2rem);
         }
         
-        h3 {
+       h3 {
             color: #2c3e50;
             font-size: clamp(1.1rem, 2.5vw, 1.6rem);
             margin-top: clamp(20px, 3.5vw, 35px);
             margin-bottom: clamp(8px, 1.2vw, 15px);
             font-weight: bold;
             position: relative;
-            padding-left: clamp(15px, 2.5vw, 25px);
+            padding-left: clamp(25px, 4vw, 40px); /* 기존 clamp(15px, 2.5vw, 25px)에서 증가 */
         }
         
         /* 연락처 정보별 아이콘 추가 */
@@ -233,6 +233,10 @@
             .map-container iframe {
                 height: clamp(200px, 25vw, 300px);
             }
+            h3 {
+                font-size: clamp(1rem, 4vw, 1.3rem);
+                padding-left: clamp(30px, 6vw, 35px); /* 모바일에서 더 많은 간격 */
+            }
         }
         
         @media (max-width: 480px) {
@@ -258,13 +262,13 @@
             
             h3 {
                 font-size: clamp(1rem, 4vw, 1.3rem);
-                padding-left: clamp(20px, 5vw, 30px);
+                padding-left: clamp(28px, 7vw, 32px); /* 작은 화면에서도 충분한 간격 */
             }
             
             h3::before {
                 font-size: clamp(0.8rem, 3.5vw, 1.1rem);
             }
-            
+           
             .map-container iframe {
                 height: clamp(180px, 40vw, 250px);
             }
