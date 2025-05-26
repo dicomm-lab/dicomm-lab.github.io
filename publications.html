@@ -14,7 +14,7 @@
             margin: 0;
             font-family: Arial, sans-serif;
             background: #f7f7f7;
-            font-size: clamp(14px, 1.8vw, 18px); /* 기본 폰트도 유동적 */
+            font-size: clamp(14px, 1.8vw, 18px);
             line-height: clamp(1.4, 0.2vw + 1.3, 1.7);
         }
         
@@ -25,7 +25,7 @@
         
         /* 완전 유동적 사이드바 */
         .sidebar {
-            width: clamp(180px, 22vw, 280px); /* 유동적 너비 */
+            width: clamp(180px, 22vw, 280px);
             background: #2c3e50;
             color: #fff;
             padding: clamp(20px, 4vw, 50px) clamp(15px, 2.5vw, 30px);
@@ -37,7 +37,7 @@
         
         .sidebar h2 {
             color: #fff;
-            font-size: clamp(1.1rem, 2.5vw, 1.8rem); /* 유동적 제목 크기 */
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
             margin-bottom: clamp(20px, 4vw, 40px);
             letter-spacing: clamp(0.5px, 0.1vw, 1.5px);
         }
@@ -48,7 +48,7 @@
             text-decoration: none;
             padding: clamp(8px, 1.5vw, 15px) 0;
             margin-bottom: clamp(6px, 1.2vw, 12px);
-            font-size: clamp(0.9rem, 1.8vw, 1.3rem); /* 유동적 메뉴 폰트 */
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem);
             border-left: clamp(3px, 0.5vw, 6px) solid transparent;
             transition: all 0.3s ease;
             border-radius: clamp(2px, 0.3vw, 4px);
@@ -89,56 +89,132 @@
             font-size: clamp(1.4rem, 3vw, 2.2rem);
         }
         
-        h3 {
-            color: #2c3e50;
-            font-size: clamp(1.2rem, 2.8vw, 1.8rem);
-            margin-top: clamp(30px, 5vw, 50px);
-            margin-bottom: clamp(15px, 2.5vw, 25px);
-            font-weight: bold;
-            position: relative;
-            padding-left: clamp(15px, 2.5vw, 25px);
-        }
-        
-        /* 섹션 제목에 아이콘 추가 */
-        h3::before {
-            content: "📄";
-            position: absolute;
-            left: 0;
-            font-size: clamp(1rem, 2vw, 1.4rem);
-        }
-        
-        .intro {
-            margin-bottom: clamp(25px, 4vw, 40px);
-        }
-        
-        /* 유동적 연구 주제 박스 */
-        .research-topics {
-            background-color: #f9f9f9;
-            padding: clamp(15px, 3vw, 35px);
-            border-left: clamp(4px, 0.8vw, 8px) solid #333;
-            margin: clamp(20px, 4vw, 40px) 0;
+        /* Collapsible 스타일 추가 */
+        details {
+            margin-bottom: clamp(20px, 3.5vw, 35px);
             border-radius: clamp(6px, 1.2vw, 12px);
+            overflow: hidden;
             box-shadow: 0 clamp(2px, 0.5vw, 6px) clamp(10px, 2vw, 20px) rgba(0,0,0,0.1);
         }
         
-        /* 완전 유동적 리스트 */
+        details summary {
+            background: #3498db;
+            color: white;
+            padding: clamp(12px, 2.5vw, 20px);
+            cursor: pointer;
+            font-weight: bold;
+            font-size: clamp(1.1rem, 2.3vw, 1.6rem);
+            list-style: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: clamp(30px, 5vw, 45px); /* 아이콘과 텍스트 간격 증가 */
+        }
+        
+        details summary:hover {
+            background: #2980b9;
+            transform: translateY(clamp(-1px, -0.2vw, -2px));
+        }
+        
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        /* 카테고리별 아이콘 추가 - 아이콘과 텍스트 간격 확보 */
+        details:nth-of-type(1) summary::before {
+            content: "📄"; /* International Journal */
+            position: absolute;
+            left: clamp(8px, 1.5vw, 15px);
+            font-size: clamp(1rem, 2vw, 1.4rem);
+        }
+        
+        details:nth-of-type(2) summary::before {
+            content: "🌍"; /* International Conference */
+            position: absolute;
+            left: clamp(8px, 1.5vw, 15px);
+            font-size: clamp(1rem, 2vw, 1.4rem);
+        }
+        
+        details:nth-of-type(3) summary::before {
+            content: "🏛️"; /* Domestic Conference */
+            position: absolute;
+            left: clamp(8px, 1.5vw, 15px);
+            font-size: clamp(1rem, 2vw, 1.4rem);
+        }
+        
+        details:nth-of-type(4) summary::before {
+            content: "⚖️"; /* Patents */
+            position: absolute;
+            left: clamp(8px, 1.5vw, 15px);
+            font-size: clamp(1rem, 2vw, 1.4rem);
+        }
+        
+        details summary::after {
+            content: " ▼";
+            float: right;
+            transition: transform 0.3s ease;
+            font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+        }
+        
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
+        
+        /* 파란색 명도 조절로 카테고리 구분 */
+        details:nth-of-type(1) summary {
+            background: #1e3a8a; /* 어두운 파란색 - International Journal */
+        }
+        
+        details:nth-of-type(1) summary:hover {
+            background: #1e40af;
+        }
+        
+        details:nth-of-type(2) summary {
+            background: #3b82f6; /* 중간 파란색 - International Conference */
+        }
+        
+        details:nth-of-type(2) summary:hover {
+            background: #2563eb;
+        }
+        
+        details:nth-of-type(3) summary {
+            background: #60a5fa; /* 밝은 파란색 - Domestic Conference */
+        }
+        
+        details:nth-of-type(3) summary:hover {
+            background: #3b82f6;
+        }
+        
+        details:nth-of-type(4) summary {
+            background: #93c5fd; /* 가장 밝은 파란색 - Patents */
+            color: #1e3a8a; /* 텍스트는 어두운 파란색 */
+        }
+        
+        details:nth-of-type(4) summary:hover {
+            background: #7c3aed;
+            color: white;
+        }
+        
+        details .collapsible-content {
+            padding: clamp(15px, 3vw, 25px);
+            background: #f8f9fa;
+        }
+        
+        /* 리스트 스타일 */
         ul {
             padding-left: clamp(25px, 4.5vw, 45px);
             margin: clamp(15px, 2.5vw, 25px) 0;
             list-style: none;
         }
         
-       /* 완전 유동적 리스트 - 화살표와 텍스트 간격 개선 */
         li {
             margin-bottom: clamp(12px, 2.5vw, 20px);
             font-size: clamp(0.9rem, 1.8vw, 1.15rem);
             line-height: clamp(1.5, 0.3vw + 1.4, 1.8);
             color: #333;
             padding: clamp(8px, 1.5vw, 15px);
-            padding-left: clamp(25px, 4vw, 40px); /* 왼쪽 패딩 증가로 화살표와 텍스트 간격 확보 */
+            padding-left: clamp(25px, 4vw, 40px);
             background: #f8f9fa;
             border-radius: clamp(4px, 0.8vw, 8px);
-            border-left: clamp(3px, 0.5vw, 5px) solid #3498db;
             transition: all 0.3s ease;
             position: relative;
             text-align: justify;
@@ -149,53 +225,49 @@
             transform: translateX(clamp(3px, 0.6vw, 8px));
             box-shadow: 0 clamp(2px, 0.4vw, 6px) clamp(8px, 1.5vw, 15px) rgba(52, 152, 219, 0.2);
         }
-       
- 
-        /* 저널/학회명 이탤릭 */
-        li em, li i {
-            color: #555;
-            font-style: italic;
+        
+        /* 파란색 명도로 테두리 구분 */
+        details:nth-of-type(1) li {
+            border-left: clamp(3px, 0.5vw, 5px) solid #1e3a8a; /* 어두운 파란색 */
         }
         
-       /* 논문 제목 화살표 스타일링 - 위치 조정 */
+        details:nth-of-type(2) li {
+            border-left: clamp(3px, 0.5vw, 5px) solid #3b82f6; /* 중간 파란색 */
+        }
+        
+        details:nth-of-type(3) li {
+            border-left: clamp(3px, 0.5vw, 5px) solid #60a5fa; /* 밝은 파란색 */
+        }
+        
+        details:nth-of-type(4) li {
+            border-left: clamp(3px, 0.5vw, 5px) solid #93c5fd; /* 가장 밝은 파란색 */
+        }
+        
         li::before {
             content: "▸";
             color: #3498db;
             font-weight: bold;
             position: absolute;
-            left: clamp(8px, 1.5vw, 12px); /* 왼쪽 위치 조정 */
-            top: clamp(12px, 2vw, 18px); /* 상단 위치 조정 */
-            font-size: clamp(0.9rem, 1.8vw, 1.3rem); /* 화살표 크기 조정 */
+            left: clamp(8px, 1.5vw, 12px);
+            top: clamp(12px, 2vw, 18px);
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem);
         }
         
-        /* 논문 저자명 강조 - 하이라이터 제거하고 Bold 색상 변경 */
         li strong {
-            color: #3498db; /* 파란색 Bold 텍스트 */
-            font-weight: 700; /* 더 굵은 Bold */
-            background: none; /* 배경 하이라이트 제거 */
-            padding: 0; /* 패딩 제거 */
-            border-radius: 0; /* 테두리 반지름 제거 */
-            text-shadow: 0 0 1px rgba(52, 152, 219, 0.3); /* 미세한 그림자 효과 */
+            color: #3498db;
+            font-weight: 700;
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            text-shadow: 0 0 1px rgba(52, 152, 219, 0.3);
         }
         
-        /* 특별한 논문 카테고리별 색상 구분 */
-        h3:nth-of-type(1) + ul li {
-            border-left-color: #e74c3c; /* International Journal - 빨강 */
+        li em, li i {
+            color: #555;
+            font-style: italic;
         }
         
-        h3:nth-of-type(2) + ul li {
-            border-left-color: #f39c12; /* International Conference - 주황 */
-        }
-        
-        h3:nth-of-type(3) + ul li {
-            border-left-color: #27ae60; /* Domestic Conference - 초록 */
-        }
-        
-        h3:nth-of-type(4) + ul li {
-            border-left-color: #9b59b6; /* Patents - 보라 */
-        }
-        
-        /* 반응형 미디어 쿼리 (추가 조정용) */
+        /* 반응형 미디어 쿼리 */
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -212,7 +284,6 @@
                 padding: clamp(15px, 4vw, 30px) clamp(15px, 4vw, 30px);
             }
             
-            /* 모바일에서 사이드바 메뉴 가로 배치 */
             .sidebar nav {
                 display: flex;
                 flex-wrap: wrap;
@@ -237,24 +308,14 @@
                 transform: translateY(clamp(-2px, -0.4vw, -3px));
             }
             
-            /* 모바일에서 논문 리스트 최적화 */
-            ul {
-                padding-left: clamp(20px, 4vw, 30px);
+            details summary {
+                padding-left: clamp(35px, 7vw, 45px);
             }
             
-           li {
+            li {
                 font-size: clamp(0.85rem, 3.5vw, 1rem);
                 padding: clamp(10px, 3vw, 15px);
-                padding-left: clamp(30px, 6vw, 40px); /* 모바일에서도 충분한 간격 확보 */
-            }
-            
-            li::before {
-                left: clamp(10px, 2vw, 15px);
-                top: clamp(14px, 3vw, 20px);
-                font-size: clamp(0.8rem, 3vw, 1.1rem);
-            }
-            h3 {
-                font-size: clamp(1.1rem, 4vw, 1.4rem);
+                padding-left: clamp(30px, 6vw, 40px);
             }
         }
         
@@ -274,43 +335,26 @@
                 font-size: clamp(1rem, 3.5vw, 1.2rem);
             }
             
-             li {
-            font-size: clamp(0.8rem, 3.8vw, 0.95rem);
-            line-height: 1.6;
-            padding-left: clamp(28px, 7vw, 35px); /* 작은 화면에서도 간격 유지 */
-            }
-    
-            li::before {
-                left: clamp(8px, 2.5vw, 12px);
-                top: clamp(12px, 3.5vw, 18px);
-                font-size: clamp(0.75rem, 3.5vw, 1rem);
-            }
-            
-            h3::before {
-                font-size: clamp(0.9rem, 3vw, 1.1rem);
+            li {
+                font-size: clamp(0.8rem, 3.8vw, 0.95rem);
+                line-height: 1.6;
+                padding-left: clamp(28px, 7vw, 35px);
             }
         }
         
-        /* 큰 화면에서의 최적화 */
         @media (min-width: 1600px) {
             .container {
                 max-width: 1800px;
                 margin: 0 auto;
                 box-shadow: 0 0 clamp(20px, 2vw, 40px) rgba(0,0,0,0.1);
             }
-            
-            .main-content {
-                padding: clamp(40px, 5vw, 70px) clamp(60px, 7vw, 100px);
-            }
         }
         
-        /* 접근성 및 포커스 스타일 */
-        .sidebar nav a:focus, li:focus {
+        .sidebar nav a:focus, details summary:focus {
             outline: clamp(2px, 0.3vw, 3px) solid #3498db;
             outline-offset: clamp(2px, 0.3vw, 4px);
         }
         
-        /* 프린트 미디어 최적화 */
         @media print {
             .sidebar {
                 display: none;
@@ -320,14 +364,11 @@
                 padding: 20px;
             }
             
-            li {
-                background: none;
-                border: 1px solid #ddd;
-                page-break-inside: avoid;
+            details[open] .collapsible-content {
+                display: block;
             }
         }
         
-        /* 다크모드 대응 (선택사항) */
         @media (prefers-color-scheme: dark) {
             body {
                 background: #1a1a1a;
@@ -347,16 +388,13 @@
                 background: #404040;
             }
             
-            h1, h3 {
-                color: #e0e0e0;
-            }
-            
             h1 {
+                color: #e0e0e0;
                 border-bottom-color: #555;
             }
             
             li strong {
-                color: #4fc3f7; /* 다크모드에서 더 밝은 파란색 */
+                color: #4fc3f7;
                 background: none;
                 text-shadow: 0 0 1px rgba(79, 195, 247, 0.3);
             }
@@ -381,41 +419,57 @@
         <main class="main-content">
             <h1>Publications</h1>
             
-            <h3>International Journal Papers</h3>
-            <ul>
-                <li><strong>J. Lee</strong>, H. Yeom, S. -H. Lee and J. Ha, "Channel Correlation in Multi-User Covert Communication: Friend or Foe?," in <em>IEEE Transactions on Information Forensics and Security</em>, vol. 19, pp. 1469-1482, 2024.</li>
-                <li><strong>J. Lee</strong>, D. T. Dinh, H. Yeom, S. -H. Lee and J. Ha, "Multiuser Cooperation for Covert Communication Under Quasi-Static Fading," in <em>IEEE Transactions on Information Forensics and Security</em>, vol. 18, pp. 4625-4639, 2023.</li>
-                <li><strong>J. Lee</strong>, S. Yun, I. -M. Kim and J. Ha, "Deep Neural Network-Based Precoder for Fairness Aware Secure NOMA Scheme," in <em>IEEE Transactions on Vehicular Technology</em>, vol. 71, no. 5, pp. 5615-5620, May 2022.</li>
-            </ul>
+            <details open>
+                <summary>International Journal Papers</summary>
+                <div class="collapsible-content">
+                    <ul>
+                        <li><strong>J. Lee</strong>, H. Yeom, S. -H. Lee and J. Ha, "Channel Correlation in Multi-User Covert Communication: Friend or Foe?," in <em>IEEE Transactions on Information Forensics and Security</em>, vol. 19, pp. 1469-1482, 2024.</li>
+                        <li><strong>J. Lee</strong>, D. T. Dinh, H. Yeom, S. -H. Lee and J. Ha, "Multiuser Cooperation for Covert Communication Under Quasi-Static Fading," in <em>IEEE Transactions on Information Forensics and Security</em>, vol. 18, pp. 4625-4639, 2023.</li>
+                        <li><strong>J. Lee</strong>, S. Yun, I. -M. Kim and J. Ha, "Deep Neural Network-Based Precoder for Fairness Aware Secure NOMA Scheme," in <em>IEEE Transactions on Vehicular Technology</em>, vol. 71, no. 5, pp. 5615-5620, May 2022.</li>
+                    </ul>
+                </div>
+            </details>
             
-            <h3>International Conference Papers</h3>
-            <ul>
-                <li>H. Yeom, <strong>J. Lee</strong>, S. -H. Lee and J. Ha, "Covert Communication with Multi-Users Cooperation at Unequal Distances," in <em>Proc. IEEE International Conference on Communications (ICC)</em>, Denver, CO, USA, 2024.</li>
-                <li><strong>J. Lee</strong> and J. Choi, "Comparison of One-shot and Handshaking Systems for MTC in 5G," in <em>Proc. IEEE Vehicular Technology Conference (VTC Spring)</em>, Porto, Portugal, June 2018.</li>
-                <li><strong>J. Lee</strong>, K. Lee, and J. Choi, "Compressive Random access using Distance based Resource Block Selection Scheme for Machine Type Communications," in <em>Proc. IEEE International Workshop on Signal Processing Advances in Wireless Communications (SPAWC)</em>, Sapporo, Japan, July. 2017.</li>
-            </ul>
+            <details>
+                <summary>International Conference Papers</summary>
+                <div class="collapsible-content">
+                    <ul>
+                        <li>H. Yeom, <strong>J. Lee</strong>, S. -H. Lee and J. Ha, "Covert Communication with Multi-Users Cooperation at Unequal Distances," in <em>Proc. IEEE International Conference on Communications (ICC)</em>, Denver, CO, USA, 2024.</li>
+                        <li><strong>J. Lee</strong> and J. Choi, "Comparison of One-shot and Handshaking Systems for MTC in 5G," in <em>Proc. IEEE Vehicular Technology Conference (VTC Spring)</em>, Porto, Portugal, June 2018.</li>
+                        <li><strong>J. Lee</strong>, K. Lee, and J. Choi, "Compressive Random access using Distance based Resource Block Selection Scheme for Machine Type Communications," in <em>Proc. IEEE International Workshop on Signal Processing Advances in Wireless Communications (SPAWC)</em>, Sapporo, Japan, July. 2017.</li>
+                    </ul>
+                </div>
+            </details>
             
-            <h3>Domestic Conference Papers</h3>
-            <ul>
-                <li><strong>J. Lee</strong>, S. Yun, and J. Ha, " Deep learning based Secure Beamforming Design for Secrecy Fairness of Non-orthogonal Multiple Access System," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, Jan. 2021.</li>
-                <li><strong>J. Lee</strong>, and J. Ha, " Neural Network based Secure Beamforming for NOMA with Channel Estimation Error", in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, Aug. 2020.</li>
-                <li><strong>J. Lee</strong>, S. Yun, and J. Ha, " Neural network based secure beamforming design for NOMA", in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, Feb. 2020.</li>
-                <li>H. Yeom, <strong>J. Lee</strong>, J. Park, and J. Ha, " A study on the fairness of ergodic secrecy rate in uplink NOMA systems," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2019.</li>
-                <li><strong>J. Lee</strong>, and J. Ha, "A Study on the Beamforming Design for Non-orthogonal Multiple Access System," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2019.</li>
-                <li><strong>J. Lee</strong>, and J. Ha, "Analysis of Secrecy Outage Probability in Uplink Non-orthogonal Multiple Access," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, Jan. 2019.</li>
-                <li><strong>J. Lee</strong>, Y. Lee, and J. Choi, "Unique ID based on Time-Frequency Offset for Massive Connectivity in MTC," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2018.</li>
-                <li><strong>J. Lee</strong>, and J. Choi, "Maximum Throughput of One-shot and Handshaking Systems According to Packet Size," in <em>Proc. Joint Conference on Communications and Information (JCCI)</em>, Korea, May 2018.</li>
-                <li>H. Noh, <strong>J. Lee</strong>, and J. Choi, "Performance Analysis of Information Recovery Using Spatial Correlated Source through NB-IoT," in <em>Proc. Joint Conference on Communications and Information (JCCI)</em>, Korea, May 2018.</li>
-                <li><strong>J. Lee</strong>, K. Lee, H. Noh, and J. Choi, "Delay Analysis of NB-IoT," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2017.</li>
-                <li>K. Lee, <strong>J. Lee</strong>, N. Yu, and J. Choi, "A GPU Implementation of Compressive Sensing based Multiuser Channel Estimation", in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2016.</li>
-            </ul>
+            <details>
+                <summary>Domestic Conference Papers</summary>
+                <div class="collapsible-content">
+                    <ul>
+                        <li><strong>J. Lee</strong>, S. Yun, and J. Ha, " Deep learning based Secure Beamforming Design for Secrecy Fairness of Non-orthogonal Multiple Access System," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, Jan. 2021.</li>
+                        <li><strong>J. Lee</strong>, and J. Ha, " Neural Network based Secure Beamforming for NOMA with Channel Estimation Error", in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, Aug. 2020.</li>
+                        <li><strong>J. Lee</strong>, S. Yun, and J. Ha, " Neural network based secure beamforming design for NOMA", in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, Feb. 2020.</li>
+                        <li>H. Yeom, <strong>J. Lee</strong>, J. Park, and J. Ha, " A study on the fairness of ergodic secrecy rate in uplink NOMA systems," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2019.</li>
+                        <li><strong>J. Lee</strong>, and J. Ha, "A Study on the Beamforming Design for Non-orthogonal Multiple Access System," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2019.</li>
+                        <li><strong>J. Lee</strong>, and J. Ha, "Analysis of Secrecy Outage Probability in Uplink Non-orthogonal Multiple Access," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, Jan. 2019.</li>
+                        <li><strong>J. Lee</strong>, Y. Lee, and J. Choi, "Unique ID based on Time-Frequency Offset for Massive Connectivity in MTC," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2018.</li>
+                        <li><strong>J. Lee</strong>, and J. Choi, "Maximum Throughput of One-shot and Handshaking Systems According to Packet Size," in <em>Proc. Joint Conference on Communications and Information (JCCI)</em>, Korea, May 2018.</li>
+                        <li>H. Noh, <strong>J. Lee</strong>, and J. Choi, "Performance Analysis of Information Recovery Using Spatial Correlated Source through NB-IoT," in <em>Proc. Joint Conference on Communications and Information (JCCI)</em>, Korea, May 2018.</li>
+                        <li><strong>J. Lee</strong>, K. Lee, H. Noh, and J. Choi, "Delay Analysis of NB-IoT," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2017.</li>
+                        <li>K. Lee, <strong>J. Lee</strong>, N. Yu, and J. Choi, "A GPU Implementation of Compressive Sensing based Multiuser Channel Estimation", in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2016.</li>
+                    </ul>
+                </div>
+            </details>
             
-            <h3>Patents</h3>
-            <ul>
-                <li>"Cooperative Multi-User based Covert Communication System", Korea, Patent No. 1027342320000, Registration date: Nov. 2024.</li>
-                <li>"TWO-STAGE DEEP LEARNING BASED SECURE PRECODER FOR INFORMATION AND ARTIFICIAL NOISE SIGNAL IN NONORTHOGONAL MULTIPLE ACCESS SYSTEM," US, Patent No. 17317633, Application date: May 2021.</li>
-                <li>"METHOD AND SYSTEM FOR TRANSMITTING SECURE DATA USING POWER BACK-OFF," Korea, Patent No. 1022257500000, Registration date: Mar. 2021.</li>
-            </ul>
+            <details>
+                <summary>Patents</summary>
+                <div class="collapsible-content">
+                    <ul>
+                        <li>"Cooperative Multi-User based Covert Communication System", Korea, Patent No. 1027342320000, Registration date: Nov. 2024.</li>
+                        <li>"TWO-STAGE DEEP LEARNING BASED SECURE PRECODER FOR INFORMATION AND ARTIFICIAL NOISE SIGNAL IN NONORTHOGONAL MULTIPLE ACCESS SYSTEM," US, Patent No. 17317633, Application date: May 2021.</li>
+                        <li>"METHOD AND SYSTEM FOR TRANSMITTING SECURE DATA USING POWER BACK-OFF," Korea, Patent No. 1022257500000, Registration date: Mar. 2021.</li>
+                    </ul>
+                </div>
+            </details>
         </main>
     </div>
 </body>
