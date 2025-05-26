@@ -110,17 +110,18 @@
             box-shadow: 0 clamp(4px, 0.8vw, 10px) clamp(15px, 3vw, 30px) rgba(0,0,0,0.15);
         }
         
+        /* Summary 패딩 조정 - 아이콘 공간 제거 */
         .publication-box summary {
             background: #ffffff;
             color: #333;
-            padding: clamp(15px, 3vw, 25px);
+            padding: clamp(15px, 3vw, 25px); /* 기본 패딩으로 복원 */
             cursor: pointer;
             font-weight: bold;
             font-size: clamp(1.1rem, 2.3vw, 1.6rem);
             list-style: none;
             transition: all 0.3s ease;
             position: relative;
-            padding-left: clamp(45px, 7vw, 60px);
+            /* padding-left 제거 - 아이콘 공간이 필요 없음 */
             border: 1px solid #ddd;
             border-left: clamp(5px, 1vw, 8px) solid #3498db;
         }
@@ -134,43 +135,7 @@
             display: none;
         }
         
-       /* 카테고리별 흑백 아이콘으로 변경 */
-        .publication-box:nth-of-type(1) summary::before {
-            content: "●"; /* International Journal - 검은 원 */
-            position: absolute;
-            left: clamp(15px, 2.5vw, 20px);
-            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-            color: #1e3a8a; /* 카테고리 색상과 매칭 */
-            font-weight: bold;
-        }
-        
-        .publication-box:nth-of-type(2) summary::before {
-            content: "■"; /* International Conference - 검은 사각형 */
-            position: absolute;
-            left: clamp(15px, 2.5vw, 20px);
-            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-            color: #3b82f6;
-            font-weight: bold;
-        }
-        
-        .publication-box:nth-of-type(3) summary::before {
-            content: "▲"; /* Domestic Conference - 검은 삼각형 */
-            position: absolute;
-            left: clamp(15px, 2.5vw, 20px);
-            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-            color: #60a5fa;
-            font-weight: bold;
-        }
-        
-        .publication-box:nth-of-type(4) summary::before {
-            content: "◆"; /* Patents - 검은 다이아몬드 */
-            position: absolute;
-            left: clamp(15px, 2.5vw, 20px);
-            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-            color: #93c5fd;
-            font-weight: bold;
-        }
-        
+          
         .publication-box summary::after {
             content: " ▼";
             float: right;
