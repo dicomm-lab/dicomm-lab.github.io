@@ -147,21 +147,21 @@
             color: #444;
         }
         
-        .education-item, .experience-item {
+        .education-item, .experience-item .award-item {
             margin-bottom: 15px;
             padding: 15px;
             background: #fff;
             border-radius: 5px;
-            border-left: 3px solid #3498db;
+            border-left: none; <!--3px solid #3498db--> 
         }
         
-        .degree, .position {
+        .degree, .position .award-title {
             font-weight: bold;
             color: #2c3e50;
             margin-bottom: 5px;
         }
         
-        .institution, .duration {
+        .institution, .duration .award-organization .award-date {
             color: #666;
             font-size: 0.95em;
         }
@@ -180,31 +180,8 @@
             border-left: 4px solid #28a745;
         }
         
-        .award-item {
-            margin-bottom: 15px;
-            padding: 15px;
-            background: #fff;
-            border-radius: 5px;
-            border-left: 3px solid #28a745;
-        }
-        
-        .award-date {
-            font-weight: bold;
-            color: #28a745;
-            margin-bottom: 5px;
-        }
-        
-        .award-title {
-            font-size: 1.1em;
-            color: #2c3e50;
-            margin-bottom: 3px;
-        }
-        
-        .award-organization {
-            color: #666;
-            font-size: 0.95em;
-        }
-    </style>
+           
+     </style>
 </head>
 
 <body>
@@ -284,15 +261,14 @@
                         <div class="thesis-info">Supervisor: Professor Il-Min Kim</div>
                     </div>
                 </div>
-                 <div class="award-section">
+                <div class="detail-section">
                     <h2>Awards</h2>
-                   
-                     <div class="award-item">
-                         <div class="award-date">2020. 08</div>
-                        <div class="award-title">Best Paper Award</div>
-                        <div class="award-organization"> Korean Institute of Communications and Information Sciences (KICS) </div>
+                    <div class="award-item">
+                         <div class="award-title">Best Paper Award</div>
+                         <div class="award-organization"> Korean Institute of Communications and Information Sciences (KICS) </div>
+                         <div class="award-date">2020. 08</div>                       
                     </div>
-                 </div>
+                </div>
             </div>
 
                         <!--
