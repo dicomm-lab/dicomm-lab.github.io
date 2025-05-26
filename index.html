@@ -8,7 +8,6 @@
         /* 기본 설정 - 완전 유동형 + 텍스트 선택 비활성화 */
         * {
             box-sizing: border-box;
-            /* 텍스트 선택 하이라이트 비활성화 */
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             -khtml-user-select: none;
@@ -149,7 +148,6 @@
             color: white;
             font-size: clamp(1.3rem, 2.8vw, 1.8rem);
             margin-bottom: clamp(15px, 2.5vw, 25px);
-            position: relative;
         }
         
         .member-recruitment h3::before {
@@ -177,12 +175,145 @@
             display: inline-block;
             margin-top: clamp(15px, 2.5vw, 25px);
             border: 2px solid rgba(255,255,255,0.3);
+            cursor: pointer;
         }
         
         .apply-button:hover {
             background: rgba(255,255,255,0.3);
             transform: translateY(clamp(-2px, -0.4vw, -3px));
             border-color: rgba(255,255,255,0.5);
+        }
+        
+        /* 지원 폼 모달 */
+        .application-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: clamp(5%, 8vw, 10%) auto;
+            padding: clamp(20px, 4vw, 40px);
+            border-radius: clamp(8px, 1.5vw, 15px);
+            width: clamp(300px, 85vw, 700px);
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 clamp(10px, 2vw, 20px) clamp(40px, 6vw, 60px) rgba(0,0,0,0.3);
+        }
+        
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close-modal:hover {
+            color: #000;
+        }
+        
+        .application-form {
+            margin-top: clamp(20px, 3vw, 30px);
+        }
+        
+        .form-group {
+            margin-bottom: clamp(15px, 2.5vw, 25px);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: clamp(5px, 1vw, 8px);
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: clamp(8px, 1.5vw, 12px);
+            border: 2px solid #ddd;
+            border-radius: clamp(4px, 0.8vw, 6px);
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        
+        /* 커스텀 파일 업로드 버튼 */
+        .file-upload-container {
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+        
+        .file-upload-input {
+            display: none;
+        }
+        
+        .file-upload-label {
+            display: block;
+            padding: clamp(15px, 2.5vw, 20px);
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            border-radius: clamp(6px, 1vw, 8px);
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px dashed rgba(255,255,255,0.3);
+            font-weight: 600;
+        }
+        
+        .file-upload-label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .file-upload-label::before {
+            content: "📎";
+            margin-right: clamp(8px, 1.5vw, 12px);
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+        }
+        
+        .file-name {
+            margin-top: clamp(8px, 1.5vw, 12px);
+            font-size: clamp(0.85rem, 1.6vw, 1rem);
+            color: #666;
+            font-style: italic;
+            text-align: center;
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: clamp(12px, 2.2vw, 18px) clamp(25px, 4.5vw, 35px);
+            border: none;
+            border-radius: clamp(6px, 1.2vw, 10px);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
         }
         
         /* Research Topics 박스 */
@@ -218,7 +349,7 @@
             transition: all 0.3s ease;
         }
         
-        /* 화살표 아이콘 */
+        /* 화살표 아이콘 - CSS 오류 수정 */
         li::before {
             content: "▸";
             color: #3498db;
@@ -284,26 +415,9 @@
                 transform: translateY(clamp(-2px, -0.4vw, -3px));
             }
             
-            .lab-philosophy p {
-                font-size: clamp(0.9rem, 3.5vw, 1.1rem);
-                text-align: left;
-            }
-            
-            .recruitment-text {
-                font-size: clamp(0.95rem, 3.8vw, 1.15rem);
-            }
-            
-            ul {
-                padding-left: clamp(20px, 4vw, 30px);
-            }
-            
-            li {
-                font-size: clamp(0.9rem, 3.5vw, 1.1rem);
-                padding-left: clamp(32px, 6vw, 40px);
-            }
-            
-            li::before {
-                left: clamp(6px, 1.2vw, 10px);
+            .modal-content {
+                margin: clamp(5%, 3vw, 8%) clamp(10px, 2vw, 20px);
+                width: calc(100% - clamp(20px, 4vw, 40px));
             }
         }
         
@@ -322,73 +436,9 @@
                 text-align: center;
                 font-size: clamp(1rem, 3.5vw, 1.2rem);
             }
-            
-            h1 {
-                font-size: clamp(1.4rem, 6vw, 2rem);
-                text-align: center;
-            }
-            
-            .lab-philosophy p {
-                font-size: clamp(0.85rem, 4vw, 1rem);
-                line-height: 1.6;
-            }
-            
-            .member-recruitment {
-                padding: clamp(20px, 4vw, 30px);
-                margin: clamp(25px, 4vw, 35px) 0;
-            }
-            
-            .research-topics {
-                padding: clamp(15px, 4vw, 25px);
-                margin: clamp(20px, 4vw, 30px) 0;
-            }
-            
-            li {
-                padding-left: clamp(30px, 7vw, 36px);
-            }
-            
-            li::before {
-                left: clamp(5px, 1vw, 8px);
-            }
         }
         
-        @media (min-width: 1600px) {
-            .container {
-                max-width: 1800px;
-                margin: 0 auto;
-                box-shadow: 0 0 clamp(20px, 2vw, 40px) rgba(0,0,0,0.1);
-            }
-            
-            .main-content {
-                padding: clamp(40px, 5vw, 70px) clamp(60px, 7vw, 100px);
-            }
-        }
-        
-        .sidebar nav a:focus, .apply-button:focus {
-            outline: clamp(2px, 0.3vw, 3px) solid #3498db;
-            outline-offset: clamp(2px, 0.3vw, 4px);
-        }
-        
-        @media print {
-            .sidebar {
-                display: none;
-            }
-            
-            .main-content {
-                padding: 20px;
-            }
-            
-            .member-recruitment {
-                background: #2c3e50 !important;
-                color: white !important;
-            }
-            
-            .research-topics {
-                border: 1px solid #2c3e50;
-                box-shadow: none;
-            }
-        }
-        
+        /* 다크모드 지원 */
         @media (prefers-color-scheme: dark) {
             body {
                 background: #1a1a1a;
@@ -400,35 +450,19 @@
                 color: #e0e0e0;
             }
             
+            .modal-content {
+                background: #2a2a2a;
+                color: #e0e0e0;
+            }
+            
             .research-topics {
                 background: linear-gradient(135deg, #333 0%, #404040 100%);
                 border-left-color: #3498db;
             }
             
-            .member-recruitment {
-                background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-            }
-            
             h1 {
                 color: #e0e0e0;
                 border-bottom-color: #555;
-            }
-            
-            .lab-philosophy p {
-                color: #d0d0d0;
-            }
-            
-            .lab-philosophy strong {
-                color: #2563eb;
-                text-shadow: 0 0 1px rgba(37, 99, 235, 0.4);
-            }
-            
-            li {
-                color: #d0d0d0;
-            }
-            
-            li:hover {
-                color: #fff;
             }
         }
     </style>
@@ -453,11 +487,11 @@
             <!-- Lab Philosophy 섹션 -->
             <div class="lab-philosophy">
                 <h2>Lab Philosophy</h2>
-                <p><strong>Our research philosophy</strong> focuses on exploring in-depth and conducting multidimensional analyses of challenges across diverse communication systems. 
-                    We aim to address these challenges through the application of innovative, intelligent, and multidisciplinary approaches to deliver effective and optimized solutions.</p>
+                <p>Our <strong>research philosophy</strong> focuses on exploring <strong>in-depth</strong> and conducting <strong>multidimensional analyses</strong> of challenges across diverse communication systems. 
+                    We aim to address these challenges through the application of <strong>innovative, intelligent, and multidisciplinary approaches</strong> to deliver effective and optimized solutions.</p>
                 
-                <p>우리 연구실은 다양한 통신 시스템에서 발생하는 문제를 깊이 있게 탐구하고 다각적으로 분석하는 것을 중심으로 연구를 진행합니다.
-                    우리는 문제 해결을 위한 스마트하고 혁신적인 공학적 방법론과 다학제적 접근을 활용하여 최적화된 솔루션을 제시하는 것을 목표로 합니다.</p>
+                <p>우리 연구실은 다양한 통신 시스템에서 발생하는 문제를 <strong>깊이 있게 탐구하고 다각적으로 분석</strong>하는 것을 중심으로 연구를 진행합니다.
+                    우리는 문제 해결을 위한 <strong>스마트하고 혁신적인 공학적 방법론과 다학제적 접근</strong>을 활용하여 최적화된 솔루션을 제시하는 것을 목표로 합니다.</p>
             </div>
             
             <!-- Member 구인 섹션 -->
@@ -466,12 +500,12 @@
                 <p class="recruitment-text">
                     "Unlock the mysteries of deep learning and wireless communications with us. Our lab welcomes passionate students who dare to explore uncharted territories of knowledge."
                 </p>
-                <a href="contact.html" class="apply-button">Apply Now</a>
+                <button class="apply-button" onclick="openApplicationModal()">Apply Now</button>
             </div>
             
             <!-- Research Topics 섹션 -->
             <div class="research-topics">
-                <h3>Our research topics are:</h3>
+                <h3>Some of my current research topics are:</h3>
                 <ul>
                     <li>Wireless Communications</li>
                     <li>Signal Processing</li>
@@ -482,5 +516,160 @@
             </div>
         </main>
     </div>
+    
+    <!-- 지원 폼 모달 -->
+    <div id="applicationModal" class="application-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeApplicationModal()">&times;</span>
+            <h2 style="color: #2c3e50; text-align: center;">Lab Member Application</h2>
+            
+            <form class="application-form" id="applicationForm" onsubmit="submitApplication(event)">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="degree">Current Academic Level *</label>
+                    <select id="degree" name="degree" required>
+                        <option value="">Select your level</option>
+                        <option value="undergraduate">Undergraduate Student</option>
+                        <option value="graduate_ms">Graduate Student (M.S.)</option>
+                        <option value="graduate_phd">Graduate Student (Ph.D.)</option>
+                        <option value="postdoc">Postdoc</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="university">University/Institution</label>
+                    <input type="text" id="university" name="university">
+                </div>
+                
+                <div class="form-group">
+                    <label for="major">Major/Field of Study</label>
+                    <input type="text" id="major" name="major">
+                </div>
+                
+                <div class="form-group">
+                    <label for="research-interest">Research Interests</label>
+                    <textarea id="research-interest" name="research-interest" rows="3" placeholder="Describe your research interests and areas of expertise..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="resume">Upload Resume (PDF, DOC, DOCX) *</label>
+                    <div class="file-upload-container">
+                        <input type="file" id="resume" name="resume" class="file-upload-input" accept=".pdf,.doc,.docx" required onchange="updateFileName(this)">
+                        <label for="resume" class="file-upload-label">
+                            Click to upload your resume or drag and drop
+                        </label>
+                        <div id="resumeFileName" class="file-name"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cover-letter">Cover Letter (Optional)</label>
+                    <div class="file-upload-container">
+                        <input type="file" id="cover-letter" name="cover-letter" class="file-upload-input" accept=".pdf,.doc,.docx" onchange="updateCoverLetterName(this)">
+                        <label for="cover-letter" class="file-upload-label">
+                            Click to upload your cover letter
+                        </label>
+                        <div id="coverLetterFileName" class="file-name"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="additional-info">Additional Information</label>
+                    <textarea id="additional-info" name="additional-info" rows="4" placeholder="Any additional information you'd like to share..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-button">Submit Application</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // 모달 열기/닫기 함수
+        function openApplicationModal() {
+            document.getElementById('applicationModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+        }
+        
+        function closeApplicationModal() {
+            document.getElementById('applicationModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // 스크롤 복원
+        }
+        
+        // 모달 외부 클릭 시 닫기
+        window.onclick = function(event) {
+            const modal = document.getElementById('applicationModal');
+            if (event.target == modal) {
+                closeApplicationModal();
+            }
+        }
+        
+        // 파일명 업데이트 함수
+        function updateFileName(input) {
+            const fileName = input.files[0] ? input.files[0].name : '';
+            document.getElementById('resumeFileName').textContent = fileName ? `Selected: ${fileName}` : '';
+        }
+        
+        function updateCoverLetterName(input) {
+            const fileName = input.files[0] ? input.files[0].name : '';
+            document.getElementById('coverLetterFileName').textContent = fileName ? `Selected: ${fileName}` : '';
+        }
+        
+        // 폼 제출 처리
+        function submitApplication(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const resumeFile = formData.get('resume');
+            
+            if (!resumeFile || resumeFile.size === 0) {
+                alert('Please upload your resume before submitting.');
+                return;
+            }
+            
+            // 파일 크기 검증 (10MB 제한)
+            if (resumeFile.size > 10 * 1024 * 1024) {
+                alert('Resume file size must be less than 10MB.');
+                return;
+            }
+            
+            // 실제 구현에서는 서버로 전송
+            // 여기서는 시뮬레이션
+            const submitButton = event.target.querySelector('.submit-button');
+            submitButton.textContent = 'Submitting...';
+            submitButton.disabled = true;
+            
+            // 시뮬레이션 (실제로는 서버 API 호출)
+            setTimeout(() => {
+                alert('Application submitted successfully! We will review your application and contact you soon.');
+                closeApplicationModal();
+                event.target.reset(); // 폼 리셋
+                document.getElementById('resumeFileName').textContent = '';
+                document.getElementById('coverLetterFileName').textContent = '';
+                submitButton.textContent = 'Submit Application';
+                submitButton.disabled = false;
+            }, 2000);
+        }
+        
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeApplicationModal();
+            }
+        });
+    </script>
 </body>
 </html>
