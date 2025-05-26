@@ -146,8 +146,47 @@
             text-align: justify;
             color: #444;
         }
+        /* 토글 가능한 상세 정보 섹션 */
+        .details-container {
+            display: block;
+            opacity: 1;
+            max-height: 2000px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
         
-               /* 수정된 CSS - education 구조로 통일 */
+        .details-container.hidden {
+            display: none;
+            opacity: 0;
+            max-height: 0;
+        }
+        
+        .detail-section {
+            margin-bottom: 25px;
+        }
+        
+        .detail-section h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .bio-text {
+            line-height: 1.6;
+            text-align: justify;
+            color: #444;
+        }
+
+        /* 클릭 안내 텍스트 */
+        .click-hint {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 10px;
+        }
+           
+        /* 통일된 아이템 스타일 */
         .education-item, .experience-item, .award-item {
             margin-bottom: 15px;
             padding: 15px;
@@ -197,13 +236,16 @@
                 <div class="pi-header">
                     <img src="images/PI.jpg" alt="Prof. Jinyoung Lee" class="pi-photo">
                         <div class="pi-info">
+                            <h2 onclick="toggleDetails(this)" class="collapsed">Prof. Jinyoung Lee (PI)</h2>
                             <h2>Prof. Jinyoung Lee (PI)</h2>
                             <p><strong>Principal Investigator</strong></p>
                             <p>Assistant Professor</p>
                             <p>Department of Electronics and Electrical Information Engineering</p>
+                             <p class="click-hint">클릭하여 상세 정보 보기</p>
                         </div>
                 </div>
 
+                <div class="details-container hidden" id="pi-details">
                 <div class="detail-section">
                     <h3>Bio</h3>
                     <p class="bio-text">
@@ -275,5 +317,23 @@
         -->
         </main>
     </div>
+    <script>
+        function toggleDetails(element) {
+            const detailsContainer = document.getElementById('pi-details');
+            const isHidden = detailsContainer.classList.contains('hidden');
+            
+            if (isHidden) {
+                // 상세 정보 보이기
+                detailsContainer.classList.remove('hidden');
+                element.classList.remove('collapsed');
+                element.parentElement.querySelector('.click-hint').textContent = '클릭하여 상세 정보 숨기기';
+            } else {
+                // 상세 정보 숨기기
+                detailsContainer.classList.add('hidden');
+                element.classList.add('collapsed');
+                element.parentElement.querySelector('.click-hint').textContent = '클릭하여 상세 정보 보기';
+            }
+        }
+    </script>
 </body>
 </html>
