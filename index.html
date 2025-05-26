@@ -4,95 +4,358 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deep and Intelligent Communications Lab.</title>
-       <style>
-       body {
+    <style>
+        /* 기본 설정 - 완전 유동형 */
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
             margin: 0;
             font-family: Arial, sans-serif;
             background: #f7f7f7;
+            font-size: clamp(14px, 1.8vw, 18px); /* 기본 폰트도 유동적 */
+            line-height: clamp(1.4, 0.2vw + 1.3, 1.7);
+            color: #333;
         }
+        
         .container {
             display: flex;
             min-height: 100vh;
         }
+        
+        /* 완전 유동적 사이드바 */
         .sidebar {
-            width: 220px;
+            width: clamp(180px, 22vw, 280px); /* 유동적 너비 */
             background: #2c3e50;
             color: #fff;
-            padding: 40px 20px;
+            padding: clamp(20px, 4vw, 50px) clamp(15px, 2.5vw, 30px);
             box-sizing: border-box;
             min-height: 100vh;
             position: sticky;
             top: 0;
         }
+        
         .sidebar h2 {
             color: #fff;
-            font-size: 1.4em;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem); /* 유동적 제목 크기 */
+            margin-bottom: clamp(20px, 4vw, 40px);
+            letter-spacing: clamp(0.5px, 0.1vw, 1.5px);
         }
+        
         .sidebar nav a {
             display: block;
             color: #ecf0f1;
             text-decoration: none;
-            padding: 10px 0;
-            margin-bottom: 8px;
-            font-size: 1.1em;
-            border-left: 4px solid transparent;
-            transition: 0.2s;
+            padding: clamp(8px, 1.5vw, 15px) 0;
+            margin-bottom: clamp(6px, 1.2vw, 12px);
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem); /* 유동적 메뉴 폰트 */
+            border-left: clamp(3px, 0.5vw, 6px) solid transparent;
+            transition: all 0.3s ease;
+            border-radius: clamp(2px, 0.3vw, 4px);
         }
+        
         .sidebar nav a.active, .sidebar nav a:hover {
             color: #3498db;
-            border-left: 4px solid #3498db;
+            border-left: clamp(3px, 0.5vw, 6px) solid #3498db;
             background: #222d36;
-            padding-left: 16px;
+            padding-left: clamp(12px, 2vw, 25px);
+            transform: translateX(clamp(2px, 0.5vw, 5px));
         }
+        
+        /* 완전 유동적 메인 콘텐츠 */
         .main-content {
             flex: 1;
             background: #fff;
-            padding: 40px 50px;
+            padding: clamp(20px, 5vw, 60px) clamp(25px, 6vw, 80px);
             box-sizing: border-box;
             min-width: 0;
         }
-        @media (max-width: 800px) {
+        
+        /* 유동적 제목들 */
+        h1 {
+            color: #333;
+            border-bottom: clamp(2px, 0.3vw, 4px) solid #333;
+            padding-bottom: clamp(8px, 1.5vw, 15px);
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            margin-bottom: clamp(20px, 3.5vw, 40px);
+            font-weight: bold;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            color: #555;
+            margin-top: clamp(25px, 4vw, 45px);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: clamp(5px, 0.8vw, 10px);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+        }
+        
+        h3 {
+            color: #2c3e50;
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            margin-top: clamp(15px, 2.5vw, 25px);
+            margin-bottom: clamp(10px, 1.5vw, 20px);
+            font-weight: bold;
+        }
+        
+        /* 유동적 소개 섹션 */
+        .intro {
+            margin-bottom: clamp(25px, 4vw, 40px);
+        }
+        
+        .intro p {
+            font-size: clamp(0.95rem, 2vw, 1.25rem);
+            line-height: clamp(1.6, 0.3vw + 1.5, 1.8);
+            margin-bottom: clamp(15px, 3vw, 25px);
+            text-align: justify;
+            color: #444;
+        }
+        
+        /* strong 태그 강조 */
+        .intro strong {
+            color: #2c3e50;
+            font-weight: 600;
+            background: linear-gradient(120deg, rgba(52, 152, 219, 0.1) 0%, rgba(52, 152, 219, 0.2) 100%);
+            padding: clamp(1px, 0.2vw, 3px) clamp(2px, 0.4vw, 5px);
+            border-radius: clamp(2px, 0.3vw, 4px);
+        }
+        
+        /* 완전 유동적 연구 주제 박스 */
+        .research-topics {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: clamp(15px, 3.5vw, 40px);
+            border-left: clamp(4px, 0.8vw, 8px) solid #333;
+            margin: clamp(20px, 4vw, 40px) 0;
+            border-radius: clamp(6px, 1.2vw, 12px);
+            box-shadow: 0 clamp(2px, 0.5vw, 8px) clamp(15px, 3vw, 25px) rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .research-topics:hover {
+            transform: translateY(clamp(-2px, -0.4vw, -5px));
+            box-shadow: 0 clamp(6px, 1.2vw, 15px) clamp(25px, 4vw, 40px) rgba(0,0,0,0.15);
+        }
+        
+        /* 완전 유동적 리스트 */
+        ul {
+            padding-left: clamp(25px, 4.5vw, 45px);
+            margin: clamp(10px, 2vw, 20px) 0;
+            list-style: none;
+        }
+        
+        li {
+            margin-bottom: clamp(10px, 2vw, 18px);
+            font-size: clamp(0.95rem, 2vw, 1.25rem);
+            line-height: clamp(1.4, 0.2vw + 1.3, 1.6);
+            color: #333;
+            position: relative;
+            padding-left: clamp(20px, 3vw, 30px);
+            transition: all 0.3s ease;
+        }
+        
+        /* 리스트 아이템 커스텀 마커 */
+        li::before {
+            content: "▶";
+            color: #3498db;
+            position: absolute;
+            left: 0;
+            font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            color: #2c3e50;
+            transform: translateX(clamp(3px, 0.6vw, 8px));
+            font-weight: 500;
+        }
+        
+        li:hover::before {
+            color: #2980b9;
+            transform: scale(clamp(1.1, 0.05vw + 1.05, 1.3));
+        }
+        
+        /* 반응형 미디어 쿼리 (추가 조정용) */
+        @media (max-width: 768px) {
             .container {
                 flex-direction: column;
             }
+            
             .sidebar {
                 width: 100%;
                 min-height: auto;
                 position: static;
-                padding: 20px 10px;
+                padding: clamp(15px, 3vw, 25px) clamp(10px, 2vw, 20px);
             }
+            
             .main-content {
-                padding: 20px 10px;
+                padding: clamp(15px, 4vw, 30px) clamp(15px, 4vw, 30px);
+            }
+            
+            /* 모바일에서 사이드바 메뉴 가로 배치 */
+            .sidebar nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: clamp(8px, 2vw, 15px);
+                justify-content: center;
+            }
+            
+            .sidebar nav a {
+                flex: 1;
+                text-align: center;
+                min-width: clamp(70px, 15vw, 120px);
+                padding: clamp(8px, 2vw, 12px);
+                border-left: none;
+                border-bottom: clamp(2px, 0.4vw, 3px) solid transparent;
+                border-radius: clamp(4px, 1vw, 8px);
+            }
+            
+            .sidebar nav a.active, .sidebar nav a:hover {
+                border-left: none;
+                border-bottom: clamp(2px, 0.4vw, 3px) solid #3498db;
+                padding-left: clamp(8px, 2vw, 12px);
+                transform: translateY(clamp(-2px, -0.4vw, -3px));
+            }
+            
+            /* 모바일에서 텍스트 최적화 */
+            .intro p {
+                font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+                text-align: left;
+            }
+            
+            ul {
+                padding-left: clamp(20px, 4vw, 30px);
+            }
+            
+            li {
+                font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+                padding-left: clamp(18px, 4vw, 25px);
             }
         }
-        h1 {
-            color: #333;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
+        
+        @media (max-width: 480px) {
+            .sidebar h2 {
+                text-align: center;
+                margin-bottom: clamp(15px, 3vw, 25px);
+            }
+            
+            .sidebar nav {
+                flex-direction: column;
+            }
+            
+            .sidebar nav a {
+                margin-bottom: clamp(8px, 2vw, 12px);
+                text-align: center;
+                font-size: clamp(1rem, 3.5vw, 1.2rem);
+            }
+            
+            h1 {
+                font-size: clamp(1.4rem, 6vw, 2rem);
+                text-align: center;
+            }
+            
+            .intro p {
+                font-size: clamp(0.85rem, 4vw, 1rem);
+                line-height: 1.6;
+            }
+            
+            .research-topics {
+                padding: clamp(12px, 4vw, 20px);
+                margin: clamp(15px, 4vw, 25px) 0;
+            }
         }
-        h2 {
-            color: #555;
-            margin-top: 30px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
+        
+        /* 큰 화면에서의 최적화 */
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1800px;
+                margin: 0 auto;
+                box-shadow: 0 0 clamp(20px, 2vw, 40px) rgba(0,0,0,0.1);
+            }
+            
+            .main-content {
+                padding: clamp(40px, 5vw, 70px) clamp(60px, 7vw, 100px);
+            }
         }
-        .intro {
-            margin-bottom: 30px;
+        
+        /* 접근성 및 포커스 스타일 */
+        .sidebar nav a:focus {
+            outline: clamp(2px, 0.3vw, 3px) solid #3498db;
+            outline-offset: clamp(2px, 0.3vw, 4px);
         }
-        .research-topics {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-left: 4px solid #333;
-            margin: 20px 0;
+        
+        /* 프린트 미디어 최적화 */
+        @media print {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .research-topics {
+                border: 1px solid #333;
+                box-shadow: none;
+            }
         }
-       ul {
-            padding-left: 20px;
+        
+        /* 다크모드 대응 (선택사항) */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1a1a1a;
+                color: #e0e0e0;
+            }
+            
+            .main-content {
+                background: #2a2a2a;
+                color: #e0e0e0;
+            }
+            
+            .research-topics {
+                background: linear-gradient(135deg, #333 0%, #404040 100%);
+                border-left-color: #3498db;
+            }
+            
+            h1 {
+                color: #e0e0e0;
+                border-bottom-color: #555;
+            }
+            
+            .intro p {
+                color: #d0d0d0;
+            }
+            
+            .intro strong {
+                color: #4fc3f7;
+                background: rgba(79, 195, 247, 0.1);
+            }
+            
+            li {
+                color: #d0d0d0;
+            }
+            
+            li:hover {
+                color: #fff;
+            }
         }
-        li {
-            margin-bottom: 8px;
-        } 
+        
+        /* 주석 처리된 footer를 위한 스타일 (활성화 시 사용) */
+        footer {
+            margin-top: clamp(30px, 5vw, 60px);
+            padding-top: clamp(15px, 2.5vw, 25px);
+            border-top: 1px solid #ddd;
+            text-align: center;
+            background: #f8f9fa;
+        }
+        
+        footer h2 {
+            font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+            color: #666;
+            margin: 0;
+            font-weight: normal;
+        }
     </style>
 </head>
 <body>
@@ -108,15 +371,18 @@
                 <a href="contact.html">Contact</a>
             </nav>
         </aside>
+        
         <main class="main-content">
             <h1>Deep and Intelligent Communications Laboratory</h1>
+            
             <div class="intro">
                 <p>Our <strong>research philosophy</strong> focuses on exploring <strong>in-depth</strong> and conducting <strong>multidimensional analyses</strong> of challenges across diverse communication systems. 
                     We aim to address these challenges through the application of <strong>innovative, intelligent, and multidisciplinary approaches</strong> to deliver effective and optimized solutions.</p>
+                
                 <p>우리 연구실은 다양한 통신 시스템에서 발생하는 문제를 <strong>깊이 있게 탐구하고 다각적으로 분석</strong>하는 것을 중심으로 연구를 진행합니다.
                     우리는 문제 해결을 위한 <strong>스마트하고 혁신적인 공학적 방법론과 다학제적 접근</strong>을 활용하여 최적화된 솔루션을 제시하는 것을 목표로 합니다.</p>
-                <!--<p>My work involves utilizing a variety of mathematical tools, including matrix theory, large-scale optimization, sampling, information and communication theory, digital signal processing, and stochastic geometry. My objective is to develop effective algorithms and analyze wireless systems, with a focus on enhancing efficiency.</p> -->
             </div>
+            
             <div class="research-topics">
                 <h3>Some of my current research topics are:</h3>
                 <ul>
@@ -127,10 +393,14 @@
                     <li>Optimization Algorithms</li>
                 </ul>
             </div>
-          
         </main>
     </div>
-   <!--<footer style=padding-top: 20px; border-top: 1px solid #ddd; text-align: center;">-->
-    <!--    <h2>&copy; 2025. All rights reserved.</h2> -->
+    
+    <!-- Footer 활성화 시 주석 제거 -->
+    <!--
+    <footer>
+        <h2>&copy; 2025. All rights reserved.</h2>
+    </footer>
+    -->
 </body>
 </html>
