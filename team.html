@@ -147,21 +147,22 @@
             color: #444;
         }
         
-        .education-item, .experience-item .award-item {
+               /* 수정된 CSS - education 구조로 통일 */
+        .education-item, .experience-item, .award-item {
             margin-bottom: 15px;
             padding: 15px;
             background: #fff;
             border-radius: 5px;
-            border-left: none;  
+            border-left: 3px solid #3498db;  /* education과 동일한 왼쪽 테두리 */
         }
         
-        .degree, .position .award-title {
+        .degree, .position, .award-title {
             font-weight: bold;
             color: #2c3e50;
             margin-bottom: 5px;
         }
         
-        .institution, .duration .award-organization .award-date {
+        .institution, .duration, .award-organization, .award-date {
             color: #666;
             font-size: 0.95em;
         }
@@ -172,6 +173,7 @@
             color: #555;
             font-size: 0.9em;
         }
+           
        .awards-section {
             background-color: #f8f9fa;
             padding: 25px;
