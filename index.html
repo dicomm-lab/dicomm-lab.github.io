@@ -29,10 +29,9 @@
         .container {
             display: flex;
             min-height: 100vh;
-            flex-wrap: wrap; /* 검색 결과의 flexbox 활용 */
         }
         
-        /* 완전 유동적 사이드바 */
+        /* 사이드바 스타일 */
         .sidebar {
             width: clamp(180px, 22vw, 280px);
             background: #2c3e50;
@@ -42,7 +41,6 @@
             min-height: 100vh;
             position: sticky;
             top: 0;
-            flex-shrink: 0; /* 검색 결과의 flex-shrink 활용 */
         }
         
         .sidebar h2 {
@@ -72,16 +70,16 @@
             transform: translateX(clamp(2px, 0.5vw, 5px));
         }
         
-        /* 완전 유동적 메인 콘텐츠 */
+        /* 메인 콘텐츠 스타일 */
         .main-content {
             flex: 1;
             background: #fff;
             padding: clamp(20px, 5vw, 60px) clamp(25px, 6vw, 80px);
             box-sizing: border-box;
-            min-width: 0; /* 검색 결과의 min-width 0 적용 */
+            min-width: 0;
         }
         
-        /* 완전 유동적 제목들 */
+        /* 제목 스타일 */
         h1 {
             color: #333;
             border-bottom: clamp(2px, 0.3vw, 4px) solid #333;
@@ -108,12 +106,12 @@
             font-weight: bold;
         }
         
-        /* 소개 섹션 */
-        .intro {
-            margin-bottom: clamp(25px, 4vw, 40px);
+        /* Lab Philosophy 섹션 */
+        .lab-philosophy {
+            margin-bottom: clamp(30px, 5vw, 50px);
         }
         
-        .intro p {
+        .lab-philosophy p {
             font-size: clamp(0.95rem, 2vw, 1.25rem);
             line-height: clamp(1.6, 0.3vw + 1.5, 1.8);
             margin-bottom: clamp(15px, 3vw, 25px);
@@ -121,8 +119,7 @@
             color: #444;
         }
         
-        /* 수정된 strong 태그 */
-        .intro strong {
+        .lab-philosophy strong {
             color: #1e3a8a;
             font-weight: 700;
             background: none;
@@ -131,12 +128,69 @@
             text-shadow: 0 0 1px rgba(30, 58, 138, 0.4);
         }
         
-        /* 완전 유동적 연구 주제 박스 */
+        /* Member 구인 섹션 */
+        .member-recruitment {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: clamp(25px, 4.5vw, 45px);
+            border-radius: clamp(8px, 1.5vw, 15px);
+            text-align: center;
+            margin: clamp(30px, 5vw, 50px) 0;
+            box-shadow: 0 clamp(4px, 0.8vw, 10px) clamp(20px, 3vw, 35px) rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .member-recruitment:hover {
+            transform: translateY(clamp(-3px, -0.6vw, -8px));
+            box-shadow: 0 clamp(8px, 1.5vw, 20px) clamp(30px, 4vw, 50px) rgba(0,0,0,0.2);
+        }
+        
+        .member-recruitment h3 {
+            color: white;
+            font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+            margin-bottom: clamp(15px, 2.5vw, 25px);
+            position: relative;
+        }
+        
+        .member-recruitment h3::before {
+            content: "🎯";
+            margin-right: clamp(8px, 1.5vw, 12px);
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+        }
+        
+        .recruitment-text {
+            font-style: italic;
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
+            line-height: clamp(1.6, 0.3vw + 1.5, 1.8);
+            margin: clamp(20px, 3.5vw, 30px) 0;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .apply-button {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: clamp(12px, 2.2vw, 18px) clamp(25px, 4.5vw, 35px);
+            border-radius: clamp(6px, 1.2vw, 10px);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: clamp(15px, 2.5vw, 25px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .apply-button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(clamp(-2px, -0.4vw, -3px));
+            border-color: rgba(255,255,255,0.5);
+        }
+        
+        /* Research Topics 박스 */
         .research-topics {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: clamp(15px, 3.5vw, 40px);
+            padding: clamp(20px, 4vw, 45px);
             border-left: clamp(4px, 0.8vw, 8px) solid #2c3e50;
-            margin: clamp(20px, 4vw, 40px) 0;
+            margin: clamp(30px, 5vw, 50px) 0;
             border-radius: clamp(6px, 1.2vw, 12px);
             box-shadow: 0 clamp(2px, 0.5vw, 8px) clamp(15px, 3vw, 25px) rgba(0,0,0,0.1);
             transition: all 0.3s ease;
@@ -147,7 +201,7 @@
             box-shadow: 0 clamp(6px, 1.2vw, 15px) clamp(25px, 4vw, 40px) rgba(0,0,0,0.15);
         }
         
-        /* 완전 유동적 리스트 */
+        /* 리스트 스타일 */
         ul {
             padding-left: clamp(25px, 4.5vw, 45px);
             margin: clamp(10px, 2vw, 20px) 0;
@@ -164,7 +218,7 @@
             transition: all 0.3s ease;
         }
         
-        /* 화살표 아이콘 - CSS 오류 수정 */
+        /* 화살표 아이콘 */
         li::before {
             content: "▸";
             color: #3498db;
@@ -183,14 +237,13 @@
             transform: translateY(-50%) scale(clamp(1.1, 0.05vw + 1.05, 1.2));
         }
         
-        /* CSS 오류 수정 - "..." 제거 */
         li:hover {
             color: #2c3e50;
             transform: translateX(clamp(3px, 0.6vw, 8px));
             font-weight: 500;
         }
         
-        /* 완전 반응형 미디어 쿼리 */
+        /* 반응형 미디어 쿼리 */
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -207,7 +260,6 @@
                 padding: clamp(15px, 4vw, 30px) clamp(15px, 4vw, 30px);
             }
             
-            /* 검색 결과의 모바일 메뉴 패턴 적용 */
             .sidebar nav {
                 display: flex;
                 flex-wrap: wrap;
@@ -232,9 +284,13 @@
                 transform: translateY(clamp(-2px, -0.4vw, -3px));
             }
             
-            .intro p {
+            .lab-philosophy p {
                 font-size: clamp(0.9rem, 3.5vw, 1.1rem);
                 text-align: left;
+            }
+            
+            .recruitment-text {
+                font-size: clamp(0.95rem, 3.8vw, 1.15rem);
             }
             
             ul {
@@ -272,14 +328,19 @@
                 text-align: center;
             }
             
-            .intro p {
+            .lab-philosophy p {
                 font-size: clamp(0.85rem, 4vw, 1rem);
                 line-height: 1.6;
             }
             
+            .member-recruitment {
+                padding: clamp(20px, 4vw, 30px);
+                margin: clamp(25px, 4vw, 35px) 0;
+            }
+            
             .research-topics {
-                padding: clamp(12px, 4vw, 20px);
-                margin: clamp(15px, 4vw, 25px) 0;
+                padding: clamp(15px, 4vw, 25px);
+                margin: clamp(20px, 4vw, 30px) 0;
             }
             
             li {
@@ -291,7 +352,6 @@
             }
         }
         
-        /* 검색 결과의 대형 화면 최적화 적용 */
         @media (min-width: 1600px) {
             .container {
                 max-width: 1800px;
@@ -304,33 +364,7 @@
             }
         }
         
-        /* 추가 viewport 크기 대응 */
-        @media (min-width: 2000px) {
-            .container {
-                max-width: 2200px;
-            }
-            
-            body {
-                font-size: clamp(16px, 1.5vw, 20px);
-            }
-        }
-        
-        /* 매우 작은 화면 대응 */
-        @media (max-width: 320px) {
-            .sidebar {
-                padding: clamp(10px, 2vw, 15px);
-            }
-            
-            .main-content {
-                padding: clamp(10px, 3vw, 20px);
-            }
-            
-            h1 {
-                font-size: clamp(1.2rem, 7vw, 1.6rem);
-            }
-        }
-        
-        .sidebar nav a:focus {
+        .sidebar nav a:focus, .apply-button:focus {
             outline: clamp(2px, 0.3vw, 3px) solid #3498db;
             outline-offset: clamp(2px, 0.3vw, 4px);
         }
@@ -344,13 +378,17 @@
                 padding: 20px;
             }
             
+            .member-recruitment {
+                background: #2c3e50 !important;
+                color: white !important;
+            }
+            
             .research-topics {
                 border: 1px solid #2c3e50;
                 box-shadow: none;
             }
         }
         
-        /* 검색 결과의 다크모드 최적화 */
         @media (prefers-color-scheme: dark) {
             body {
                 background: #1a1a1a;
@@ -367,18 +405,21 @@
                 border-left-color: #3498db;
             }
             
+            .member-recruitment {
+                background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            }
+            
             h1 {
                 color: #e0e0e0;
                 border-bottom-color: #555;
             }
             
-            .intro p {
+            .lab-philosophy p {
                 color: #d0d0d0;
             }
             
-            .intro strong {
+            .lab-philosophy strong {
                 color: #2563eb;
-                background: none;
                 text-shadow: 0 0 1px rgba(37, 99, 235, 0.4);
             }
             
@@ -388,14 +429,6 @@
             
             li:hover {
                 color: #fff;
-            }
-        }
-        
-        /* 검색 결과의 고해상도 디스플레이 대응 */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            body {
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
             }
         }
     </style>
@@ -417,7 +450,9 @@
         <main class="main-content">
             <h1>Deep and Intelligent Communications Laboratory</h1>
             
-            <div class="intro">
+            <!-- Lab Philosophy 섹션 -->
+            <div class="lab-philosophy">
+                <h2>Lab Philosophy</h2>
                 <p><strong>Our research philosophy</strong> focuses on exploring in-depth and conducting multidimensional analyses of challenges across diverse communication systems. 
                     We aim to address these challenges through the application of innovative, intelligent, and multidisciplinary approaches to deliver effective and optimized solutions.</p>
                 
@@ -425,8 +460,18 @@
                     우리는 문제 해결을 위한 스마트하고 혁신적인 공학적 방법론과 다학제적 접근을 활용하여 최적화된 솔루션을 제시하는 것을 목표로 합니다.</p>
             </div>
             
+            <!-- Member 구인 섹션 -->
+            <div class="member-recruitment">
+                <h3>Join Our Team</h3>
+                <p class="recruitment-text">
+                    "Unlock the mysteries of deep learning and wireless communications with us. Our lab welcomes passionate students who dare to explore uncharted territories of knowledge."
+                </p>
+                <a href="contact.html" class="apply-button">Apply Now</a>
+            </div>
+            
+            <!-- Research Topics 섹션 -->
             <div class="research-topics">
-                <h3>Our research topics are:</h3>
+                <h3>Some of my current research topics are:</h3>
                 <ul>
                     <li>Wireless Communications</li>
                     <li>Signal Processing</li>
