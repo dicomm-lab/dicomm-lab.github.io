@@ -145,9 +145,9 @@
             transform: rotate(180deg);
         }
         
-       /* 메뉴 색상 기준 점진적 명도 감소로 카테고리 구분 */
+     /* 메뉴 색상 기준 점진적 명도 증가로 카테고리 구분 */
         .publication-box:nth-of-type(1) summary {
-            border-left-color: #2c3e50; /* 100% 메뉴 색상 - International Journal */
+            border-left-color: #2c3e50; /* 100% 메뉴 색상 - International Journal (가장 어두운) */
         }
         
         .publication-box:nth-of-type(1) summary:hover {
@@ -155,27 +155,27 @@
         }
         
         .publication-box:nth-of-type(2) summary {
-            border-left-color: #253544; /* 85% 명도 - International Conference */
+            border-left-color: #3d4f65; /* 125% 명도 - International Conference */
         }
         
         .publication-box:nth-of-type(2) summary:hover {
-            border-left-color: #1f2b38;
+            border-left-color: #34495e;
         }
         
         .publication-box:nth-of-type(3) summary {
-            border-left-color: #1f2b38; /* 70% 명도 - Domestic Conference */
+            border-left-color: #4e607a; /* 150% 명도 - Domestic Conference */
         }
         
         .publication-box:nth-of-type(3) summary:hover {
-            border-left-color: #18222c;
+            border-left-color: #455a75;
         }
         
         .publication-box:nth-of-type(4) summary {
-            border-left-color: #18222c; /* 55% 명도 - Patents */
+            border-left-color: #5f718f; /* 175% 명도 - Patents (가장 밝은) */
         }
         
         .publication-box:nth-of-type(4) summary:hover {
-            border-left-color: #111822; /* 가장 어두운 색 */
+            border-left-color: #56688a; /* 가장 밝은 색 */
         }
 
         
@@ -226,21 +226,21 @@
             box-shadow: 0 clamp(2px, 0.4vw, 6px) clamp(8px, 1.5vw, 15px) rgba(52, 152, 219, 0.2);
         }
         
-       /* 카테고리별 리스트 아이템 border-left 색상도 동일하게 적용 */
+      /* 카테고리별 리스트 아이템 border-left 색상도 동일하게 적용 */
         .publication-box:nth-of-type(1) li {
             border-left: clamp(3px, 0.5vw, 5px) solid #2c3e50;
         }
         
         .publication-box:nth-of-type(2) li {
-            border-left: clamp(3px, 0.5vw, 5px) solid #253544;
+            border-left: clamp(3px, 0.5vw, 5px) solid #3d4f65;
         }
         
         .publication-box:nth-of-type(3) li {
-            border-left: clamp(3px, 0.5vw, 5px) solid #1f2b38;
+            border-left: clamp(3px, 0.5vw, 5px) solid #4e607a;
         }
         
         .publication-box:nth-of-type(4) li {
-            border-left: clamp(3px, 0.5vw, 5px) solid #18222c;
+            border-left: clamp(3px, 0.5vw, 5px) solid #5f718f;
         }
         
         /* 리스트 아이템 화살표 아이콘 유지 */
@@ -421,38 +421,38 @@
                 background: none;
                 text-shadow: 0 0 1px rgba(37, 99, 235, 0.4);
             }
-             /* 다크모드에서는 메뉴 색상을 밝게 조정한 버전 사용 */
+            /* 다크모드에서는 더 밝은 파란색 계열 사용 */
             .publication-box:nth-of-type(1) summary {
-                border-left-color: #4a6741; /* 메뉴 색상의 밝은 버전 */
+                border-left-color: #4169e1; /* Royal Blue - International Journal */
             }
             
             .publication-box:nth-of-type(2) summary {
-                border-left-color: #5a7751;
+                border-left-color: #5a7df5; /* 밝은 파란색 */
             }
             
             .publication-box:nth-of-type(3) summary {
-                border-left-color: #6a8761;
+                border-left-color: #7391f7; /* 더 밝은 파란색 */
             }
             
             .publication-box:nth-of-type(4) summary {
-                border-left-color: #7a9771;
+                border-left-color: #8ca5f9; /* 가장 밝은 파란색 */
             }
             
             /* 리스트 아이템도 동일하게 적용 */
             .publication-box:nth-of-type(1) li {
-                border-left-color: #4a6741;
+                border-left-color: #4169e1;
             }
             
             .publication-box:nth-of-type(2) li {
-                border-left-color: #5a7751;
+                border-left-color: #5a7df5;
             }
             
             .publication-box:nth-of-type(3) li {
-                border-left-color: #6a8761;
+                border-left-color: #7391f7;
             }
             
             .publication-box:nth-of-type(4) li {
-                border-left-color: #7a9771;
+                border-left-color: #8ca5f9;
             }
         }
     </style>
