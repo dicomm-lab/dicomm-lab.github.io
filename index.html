@@ -121,12 +121,12 @@
         
         /* 수정된 strong 태그 - 하이라이트 색깔의 Bold체 */
         .intro strong {
-            color: #3498db; /* 파란색 Bold 텍스트 */
+            color: #1e3a8a; /* Menu 배경색과 어울리는 진한 파란색 */
             font-weight: 700; /* 더 굵은 Bold */
             background: none; /* 배경 하이라이트 제거 */
             padding: 0; /* 패딩 제거 */
             border-radius: 0; /* 테두리 반지름 제거 */
-            text-shadow: 0 0 1px rgba(52, 152, 219, 0.3); /* 미세한 그림자 효과 */
+            text-shadow: 0 0 1px rgba(30, 58, 138, 0.4); /* 진한 색상에 맞춘 그림자 효과 */
         }
         
         /* 연구 주제 박스 */
@@ -303,7 +303,7 @@
             }
         }
         
-        /* 다크모드에서의 strong 처리 */
+        /* 다크모드에서의 strong 처리도 수정 */
         @media (prefers-color-scheme: dark) {
             body {
                 background: #1a1a1a;
@@ -330,9 +330,9 @@
             }
             
             .intro strong {
-                color: #4fc3f7; /* 다크모드에서 더 밝은 파란색 */
+                color: #2563eb; /* 다크모드에서는 약간 밝은 진한 파란색 */
                 background: none;
-                text-shadow: 0 0 1px rgba(79, 195, 247, 0.3);
+                text-shadow: 0 0 1px rgba(37, 99, 235, 0.4);
             }
             
             li {
