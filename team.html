@@ -99,11 +99,11 @@
             margin-bottom: clamp(25px, 4vw, 40px);
         }
         
-        /* 유동적 연구 주제 박스 */
+        /* 유동적 연구 주제 박스 - border-left 색상을 메뉴 색상으로 변경 */
         .research-topics {
             background-color: #f9f9f9;
             padding: clamp(12px, 2.5vw, 25px);
-            border-left: clamp(3px, 0.5vw, 6px) solid #333;
+            border-left: clamp(3px, 0.5vw, 6px) solid #2c3e50; /* #333에서 #2c3e50으로 변경 */
             margin: clamp(15px, 3vw, 30px) 0;
             border-radius: clamp(4px, 0.8vw, 8px);
         }
@@ -117,13 +117,13 @@
             font-size: clamp(0.9rem, 1.8vw, 1.1rem);
         }
         
-        /* 완전 유동적 PI 섹션 */
+        /* 완전 유동적 PI 섹션 - border-left 색상을 메뉴 색상으로 변경 */
         .pi-section {
             background: #f9f9f9;
             padding: clamp(20px, 4vw, 50px);
             border-radius: clamp(8px, 1.5vw, 15px);
             margin-bottom: clamp(30px, 5vw, 60px);
-            border-left: clamp(4px, 0.8vw, 8px) solid #3498db;
+            border-left: clamp(4px, 0.8vw, 8px) solid #2c3e50; /* #3498db에서 #2c3e50으로 변경 */
             box-shadow: 0 clamp(2px, 0.5vw, 6px) clamp(8px, 1.5vw, 20px) rgba(0,0,0,0.1);
         }
         
@@ -209,9 +209,10 @@
             margin-bottom: clamp(20px, 3.5vw, 40px);
         }
         
+        /* detail-section h3의 border-bottom도 메뉴 색상으로 변경 */
         .detail-section h3 {
             color: #2c3e50;
-            border-bottom: clamp(2px, 0.4vw, 3px) solid #3498db;
+            border-bottom: clamp(2px, 0.4vw, 3px) solid #2c3e50; /* #3498db에서 #2c3e50으로 변경 */
             padding-bottom: clamp(6px, 1vw, 12px);
             margin-bottom: clamp(12px, 2vw, 20px);
             font-size: clamp(1.1rem, 2.3vw, 1.7rem);
@@ -323,6 +324,63 @@
             .container {
                 max-width: 1800px;
                 margin: 0 auto;
+            }
+        }
+        
+        /* 접근성 및 포커스 스타일 */
+        .sidebar nav a:focus {
+            outline: clamp(2px, 0.3vw, 3px) solid #3498db;
+            outline-offset: clamp(2px, 0.3vw, 4px);
+        }
+        
+        /* 프린트 미디어 최적화 */
+        @media print {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .research-topics, .pi-section {
+                border: 1px solid #2c3e50; /* 프린트에서도 메뉴 색상 유지 */
+                box-shadow: none;
+            }
+        }
+        
+        /* 다크모드 대응 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1a1a1a;
+            }
+            
+            .main-content {
+                background: #2a2a2a;
+                color: #e0e0e0;
+            }
+            
+            .pi-section, .research-topics {
+                background: #333;
+                border-left-color: #3498db; /* 다크모드에서는 더 밝은 파란색 */
+            }
+            
+            .detail-section h3 {
+                border-bottom-color: #3498db; /* 다크모드에서는 더 밝은 파란색 */
+            }
+            
+            h1 {
+                color: #e0e0e0;
+                border-bottom-color: #555;
+            }
+            
+            .education-item, .experience-item, .award-item {
+                background: #2a2a2a;
+                border-color: #555;
+            }
+            
+            .education-item:hover, .experience-item:hover, .award-item:hover {
+                background: #333;
             }
         }
     </style>
