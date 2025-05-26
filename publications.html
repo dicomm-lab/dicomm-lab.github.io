@@ -134,25 +134,41 @@
             display: none;
         }
         
-          /* 알파벳 기반 간단한 아이콘 */
+       /* 카테고리별 흑백 아이콘으로 변경 */
         .publication-box:nth-of-type(1) summary::before {
-            content: "[J]"; /* Journal */
-            color: #1e3a8a;
+            content: "●"; /* International Journal - 검은 원 */
+            position: absolute;
+            left: clamp(15px, 2.5vw, 20px);
+            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+            color: #1e3a8a; /* 카테고리 색상과 매칭 */
+            font-weight: bold;
         }
         
         .publication-box:nth-of-type(2) summary::before {
-            content: "[C]"; /* Conference */
+            content: "■"; /* International Conference - 검은 사각형 */
+            position: absolute;
+            left: clamp(15px, 2.5vw, 20px);
+            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
             color: #3b82f6;
+            font-weight: bold;
         }
         
         .publication-box:nth-of-type(3) summary::before {
-            content: "[D]"; /* Domestic */
+            content: "▲"; /* Domestic Conference - 검은 삼각형 */
+            position: absolute;
+            left: clamp(15px, 2.5vw, 20px);
+            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
             color: #60a5fa;
+            font-weight: bold;
         }
         
         .publication-box:nth-of-type(4) summary::before {
-            content: "[P]"; /* Patents */
+            content: "◆"; /* Patents - 검은 다이아몬드 */
+            position: absolute;
+            left: clamp(15px, 2.5vw, 20px);
+            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
             color: #93c5fd;
+            font-weight: bold;
         }
         
         .publication-box summary::after {
