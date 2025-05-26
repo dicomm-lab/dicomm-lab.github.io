@@ -114,7 +114,7 @@
         .publication-box summary {
             background: #ffffff;
             color: #333;
-            padding: clamp(15px, 3vw, 25px); /* 아이콘 공간 제거된 기본 패딩 */
+            padding: clamp(15px, 3vw, 25px);
             cursor: pointer;
             font-weight: bold;
             font-size: clamp(1.1rem, 2.3vw, 1.6rem);
@@ -145,7 +145,7 @@
             transform: rotate(180deg);
         }
         
-     /* 메뉴 색상 기준 점진적 명도 증가로 카테고리 구분 */
+        /* 메뉴 색상 기준 점진적 명도 증가로 카테고리 구분 */
         .publication-box:nth-of-type(1) summary {
             border-left-color: #2c3e50; /* 100% 메뉴 색상 - International Journal (가장 어두운) */
         }
@@ -177,7 +177,6 @@
         .publication-box:nth-of-type(4) summary:hover {
             border-left-color: #56688a; /* 가장 밝은 색 */
         }
-
         
         .publication-content {
             padding: clamp(15px, 3vw, 25px);
@@ -226,7 +225,7 @@
             box-shadow: 0 clamp(2px, 0.4vw, 6px) clamp(8px, 1.5vw, 15px) rgba(52, 152, 219, 0.2);
         }
         
-      /* 카테고리별 리스트 아이템 border-left 색상도 동일하게 적용 */
+        /* 카테고리별 리스트 아이템 border-left 색상도 동일하게 적용 */
         .publication-box:nth-of-type(1) li {
             border-left: clamp(3px, 0.5vw, 5px) solid #2c3e50;
         }
@@ -310,7 +309,7 @@
             }
             
             .publication-box summary {
-                padding: clamp(12px, 2.5vw, 20px); /* 모바일에서 기본 패딩 */
+                padding: clamp(12px, 2.5vw, 20px);
             }
             
             li {
@@ -337,7 +336,7 @@
             }
             
             .publication-box summary {
-                padding: clamp(10px, 2vw, 18px); /* 작은 화면에서 기본 패딩 */
+                padding: clamp(10px, 2vw, 18px);
             }
             
             li {
@@ -417,10 +416,11 @@
             }
             
             li strong {
-                color: #2563eb; /* 다크모드에서 적절한 파란색 */
+                color: #2563eb;
                 background: none;
                 text-shadow: 0 0 1px rgba(37, 99, 235, 0.4);
             }
+            
             /* 다크모드에서는 더 밝은 파란색 계열 사용 */
             .publication-box:nth-of-type(1) summary {
                 border-left-color: #4169e1; /* Royal Blue - International Journal */
