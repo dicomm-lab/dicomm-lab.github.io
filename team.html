@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep and Intelligent Communications Laboratory</title>
+    <title>Deep and Intelligent Communications Lab.</title>
     <style>
-        /* 기본 설정 - 완전 유동형 */
+        /* 기본 설정 - 완전 유동형 + 텍스트 선택 비활성화 */
         * {
             box-sizing: border-box;
+            /* 텍스트 선택 하이라이트 비활성화 */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
         
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background: #f7f7f7;
-            font-size: clamp(14px, 1.8vw, 18px); /* 기본 폰트도 유동적 */
-            line-height: 1.6;
+            font-size: clamp(14px, 1.8vw, 18px);
+            line-height: clamp(1.4, 0.2vw + 1.3, 1.7);
+            color: #333;
         }
         
         .container {
@@ -23,9 +31,9 @@
             min-height: 100vh;
         }
         
-        /* 완전 유동적 사이드바 */
+        /* 사이드바 스타일 */
         .sidebar {
-            width: clamp(180px, 22vw, 280px); /* 유동적 너비 */
+            width: clamp(180px, 22vw, 280px);
             background: #2c3e50;
             color: #fff;
             padding: clamp(20px, 4vw, 50px) clamp(15px, 2.5vw, 30px);
@@ -37,9 +45,9 @@
         
         .sidebar h2 {
             color: #fff;
-            font-size: clamp(1.1rem, 2.5vw, 1.8rem); /* 유동적 제목 크기 */
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
             margin-bottom: clamp(20px, 4vw, 40px);
-            letter-spacing: 0.5px;
+            letter-spacing: clamp(0.5px, 0.1vw, 1.5px);
         }
         
         .sidebar nav a {
@@ -48,7 +56,7 @@
             text-decoration: none;
             padding: clamp(8px, 1.5vw, 15px) 0;
             margin-bottom: clamp(6px, 1.2vw, 12px);
-            font-size: clamp(0.9rem, 1.8vw, 1.3rem); /* 유동적 메뉴 폰트 */
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem);
             border-left: clamp(3px, 0.5vw, 6px) solid transparent;
             transition: all 0.3s ease;
             border-radius: clamp(2px, 0.3vw, 4px);
@@ -62,7 +70,7 @@
             transform: translateX(clamp(2px, 0.5vw, 5px));
         }
         
-        /* 완전 유동적 메인 콘텐츠 */
+        /* 메인 콘텐츠 스타일 */
         .main-content {
             flex: 1;
             background: #fff;
@@ -71,13 +79,15 @@
             min-width: 0;
         }
         
-        /* 유동적 제목들 */
+        /* 제목 스타일 */
         h1 {
             color: #333;
             border-bottom: clamp(2px, 0.3vw, 4px) solid #333;
             padding-bottom: clamp(8px, 1.5vw, 15px);
             font-size: clamp(1.8rem, 4.5vw, 3rem);
             margin-bottom: clamp(20px, 3.5vw, 40px);
+            font-weight: bold;
+            line-height: 1.2;
         }
         
         h2 {
@@ -91,249 +101,213 @@
         h3 {
             color: #2c3e50;
             font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-            margin-top: clamp(20px, 3vw, 35px);
+            margin-top: clamp(15px, 2.5vw, 25px);
             margin-bottom: clamp(10px, 1.5vw, 20px);
+            font-weight: bold;
         }
         
+        /* 소개 섹션 */
         .intro {
             margin-bottom: clamp(25px, 4vw, 40px);
         }
         
-        /* 유동적 연구 주제 박스 - border-left 색상을 메뉴 색상으로 변경 */
-        .research-topics {
-            background-color: #f9f9f9;
-            padding: clamp(12px, 2.5vw, 25px);
-            border-left: clamp(3px, 0.5vw, 6px) solid #2c3e50; /* #333에서 #2c3e50으로 변경 */
-            margin: clamp(15px, 3vw, 30px) 0;
-            border-radius: clamp(4px, 0.8vw, 8px);
+        .intro p {
+            font-size: clamp(0.95rem, 2vw, 1.25rem);
+            line-height: clamp(1.6, 0.3vw + 1.5, 1.8);
+            margin-bottom: clamp(15px, 3vw, 25px);
+            text-align: justify;
+            color: #444;
         }
         
+        /* strong 태그 스타일 */
+        .intro strong {
+            color: #1e3a8a;
+            font-weight: 700;
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            text-shadow: 0 0 1px rgba(30, 58, 138, 0.4);
+        }
+        
+        /* 연구 주제 박스 */
+        .research-topics {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: clamp(15px, 3.5vw, 40px);
+            border-left: clamp(4px, 0.8vw, 8px) solid #2c3e50;
+            margin: clamp(20px, 4vw, 40px) 0;
+            border-radius: clamp(6px, 1.2vw, 12px);
+            box-shadow: 0 clamp(2px, 0.5vw, 8px) clamp(15px, 3vw, 25px) rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .research-topics:hover {
+            transform: translateY(clamp(-2px, -0.4vw, -5px));
+            box-shadow: 0 clamp(6px, 1.2vw, 15px) clamp(25px, 4vw, 40px) rgba(0,0,0,0.15);
+        }
+        
+        /* 리스트 스타일 */
         ul {
-            padding-left: clamp(15px, 3vw, 30px);
+            padding-left: clamp(25px, 4.5vw, 45px);
+            margin: clamp(10px, 2vw, 20px) 0;
+            list-style: none;
         }
         
         li {
-            margin-bottom: clamp(6px, 1vw, 12px);
-            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
-        }
-        
-        /* 완전 유동적 PI 섹션 - border-left 색상을 메뉴 색상으로 변경 */
-        .pi-section {
-            background: #f9f9f9;
-            padding: clamp(20px, 4vw, 50px);
-            border-radius: clamp(8px, 1.5vw, 15px);
-            margin-bottom: clamp(30px, 5vw, 60px);
-            border-left: clamp(4px, 0.8vw, 8px) solid #2c3e50; /* #3498db에서 #2c3e50으로 변경 */
-            box-shadow: 0 clamp(2px, 0.5vw, 6px) clamp(8px, 1.5vw, 20px) rgba(0,0,0,0.1);
-        }
-        
-        .pi-header {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: clamp(25px, 4vw, 45px);
-            gap: clamp(20px, 3.5vw, 50px);
-        }
-        
-        /* 완전 유동적 PI 사진 */
-        .pi-photo {
-            width: clamp(150px, 25vw, 350px);
-            height: clamp(180px, 30vw, 420px);
-            border-radius: clamp(8px, 1.5vw, 15px);
-            object-fit: cover;
-            border: none;
-            flex-shrink: 0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .pi-photo:hover {
-            transform: scale(1.02);
-            box-shadow: 0 clamp(4px, 1vw, 10px) clamp(15px, 3vw, 30px) rgba(0,0,0,0.2);
-        }
-        
-        .pi-info {
-            flex: 1;
-            min-width: 0;
-        }
-        
-        .pi-info h2 {
-            margin: 0 0 clamp(8px, 1.5vw, 15px) 0;
-            border: none;
-            padding: 0;
-            font-size: clamp(1.4rem, 3.5vw, 2.5rem);
-            cursor: pointer;
-            color: #2c3e50;
-            transition: all 0.3s ease;
+            margin-bottom: clamp(10px, 2vw, 18px);
+            font-size: clamp(0.95rem, 2vw, 1.25rem);
+            line-height: clamp(1.4, 0.2vw + 1.3, 1.6);
+            color: #333;
             position: relative;
-        }
-        
-        .pi-info h2:hover {
-            color: #3498db;
-            transform: translateX(clamp(2px, 0.5vw, 5px));
-        }
-        
-        .pi-info h2::after {
-            content: " ▼";
-            font-size: clamp(0.6rem, 1.2vw, 1rem);
-            margin-left: clamp(8px, 1.5vw, 15px);
-            transition: transform 0.3s ease;
-        }
-        
-        .pi-info h2.collapsed::after {
-            transform: rotate(-90deg);
-        }
-        
-        .pi-info p {
-            margin: clamp(4px, 0.8vw, 10px) 0;
-            color: #666;
-            font-size: clamp(0.9rem, 1.8vw, 1.3rem);
-            line-height: 1.5;
-        }
-        
-        /* 유동적 상세 정보 컨테이너 */
-        .details-container {
-            display: block;
-            opacity: 1;
-            max-height: 5000px;
-            overflow: hidden;
-            transition: all 0.6s ease;
-            margin-top: clamp(15px, 2.5vw, 30px);
-        }
-        
-        .details-container.hidden {
-            opacity: 0;
-            max-height: 0;
-            margin-top: 0;
-        }
-        
-        .detail-section {
-            margin-bottom: clamp(20px, 3.5vw, 40px);
-        }
-        
-        /* detail-section h3의 border-bottom도 메뉴 색상으로 변경 */
-        .detail-section h3 {
-            color: #2c3e50;
-            border-bottom: clamp(2px, 0.4vw, 3px) solid #2c3e50; /* #3498db에서 #2c3e50으로 변경 */
-            padding-bottom: clamp(6px, 1vw, 12px);
-            margin-bottom: clamp(12px, 2vw, 20px);
-            font-size: clamp(1.1rem, 2.3vw, 1.7rem);
-        }
-        
-        .bio-text {
-            line-height: 1.7;
-            text-align: justify;
-            color: #444;
-            font-size: clamp(0.9rem, 1.7vw, 1.1rem);
-            padding: clamp(10px, 2vw, 20px);
-            background: rgba(255,255,255,0.8);
-            border-radius: clamp(4px, 0.8vw, 8px);
-        }
-        
-        /* 유동적 클릭 힌트 */
-        .click-hint {
-            font-size: clamp(0.8rem, 1.4vw, 1rem);
-            color: #7f8c8d;
-            font-style: italic;
-            margin-top: clamp(8px, 1.2vw, 15px);
-            transition: color 0.3s ease;
-        }
-        
-        .click-hint:hover {
-            color: #3498db;
-        }
-        
-        /* 완전 유동적 아이템 스타일 */
-        .education-item, .experience-item, .award-item {
-            margin-bottom: clamp(12px, 2vw, 20px);
-            padding: clamp(12px, 2.5vw, 25px);
-            background: #fff;
-            border-radius: clamp(5px, 1vw, 10px);
-            border-left: none;
-            box-shadow: 0 clamp(1px, 0.3vw, 3px) clamp(6px, 1vw, 12px) rgba(0,0,0,0.1);
+            padding-left: clamp(28px, 4.5vw, 38px);
             transition: all 0.3s ease;
         }
         
-        .education-item:hover, .experience-item:hover, .award-item:hover {
-            transform: translateY(clamp(-2px, -0.3vw, -4px));
-            box-shadow: 0 clamp(4px, 0.8vw, 8px) clamp(15px, 2.5vw, 25px) rgba(0,0,0,0.15);
-        }
-        
-        .degree, .position, .award-title {
+        /* 화살표 아이콘 */
+        li::before {
+            content: "▸";
+            color: #3498db;
             font-weight: bold;
+            position: absolute;
+            left: clamp(8px, 1.5vw, 12px);
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+            transition: all 0.3s ease;
+            line-height: 1;
+        }
+        
+        li:hover::before {
+            color: #2980b9;
+            transform: translateY(-50%) scale(clamp(1.1, 0.05vw + 1.05, 1.2));
+        }
+        
+        li:hover {
             color: #2c3e50;
-            margin-bottom: clamp(4px, 0.8vw, 8px);
-            font-size: clamp(1rem, 2vw, 1.3rem);
+            transform: translateX(clamp(3px, 0.6vw, 8px));
+            font-weight: 500;
         }
         
-        .institution, .duration, .award-organization, .award-date {
-            color: #666;
-            font-size: clamp(0.85rem, 1.6vw, 1.1rem);
-            margin-bottom: clamp(2px, 0.4vw, 6px);
-        }
-        
-        .thesis-info {
-            margin-top: clamp(6px, 1vw, 12px);
-            font-style: italic;
-            color: #555;
-            font-size: clamp(0.8rem, 1.5vw, 1rem);
-            line-height: 1.4;
-        }
-        
-        /* 반응형 미디어 쿼리 (추가 조정용) */
+        /* 반응형 미디어 쿼리 - paste-2.txt 스타일 적용 */
         @media (max-width: 768px) {
             .container {
-                flex-direction: column;
+                flex-direction: column; /* 세로 배치로 변경 */
             }
             
             .sidebar {
-                width: 100%;
-                min-height: auto;
-                position: static;
+                width: 100%; /* 전체 너비 */
+                min-height: auto; /* 최소 높이 제거 */
+                position: static; /* 고정 위치 해제 */
                 padding: clamp(15px, 3vw, 25px) clamp(10px, 2vw, 20px);
             }
             
-            .pi-header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+            .main-content {
+                padding: clamp(15px, 4vw, 30px) clamp(15px, 4vw, 30px);
             }
             
-            .pi-photo {
-                margin-bottom: clamp(15px, 3vw, 25px);
-                width: clamp(120px, 35vw, 250px);
-                height: clamp(144px, 42vw, 300px);
+            /* 모바일에서 메뉴를 가로로 배치 */
+            .sidebar nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: clamp(8px, 2vw, 15px);
+                justify-content: center;
+            }
+            
+            .sidebar nav a {
+                flex: 1;
+                text-align: center;
+                min-width: clamp(70px, 15vw, 120px);
+                padding: clamp(8px, 2vw, 12px);
+                border-left: none; /* 왼쪽 테두리 제거 */
+                border-bottom: clamp(2px, 0.4vw, 3px) solid transparent; /* 아래 테두리로 변경 */
+                border-radius: clamp(4px, 1vw, 8px);
+                margin-bottom: 0; /* 하단 마진 제거 */
+            }
+            
+            .sidebar nav a.active, .sidebar nav a:hover {
+                border-left: none;
+                border-bottom: clamp(2px, 0.4vw, 3px) solid #3498db; /* 아래 테두리 활성화 */
+                padding-left: clamp(8px, 2vw, 12px); /* 왼쪽 패딩 일반화 */
+                transform: translateY(clamp(-2px, -0.4vw, -3px)); /* 위로 이동 효과 */
+            }
+            
+            .intro p {
+                font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+                text-align: left;
+            }
+            
+            ul {
+                padding-left: clamp(20px, 4vw, 30px);
+            }
+            
+            li {
+                font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+                padding-left: clamp(32px, 6vw, 40px);
+            }
+            
+            li::before {
+                left: clamp(6px, 1.2vw, 10px);
             }
         }
         
         @media (max-width: 480px) {
+            .sidebar h2 {
+                text-align: center;
+                margin-bottom: clamp(15px, 3vw, 25px);
+            }
+            
+            /* 480px 이하에서는 세로 메뉴로 변경 */
+            .sidebar nav {
+                flex-direction: column;
+            }
+            
             .sidebar nav a {
-                padding: clamp(12px, 3vw, 18px) 0;
+                margin-bottom: clamp(8px, 2vw, 12px);
+                text-align: center;
                 font-size: clamp(1rem, 3.5vw, 1.2rem);
+                min-width: auto; /* 최소 너비 제한 해제 */
             }
             
-            .pi-section {
-                padding: clamp(15px, 4vw, 25px);
+            h1 {
+                font-size: clamp(1.4rem, 6vw, 2rem);
+                text-align: center;
             }
             
-            .main-content {
-                padding: clamp(15px, 4vw, 25px) clamp(15px, 4vw, 25px);
+            .intro p {
+                font-size: clamp(0.85rem, 4vw, 1rem);
+                line-height: 1.6;
+            }
+            
+            .research-topics {
+                padding: clamp(12px, 4vw, 20px);
+                margin: clamp(15px, 4vw, 25px) 0;
+            }
+            
+            li {
+                padding-left: clamp(30px, 7vw, 36px);
+            }
+            
+            li::before {
+                left: clamp(5px, 1vw, 8px);
             }
         }
         
-        /* 큰 화면에서의 최적화 */
         @media (min-width: 1600px) {
             .container {
                 max-width: 1800px;
                 margin: 0 auto;
+                box-shadow: 0 0 clamp(20px, 2vw, 40px) rgba(0,0,0,0.1);
+            }
+            
+            .main-content {
+                padding: clamp(40px, 5vw, 70px) clamp(60px, 7vw, 100px);
             }
         }
         
-        /* 접근성 및 포커스 스타일 */
         .sidebar nav a:focus {
             outline: clamp(2px, 0.3vw, 3px) solid #3498db;
             outline-offset: clamp(2px, 0.3vw, 4px);
         }
         
-        /* 프린트 미디어 최적화 */
         @media print {
             .sidebar {
                 display: none;
@@ -343,16 +317,16 @@
                 padding: 20px;
             }
             
-            .research-topics, .pi-section {
-                border: 1px solid #2c3e50; /* 프린트에서도 메뉴 색상 유지 */
+            .research-topics {
+                border: 1px solid #2c3e50;
                 box-shadow: none;
             }
         }
         
-        /* 다크모드 대응 */
         @media (prefers-color-scheme: dark) {
             body {
                 background: #1a1a1a;
+                color: #e0e0e0;
             }
             
             .main-content {
@@ -360,13 +334,9 @@
                 color: #e0e0e0;
             }
             
-            .pi-section, .research-topics {
-                background: #333;
-                border-left-color: #3498db; /* 다크모드에서는 더 밝은 파란색 */
-            }
-            
-            .detail-section h3 {
-                border-bottom-color: #3498db; /* 다크모드에서는 더 밝은 파란색 */
+            .research-topics {
+                background: linear-gradient(135deg, #333 0%, #404040 100%);
+                border-left-color: #3498db;
             }
             
             h1 {
@@ -374,25 +344,33 @@
                 border-bottom-color: #555;
             }
             
-            .education-item, .experience-item, .award-item {
-                background: #2a2a2a;
-                border-color: #555;
+            .intro p {
+                color: #d0d0d0;
             }
             
-            .education-item:hover, .experience-item:hover, .award-item:hover {
-                background: #333;
+            .intro strong {
+                color: #2563eb;
+                background: none;
+                text-shadow: 0 0 1px rgba(37, 99, 235, 0.4);
+            }
+            
+            li {
+                color: #d0d0d0;
+            }
+            
+            li:hover {
+                color: #fff;
             }
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <aside class="sidebar">
             <h2>Menu</h2>
             <nav>
-                <a href="index.html">Home</a>
-                <a href="team.html" class="active">Team</a>
+                <a href="index.html" class="active">Home</a>
+                <a href="team.html">Team</a>
                 <a href="publications.html">Publications</a>
                 <a href="research.html">Research</a>
                 <a href="projects.html">Projects</a>
@@ -401,100 +379,27 @@
         </aside>
         
         <main class="main-content">
-            <h1>Team Members</h1>
-            <div class="pi-section">
-                <div class="pi-header">
-                    <img src="images/PI.jpg" alt="Prof. Jinyoung Lee" class="pi-photo">
-                    <div class="pi-info">
-                        <h2 onclick="toggleDetails(this)" class="collapsed">Prof. Jinyoung Lee (PI)</h2>
-                        <p><strong>Principal Investigator</strong></p>
-                        <p>Assistant Professor</p>
-                        <p>Department of Electronics and Electrical Information Engineering</p>
-                        <p class="click-hint">Click name to see details</p>
-                    </div>
-                </div>
+            <h1>Deep and Intelligent Communications Laboratory</h1>
+            
+            <div class="intro">
+                <p>Our <strong>research philosophy</strong> focuses on exploring <strong>in-depth</strong> and conducting <strong>multidimensional analyses</strong> of challenges across diverse communication systems. 
+                    We aim to address these challenges through the application of <strong>innovative, intelligent, and multidisciplinary approaches</strong> to deliver effective and optimized solutions.</p>
                 
-                <div class="details-container hidden" id="pi-details">
-                    <!-- 기존 상세 정보 내용 그대로 유지 -->
-                    <div class="detail-section">
-                        <h3>Bio</h3>
-                        <p class="bio-text">
-                            Jinyoung Lee received the B.S. degree in electronics and information engineering from Kwangwoon University, Seoul, South Korea, in 2016, the M.S. degree in electrical engineering and computer science engineering from the Gwangju Institute of Science and Technology (GIST), Gwangju, South Korea, in 2018, and the Ph.D. degree in electrical engineering from the Korea Advanced Institute of Science and Technology (KAIST), Daejeon, South Korea, in 2023. He is currently an Assistant Professor with the Department of Electronics and Electrical Information Engineering, National Korea Maritime & Ocean University, Busan, South Korea. He was a System Engineer with the System Structure Group, Samsung Electronics Research and Development Team, Samsung Networks, Suwon, South Korea from 2023 to 2025. His research interests include Wireless Communications, Communication Signal Processing, Physical Layer Security, and Machine Learning.
-                        </p>
-                    </div>
-                    
-                    <div class="detail-section">
-                        <h3>Education</h3>
-                        <div class="education-item">
-                            <div class="degree">Ph.D. Electrical Engineering</div>
-                            <div class="institution">Korea Advanced Institute of Science and Technology, Korea, 2023. 02.</div>
-                            <div class="thesis-info">
-                                Thesis: "A Study on Machine Learning Aided Physical Layer Security for Wireless Communications"<br>
-                                Advisor: Professor Jeongseok Ha
-                            </div>
-                        </div>
-                        <div class="education-item">
-                            <div class="degree">M.S. Electrical Engineering and Computer Science</div>
-                            <div class="institution">Gwangju Institute of Science and Technology, Korea, 2018. 02.</div>
-                            <div class="thesis-info">
-                                Thesis: "Compressive Random Access for MTC of 5G Networks"<br>
-                                Advisor: Professor Jinho Choi
-                            </div>
-                        </div>
-                        <div class="education-item">
-                            <div class="degree">B.S. Electronics and Communications Engineering</div>
-                            <div class="institution">Kwangwoon University, Korea, 2016. 02.</div>
-                        </div>
-                    </div>
-                
-                    <div class="detail-section">
-                        <h3>Experience</h3>
-                        <div class="experience-item">
-                            <div class="position">Assistant Professor</div>
-                            <div class="institution">National Korea Maritime & Ocean University, Korea</div>
-                            <div class="duration">2025.03. - Present</div>
-                        </div>
-                        <div class="experience-item">
-                            <div class="position">Staff Engineer</div>
-                            <div class="institution">Samsung Electronics, Korea</div>
-                            <div class="duration">2023.03. - 2025.02.</div>
-                        </div>
-                        <div class="experience-item">
-                            <div class="position">Visiting Researcher</div>
-                            <div class="institution">Queen's University, Kingston, Canada</div>
-                            <div class="duration">2019.07. - 2020.01.</div>
-                            <div class="thesis-info">Supervisor: Professor Il-Min Kim</div>
-                        </div>
-                    </div>
-                    
-                    <div class="detail-section">
-                        <h3>Awards</h3>
-                        <div class="award-item">
-                            <div class="award-title">Best Paper Award</div>
-                            <div class="award-organization">Korean Institute of Communications and Information Sciences (KICS)</div>
-                            <div class="award-date">2020. 08</div>
-                        </div>
-                    </div>
-                </div>
+                <p>우리 연구실은 다양한 통신 시스템에서 발생하는 문제를 <strong>깊이 있게 탐구하고 다각적으로 분석</strong>하는 것을 중심으로 연구를 진행합니다.
+                    우리는 문제 해결을 위한 <strong>스마트하고 혁신적인 공학적 방법론과 다학제적 접근</strong>을 활용하여 최적화된 솔루션을 제시하는 것을 목표로 합니다.</p>
+            </div>
+            
+            <div class="research-topics">
+                <h3>Some of my current research topics are:</h3>
+                <ul>
+                    <li>Wireless Communications</li>
+                    <li>Signal Processing</li>
+                    <li>Physical Layer Security</li>
+                    <li>Machine Learning Applications</li>
+                    <li>Optimization Algorithms</li>
+                </ul>
             </div>
         </main>
     </div>
-    
-    <script>
-        function toggleDetails(element) {
-            const detailsContainer = document.getElementById('pi-details');
-            const isHidden = detailsContainer.classList.contains('hidden');
-            
-            if (isHidden) {
-                detailsContainer.classList.remove('hidden');
-                element.classList.remove('collapsed');
-                element.parentElement.querySelector('.click-hint').textContent = 'Click name to hide details';
-            } else {
-                detailsContainer.classList.add('hidden');
-                element.classList.add('collapsed');
-                element.parentElement.querySelector('.click-hint').textContent = 'Click name to see details';
-            }
-        }
-    </script>
 </body>
 </html>
