@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deep and Intelligent Communications Lab.</title>
     <style>
-        /* 기본 설정 - 완전 유동형 */
+        /* 기본 설정 - 완전 유동형 + 텍스트 선택 비활성화 */
         * {
             box-sizing: border-box;
+            /* 텍스트 선택 하이라이트 비활성화 */
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Standard syntax */
         }
         
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background: #f7f7f7;
-            font-size: clamp(14px, 1.8vw, 18px); /* 기본 폰트도 유동적 */
+            font-size: clamp(14px, 1.8vw, 18px);
             line-height: clamp(1.4, 0.2vw + 1.3, 1.7);
             color: #333;
         }
@@ -24,9 +31,9 @@
             min-height: 100vh;
         }
         
-        /* 완전 유동적 사이드바 */
+        /* 기존 사이드바 스타일 그대로 유지 */
         .sidebar {
-            width: clamp(180px, 22vw, 280px); /* 유동적 너비 */
+            width: clamp(180px, 22vw, 280px);
             background: #2c3e50;
             color: #fff;
             padding: clamp(20px, 4vw, 50px) clamp(15px, 2.5vw, 30px);
@@ -38,7 +45,7 @@
         
         .sidebar h2 {
             color: #fff;
-            font-size: clamp(1.1rem, 2.5vw, 1.8rem); /* 유동적 제목 크기 */
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
             margin-bottom: clamp(20px, 4vw, 40px);
             letter-spacing: clamp(0.5px, 0.1vw, 1.5px);
         }
@@ -49,7 +56,7 @@
             text-decoration: none;
             padding: clamp(8px, 1.5vw, 15px) 0;
             margin-bottom: clamp(6px, 1.2vw, 12px);
-            font-size: clamp(0.9rem, 1.8vw, 1.3rem); /* 유동적 메뉴 폰트 */
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem);
             border-left: clamp(3px, 0.5vw, 6px) solid transparent;
             transition: all 0.3s ease;
             border-radius: clamp(2px, 0.3vw, 4px);
@@ -63,7 +70,7 @@
             transform: translateX(clamp(2px, 0.5vw, 5px));
         }
         
-        /* 완전 유동적 메인 콘텐츠 */
+        /* 메인 콘텐츠 스타일 */
         .main-content {
             flex: 1;
             background: #fff;
@@ -72,7 +79,7 @@
             min-width: 0;
         }
         
-        /* 유동적 제목들 */
+        /* 제목 스타일 */
         h1 {
             color: #333;
             border-bottom: clamp(2px, 0.3vw, 4px) solid #333;
@@ -99,7 +106,7 @@
             font-weight: bold;
         }
         
-        /* 유동적 소개 섹션 */
+        /* 소개 섹션 */
         .intro {
             margin-bottom: clamp(25px, 4vw, 40px);
         }
@@ -112,16 +119,17 @@
             color: #444;
         }
         
-        /* strong 태그 강조 */
+        /* 수정된 strong 태그 - 하이라이트 색깔의 Bold체 */
         .intro strong {
-            color: #2c3e50;
-            font-weight: 600;
-            background: linear-gradient(120deg, rgba(52, 152, 219, 0.1) 0%, rgba(52, 152, 219, 0.2) 100%);
-            padding: clamp(1px, 0.2vw, 3px) clamp(2px, 0.4vw, 5px);
-            border-radius: clamp(2px, 0.3vw, 4px);
+            color: #3498db; /* 파란색 Bold 텍스트 */
+            font-weight: 700; /* 더 굵은 Bold */
+            background: none; /* 배경 하이라이트 제거 */
+            padding: 0; /* 패딩 제거 */
+            border-radius: 0; /* 테두리 반지름 제거 */
+            text-shadow: 0 0 1px rgba(52, 152, 219, 0.3); /* 미세한 그림자 효과 */
         }
         
-        /* 완전 유동적 연구 주제 박스 */
+        /* 연구 주제 박스 */
         .research-topics {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: clamp(15px, 3.5vw, 40px);
@@ -137,7 +145,7 @@
             box-shadow: 0 clamp(6px, 1.2vw, 15px) clamp(25px, 4vw, 40px) rgba(0,0,0,0.15);
         }
         
-        /* 완전 유동적 리스트 */
+        /* 리스트 스타일 */
         ul {
             padding-left: clamp(25px, 4.5vw, 45px);
             margin: clamp(10px, 2vw, 20px) 0;
@@ -154,7 +162,6 @@
             transition: all 0.3s ease;
         }
         
-        /* 리스트 아이템 커스텀 마커 */
         li::before {
             content: "▶";
             color: #3498db;
@@ -176,7 +183,7 @@
             transform: scale(clamp(1.1, 0.05vw + 1.05, 1.3));
         }
         
-        /* 반응형 미디어 쿼리 (추가 조정용) */
+        /* 반응형 미디어 쿼리 */
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -193,7 +200,6 @@
                 padding: clamp(15px, 4vw, 30px) clamp(15px, 4vw, 30px);
             }
             
-            /* 모바일에서 사이드바 메뉴 가로 배치 */
             .sidebar nav {
                 display: flex;
                 flex-wrap: wrap;
@@ -218,7 +224,6 @@
                 transform: translateY(clamp(-2px, -0.4vw, -3px));
             }
             
-            /* 모바일에서 텍스트 최적화 */
             .intro p {
                 font-size: clamp(0.9rem, 3.5vw, 1.1rem);
                 text-align: left;
@@ -266,7 +271,6 @@
             }
         }
         
-        /* 큰 화면에서의 최적화 */
         @media (min-width: 1600px) {
             .container {
                 max-width: 1800px;
@@ -279,13 +283,11 @@
             }
         }
         
-        /* 접근성 및 포커스 스타일 */
         .sidebar nav a:focus {
             outline: clamp(2px, 0.3vw, 3px) solid #3498db;
             outline-offset: clamp(2px, 0.3vw, 4px);
         }
         
-        /* 프린트 미디어 최적화 */
         @media print {
             .sidebar {
                 display: none;
@@ -301,7 +303,7 @@
             }
         }
         
-        /* 다크모드 대응 (선택사항) */
+        /* 다크모드에서의 strong 처리 */
         @media (prefers-color-scheme: dark) {
             body {
                 background: #1a1a1a;
@@ -328,8 +330,9 @@
             }
             
             .intro strong {
-                color: #4fc3f7;
-                background: rgba(79, 195, 247, 0.1);
+                color: #4fc3f7; /* 다크모드에서 더 밝은 파란색 */
+                background: none;
+                text-shadow: 0 0 1px rgba(79, 195, 247, 0.3);
             }
             
             li {
@@ -339,22 +342,6 @@
             li:hover {
                 color: #fff;
             }
-        }
-        
-        /* 주석 처리된 footer를 위한 스타일 (활성화 시 사용) */
-        footer {
-            margin-top: clamp(30px, 5vw, 60px);
-            padding-top: clamp(15px, 2.5vw, 25px);
-            border-top: 1px solid #ddd;
-            text-align: center;
-            background: #f8f9fa;
-        }
-        
-        footer h2 {
-            font-size: clamp(0.8rem, 1.5vw, 1.1rem);
-            color: #666;
-            margin: 0;
-            font-weight: normal;
         }
     </style>
 </head>
@@ -395,12 +382,5 @@
             </div>
         </main>
     </div>
-    
-    <!-- Footer 활성화 시 주석 제거 -->
-    <!--
-    <footer>
-        <h2>&copy; 2025. All rights reserved.</h2>
-    </footer>
-    -->
 </body>
 </html>
