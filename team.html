@@ -392,106 +392,131 @@
         }
         
         /* 다크모드 대응 */
-       @media (prefers-color-scheme: dark) {
-                body {
-                    background: #181a1b;
-                    color: #e0e0e0;
-                }
-                .container {
-                    background: none;
-                }
-                .sidebar {
-                    background: #232a33;
-                    color: #f1f5f9;
-                }
-                .sidebar h2 {
-                    color: #f1f5f9;
-                }
-                .sidebar nav a {
-                    color: #d1d5db;
-                    background: none;
-                }
-                .sidebar nav a.active, .sidebar nav a:hover {
-                    color: #60a5fa;
-                    background: #1a2230;
-                    border-left-color: #60a5fa;
-                }
-            
-                .main-content {
-                    background: #22272a;
-                    color: #e0e0e0;
-                }
-                h1, h2, h3 {
-                    color: #f3f6fa;
-                    border-bottom-color: #374151;
-                }
-                h2 {
-                    border-bottom: 1px solid #374151;
-                }
-                h3 {
-                    border-bottom: 2px solid #60a5fa;
-                }
-                .intro, .bio-text, .lab-philosophy p, .lab-philosophy, .research-topics, .detail-section, .details-container, p, li {
-                    color: #e0e0e0;
-                }
-                .bio-text {
-                    background: rgba(40,45,50,0.93);
-                }
-                .lab-philosophy strong, .research-topics strong {
-                    color: #90cdf4;
-                    font-weight: bold;
-                }
-                .research-topics {
-                    background: #23272f;
-                    border-left: clamp(3px, 0.5vw, 6px) solid #60a5fa;
-                }
-                ul, li {
-                    color: #e0e0e0;
-                }
-                li::marker, li::before {
-                    color: #60a5fa;
-                }
-                .click-hint {
-                    color: #b6c4d3;
-                }
-                .click-hint:hover {
-                    color: #60a5fa;
-                }
-                .pi-section {
-                    background: #23272f;
-                    border-left-color: #60a5fa;
-                }
-                .pi-info h2 {
-                    color: #f3f6fa;
-                }
-                .pi-info h2:hover {
-                    color: #60a5fa;
-                }
-                .education-item, .experience-item, .award-item {
-                    background: #23272f;
-                    color: #e0e0e0;
-                    border-color: #374151;
-                }
-                .education-item:hover, .experience-item:hover, .award-item:hover {
-                    background: #2e3440;
-                }
-                .degree, .position, .award-title {
-                    color: #90cdf4;
-                }
-                .institution, .duration, .award-organization, .award-date, .thesis-info {
-                    color: #b6c4d3;
-                }
-                .form-group label {
-                    color: #cbd5e1;
-                }
-                .form-group input,
-                .form-group select,
-                .form-group textarea {
-                    background: #23272f;
-                    color: #e0e0e0;
-                    border-color: #374151;
-                }
+      @media (prefers-color-scheme: dark) {
+            body {
+                background: #181a1b;
+                color: #e0e0e0;
             }
+            .container {
+                background: none;
+            }
+            .sidebar {
+                background: #232a33;
+                color: #f1f5f9;
+            }
+            .sidebar h2 {
+                color: #f1f5f9;
+            }
+            .sidebar nav a {
+                color: #d1d5db;
+                background: none;
+            }
+            .sidebar nav a.active, .sidebar nav a:hover {
+                color: #60a5fa;
+                background: #1a2230;
+                border-left-color: #60a5fa;
+            }
+        
+            .main-content {
+                background: #22272a;
+                color: #e0e0e0;
+            }
+            h1, h2, h3 {
+                color: #f3f6fa;
+                border-bottom-color: #374151;
+            }
+            h2 {
+                border-bottom: 1px solid #374151;
+            }
+            h3 {
+                border-bottom: 2px solid #60a5fa;
+            }
+        
+            /* PI 섹션 및 상세 정보 */
+            .pi-section {
+                background: #23272f;
+                border-left-color: #60a5fa;
+            }
+            .pi-info h2 {
+                color: #f3f6fa;
+            }
+            .pi-info h2:hover {
+                color: #60a5fa;
+            }
+            .pi-info p,
+            .pi-info strong {
+                color: #e0e0e0;
+            }
+            .pi-info strong {
+                color: #90cdf4;
+                font-weight: bold;
+            }
+            .click-hint {
+                color: #b6c4d3;
+            }
+            .click-hint:hover {
+                color: #60a5fa;
+            }
+        
+            /* Bio 텍스트 */
+            .bio-text {
+                color: #e0e0e0;
+                background: rgba(40,45,50,0.97);
+            }
+        
+            /* 상세 섹션 */
+            .detail-section {
+                color: #e0e0e0;
+            }
+            .detail-section h3 {
+                color: #90cdf4;
+                border-bottom: 2px solid #60a5fa;
+            }
+        
+            /* Education, Experience, Awards */
+            .education-item, .experience-item, .award-item {
+                background: #23272f;
+                color: #e0e0e0;
+                border-color: #374151;
+            }
+            .education-item:hover, .experience-item:hover, .award-item:hover {
+                background: #2e3440;
+            }
+            .degree, .position, .award-title {
+                color: #90cdf4;
+                font-weight: bold;
+            }
+            .institution, .duration, .award-organization, .award-date, .thesis-info {
+                color: #b6c4d3;
+            }
+            .thesis-info {
+                color: #b6c4d3;
+            }
+        
+            /* 리스트 및 일반 텍스트 */
+            ul, li {
+                color: #e0e0e0;
+            }
+            li::marker, li::before {
+                color: #60a5fa;
+            }
+            p, span, label {
+                color: #e0e0e0;
+            }
+        
+            /* 폼 */
+            .form-group label {
+                color: #cbd5e1;
+            }
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                background: #23272f;
+                color: #e0e0e0;
+                border-color: #374151;
+            }
+        }
+
 
     </style>
 </head>
