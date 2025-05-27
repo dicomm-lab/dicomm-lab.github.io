@@ -308,6 +308,19 @@
                 color: #fff;
             }
         }
+        .research-image {
+            margin-bottom: clamp(20px, 4vw, 30px);
+            text-align: center;
+        }
+        
+        .research-image img {
+            width: 100%;
+            max-width: clamp(400px, 80vw, 800px);
+            height: clamp(200px, 25vw, 300px);
+            object-fit: cover;
+            border-radius: clamp(8px, 1.5vw, 12px);
+            box-shadow: 0 clamp(4px, 1vw, 8px) clamp(15px, 3vw, 25px) rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 
@@ -327,6 +340,9 @@
         
         <main class="main-content">
             <h1>Research</h1>
+             <div class="research-image">
+                <img src="images/research-banner.jpg" alt="Research Banner" />
+            </div>
             <div class="research-topics">
                 <h3>Current research topics are:</h3>
                 <ul>
