@@ -15,9 +15,8 @@
             font-family: Arial, sans-serif;
             background: #f7f7f7;
             font-size: clamp(14px, 1.8vw, 18px);
-            line-height: clamp(1.2, 0.15vw + 1.15, 1.4); /* 줄간격 줄임 */
+            line-height: clamp(1.4, 0.2vw + 1.3, 1.7);
             color: #333;
-            letter-spacing: clamp(0.1px, 0.03vw, 0.3px); /* 글자간격 줄임 */
         }
         
         .container {
@@ -41,7 +40,7 @@
             color: #fff;
             font-size: clamp(1.1rem, 2.5vw, 1.8rem);
             margin-bottom: clamp(20px, 4vw, 40px);
-            letter-spacing: clamp(0.2px, 0.05vw, 0.8px); /* 글자간격 줄임 */
+            letter-spacing: clamp(0.5px, 0.1vw, 1.5px);
         }
         
         .sidebar nav a {
@@ -54,7 +53,6 @@
             border-left: clamp(3px, 0.5vw, 6px) solid transparent;
             transition: all 0.3s ease;
             border-radius: clamp(2px, 0.3vw, 4px);
-            letter-spacing: clamp(0.1px, 0.02vw, 0.2px); /* 글자간격 줄임 */
         }
         
         .sidebar nav a.active, .sidebar nav a:hover {
@@ -82,7 +80,6 @@
             font-size: clamp(1.8rem, 4.5vw, 3rem);
             margin-bottom: clamp(20px, 3.5vw, 40px);
             font-weight: bold;
-            letter-spacing: clamp(0.2px, 0.05vw, 0.6px); /* 글자간격 줄임 */
         }
         
         h2 {
@@ -91,7 +88,6 @@
             border-bottom: 1px solid #ddd;
             padding-bottom: clamp(5px, 0.8vw, 10px);
             font-size: clamp(1.4rem, 3vw, 2.2rem);
-            letter-spacing: clamp(0.1px, 0.03vw, 0.5px); /* 글자간격 줄임 */
         }
         
         h3 {
@@ -100,7 +96,6 @@
             margin-top: clamp(15px, 2.5vw, 25px);
             margin-bottom: clamp(10px, 1.5vw, 20px);
             font-weight: bold;
-            letter-spacing: clamp(0.1px, 0.03vw, 0.4px); /* 글자간격 줄임 */
         }
         
         .intro {
@@ -131,16 +126,15 @@
         }
         
         li {
-            margin-bottom: clamp(6px, 1.2vw, 12px); /* 리스트 간격 줄임 */
+            margin-bottom: clamp(10px, 2vw, 18px);
             font-size: clamp(0.95rem, 2vw, 1.25rem);
-            line-height: clamp(1.2, 0.15vw + 1.15, 1.4); /* 줄간격 줄임 */
+            line-height: clamp(1.4, 0.2vw + 1.3, 1.6);
             color: #333;
             position: relative;
             padding-left: clamp(28px, 4.5vw, 38px);
             transition: all 0.3s ease;
             cursor: pointer;
             user-select: none;
-            letter-spacing: clamp(0.05px, 0.02vw, 0.2px); /* 글자간격 줄임 */
         }
         
         li:hover {
@@ -178,45 +172,71 @@
             display: block;
         }
         
-        /* 토픽 설명 스타일 - research-topics 박스 아래에 표시 */
-        .topic-description {
+        /* 박스 밖 토픽 설명 스타일 */
+        .external-topic-display {
             display: none;
-            margin-top: clamp(10px, 2vw, 18px); /* 간격 줄임 */
-            padding: clamp(12px, 2.5vw, 20px); /* 패딩 줄임 */
+            margin-top: clamp(25px, 4vw, 40px);
+            padding: clamp(20px, 4vw, 35px);
             background-color: #f0f8ff;
-            border-radius: clamp(4px, 0.8vw, 8px);
-            border-left: clamp(3px, 0.5vw, 5px) solid #3498db;
+            border-radius: clamp(8px, 1.5vw, 15px);
+            border-left: clamp(5px, 1vw, 8px) solid #3498db;
+            box-shadow: 0 clamp(4px, 1vw, 8px) clamp(20px, 3vw, 30px) rgba(0,0,0,0.15);
             opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            box-shadow: 0 clamp(1px, 0.2vw, 3px) clamp(5px, 1vw, 10px) rgba(0,0,0,0.1);
+            transform: translateY(clamp(10px, 2vw, 20px));
+            transition: all 0.5s ease;
         }
         
-        .topic-description.show {
+        .external-topic-display.show {
             display: block;
             opacity: 1;
-            max-height: none; /* 높이 제한 제거 */
+            transform: translateY(0);
         }
         
-        .topic-description p {
+        .external-topic-display h4 {
+            color: #2c3e50;
+            font-size: clamp(1.2rem, 2.8vw, 1.8rem);
+            margin-bottom: clamp(15px, 3vw, 25px);
+            font-weight: bold;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: clamp(8px, 1.5vw, 12px);
+        }
+        
+        .external-topic-display img {
+            width: 100%;
+            max-width: clamp(300px, 50vw, 500px);
+            height: auto;
+            border-radius: clamp(6px, 1.2vw, 10px);
+            margin-bottom: clamp(15px, 3vw, 25px);
+            box-shadow: 0 clamp(3px, 0.6vw, 6px) clamp(15px, 2.5vw, 20px) rgba(0,0,0,0.1);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .external-topic-display p {
             margin: 0;
-            font-size: clamp(0.85rem, 1.7vw, 1.05rem); /* 폰트 크기 줄임 */
-            line-height: clamp(1.3, 0.12vw + 1.25, 1.5); /* 줄간격 줄임 */
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            line-height: clamp(1.5, 0.2vw + 1.4, 1.7);
             color: #2c3e50;
             text-align: justify;
-            letter-spacing: clamp(0.05px, 0.02vw, 0.15px); /* 글자간격 줄임 */
         }
         
-        /* 토픽 이미지 스타일 - 설명과 함께 표시 */
-        .topic-image {
-            width: 100%;
-            max-width: clamp(200px, 40vw, 400px);
-            height: auto;
-            border-radius: clamp(4px, 0.8vw, 8px);
-            margin-bottom: clamp(10px, 2vw, 15px);
-            box-shadow: 0 clamp(2px, 0.4vw, 4px) clamp(8px, 1.5vw, 12px) rgba(0,0,0,0.1);
-            display: block;
+        .external-topic-display .close-btn {
+            position: absolute;
+            top: clamp(10px, 2vw, 15px);
+            right: clamp(15px, 3vw, 20px);
+            background: none;
+            border: none;
+            font-size: clamp(20px, 3vw, 28px);
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
+            padding: clamp(5px, 1vw, 8px);
+            line-height: 1;
+        }
+        
+        .external-topic-display .close-btn:hover {
+            color: #333;
         }
         
         /* 활성화된 리스트 아이템 스타일 */
@@ -284,28 +304,33 @@
             }
             
             li {
-                font-size: clamp(0.9rem, 3.2vw, 1.1rem);
+                font-size: clamp(0.9rem, 3.5vw, 1.1rem);
                 padding-left: clamp(32px, 6vw, 40px);
-                line-height: clamp(1.2, 0.1vw + 1.15, 1.35); /* 모바일 줄간격 조정 */
             }
             
             li::before {
                 left: clamp(6px, 1.2vw, 10px);
             }
             
-            .topic-description {
-                padding: clamp(8px, 2.5vw, 15px); /* 모바일 패딩 줄임 */
-                margin-top: clamp(8px, 1.5vw, 12px); /* 모바일 간격 줄임 */
+            .research-image {
+                margin-bottom: clamp(15px, 3vw, 25px);
             }
             
-            .topic-description p {
-                font-size: clamp(0.8rem, 2.8vw, 1rem); /* 모바일 폰트 크기 줄임 */
-                line-height: clamp(1.25, 0.1vw + 1.2, 1.4); /* 모바일 줄간격 조정 */
+            .research-image img {
+                height: auto;
             }
             
-            .topic-image {
-                max-width: clamp(150px, 60vw, 300px);
-                margin-bottom: clamp(8px, 1.5vw, 12px);
+            .external-topic-display {
+                padding: clamp(15px, 4vw, 25px);
+                margin-top: clamp(20px, 4vw, 30px);
+            }
+            
+            .external-topic-display img {
+                max-width: clamp(250px, 70vw, 400px);
+            }
+            
+            .external-topic-display p {
+                font-size: clamp(0.85rem, 3.2vw, 1.1rem);
             }
         }
         
@@ -326,28 +351,43 @@
             }
             
             .research-topics {
-                padding: clamp(10px, 3vw, 18px); /* 패딩 줄임 */
-                margin: clamp(12px, 3vw, 20px) 0; /* 마진 줄임 */
+                padding: clamp(12px, 4vw, 20px);
+                margin: clamp(15px, 4vw, 25px) 0;
             }
             
             li {
-                font-size: clamp(0.95rem, 3.2vw, 1.1rem);
+                font-size: clamp(1rem, 3.5vw, 1.15rem);
                 padding-left: clamp(30px, 7vw, 36px);
-                margin-bottom: clamp(5px, 1vw, 10px); /* 리스트 간격 더 줄임 */
             }
             
             li::before {
                 left: clamp(5px, 1vw, 8px);
             }
             
-            .topic-description {
-                padding: clamp(6px, 2vw, 12px); /* 작은 모바일 패딩 더 줄임 */
-                margin-top: clamp(6px, 1.2vw, 10px); /* 작은 모바일 간격 더 줄임 */
+            .research-image {
+                margin-bottom: clamp(12px, 3vw, 20px);
             }
             
-            .topic-description p {
-                font-size: clamp(0.85rem, 3vw, 1rem);
-                line-height: clamp(1.2, 0.08vw + 1.15, 1.35); /* 작은 모바일 줄간격 더 조정 */
+            .research-image img {
+                height: auto;
+            }
+            
+            .external-topic-display {
+                padding: clamp(12px, 4vw, 20px);
+                margin-top: clamp(15px, 4vw, 25px);
+            }
+            
+            .external-topic-display h4 {
+                font-size: clamp(1.1rem, 4vw, 1.5rem);
+                padding-right: clamp(30px, 6vw, 40px);
+            }
+            
+            .external-topic-display img {
+                max-width: clamp(200px, 80vw, 350px);
+            }
+            
+            .external-topic-display p {
+                font-size: clamp(0.9rem, 3.5vw, 1.05rem);
             }
         }
         
@@ -385,6 +425,10 @@
             .research-image img {
                 height: auto;
             }
+            
+            .external-topic-display {
+                display: none !important;
+            }
         }
         
         @media (prefers-color-scheme: dark) {
@@ -419,13 +463,26 @@
                 color: #fff;
             }
             
-            .topic-description {
+            .external-topic-display {
                 background-color: #2a3a4a;
                 border-left-color: #3498db;
             }
             
-            .topic-description p {
+            .external-topic-display h4 {
                 color: #e0e0e0;
+                border-bottom-color: #3498db;
+            }
+            
+            .external-topic-display p {
+                color: #e0e0e0;
+            }
+            
+            .external-topic-display .close-btn {
+                color: #ccc;
+            }
+            
+            .external-topic-display .close-btn:hover {
+                color: #fff;
             }
             
             li.active {
@@ -458,26 +515,22 @@
                 <ul>
                    <li data-topic="AIoT">
                         Secure Distributed Artificial Intelligence Network for AIoT
-                        <div class="topic-description">
-                            <img src="images/aiot-diagram.jpg" alt="AIoT Network Diagram" class="topic-image" />
-                            <p><strong>AIoT systems</strong> require extensive sensor networks and sophisticated data processing capabilities, which makes wireless communication and <strong>distributed artificial intelligence</strong> research indispensable; moreover, the susceptibility of wireless channels to security threats such as eavesdropping and jamming necessitates robust <strong>secure communication protocols</strong>, while the low-power requirements of AIoT devices demand innovative energy-efficient communication algorithms that can balance performance optimization with stringent power consumption constraints; additionally, the distributed AI components must address real-time processing challenges through optimized coordination mechanisms and edge computing frameworks to ensure immediate responses and seamless autonomous functionality in time-critical applications.</p>
-                        </div>
                     </li>
                     <li data-topic="Unmanned Vehicles">
                         Secure Communications for Unmanned Vehicles
-                        <div class="topic-description">
-                            <img src="images/uav-communication.jpg" alt="UAV Communication System" class="topic-image" />
-                            <p><strong>Unmanned Vehicles</strong> present unique communication challenges including severe energy constraints where limited battery life must support both propulsion and communication, <strong>real-time processing requirements</strong> with limited computational capabilities, and highly dynamic wireless environments that complicate channel estimation and modeling. The inherent vulnerability of wireless channels to eavesdropping and jamming attacks presents critical security challenges, particularly susceptible to Man-in-the-Middle attacks that can compromise network integrity in autonomous operations. Research solutions must focus on <strong>energy-efficient communication protocols</strong>, hybrid processing architectures that offload complex tasks to ground stations, intelligent resource allocation using machine learning approaches, and advanced antenna signal processing techniques including cooperative jamming and relay communication protocols. The ultimate goal is developing autonomous, energy-efficient, and secure Unmanned Vehicles communication systems capable of real-time operation in complex environments for future 6G network integration.</p>
-                        </div>
                     </li>
                     <li data-topic="optimization">
                         Hybrid Optimization (Machine Learning + Communication Signal Processing)
-                        <div class="topic-description">
-                            <img src="images/ml-csp-hybrid.jpg" alt="ML-CSP Hybrid Framework" class="topic-image" />
-                            <p>To address the wireless communication research areas effectively, <strong>optimization</strong> techniques are employed to maximize system performance, <strong>Machine Learning (ML)</strong> is utilized to implement intelligent signal processing capabilities, and <strong>communication signal processing</strong> is essential for developing the fundamental functions of the physical layer. <strong>The integration</strong> of ML and communication signal processing (CSP) through hybrid methodologies represents a critical research imperative to address the evolving complexity of modern wireless communication systems. As traditional model-based CSP approaches reach their theoretical limits in handling non-linear channel dynamics and heterogeneous network environments, while pure ML techniques struggle with interpretability and generalization across diverse communication scenarios, hybrid research becomes essential for advancing next-generation communication technologies. Therefore, comprehensive investigation into ML-CSP hybrid frameworks is urgently needed to unlock the synergistic potential that can revolutionize physical layer design and enable intelligent, adaptive communication systems for 6G and beyond</p>
-                        </div>
                     </li>
                 </ul>
+            </div>
+            
+            <!-- 박스 밖 토픽 표시 영역 -->
+            <div class="external-topic-display" id="topicDisplay">
+                <button class="close-btn" onclick="closeTopic()">&times;</button>
+                <h4 id="topicTitle">Topic Title</h4>
+                <img id="topicImage" src="" alt="Topic Image" />
+                <p id="topicDescription">Topic description will appear here...</p>
             </div>
         </main>
     </div>
@@ -485,56 +538,14 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const listItems = document.querySelectorAll('.research-topics li');
+    const topicDisplay = document.getElementById('topicDisplay');
+    const topicTitle = document.getElementById('topicTitle');
+    const topicImage = document.getElementById('topicImage');
+    const topicDescription = document.getElementById('topicDescription');
     
-    listItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // 흔들기 효과 추가
-            this.classList.add('shake');
-            setTimeout(() => {
-                this.classList.remove('shake');
-            }, 300);
-            
-            // 현재 아이템의 설명 박스
-            const description = this.querySelector('.topic-description');
-            const isCurrentlyActive = this.classList.contains('active');
-            
-            // 다른 모든 아이템들 비활성화
-            listItems.forEach(otherItem => {
-                if (otherItem !== this) {
-                    otherItem.classList.remove('active');
-                    const otherDescription = otherItem.querySelector('.topic-description');
-                    otherDescription.classList.remove('show');
-                }
-            });
-            
-            // 현재 아이템 토글
-            if (isCurrentlyActive) {
-                // 이미 활성화된 경우 닫기
-                this.classList.remove('active');
-                description.classList.remove('show');
-            } else {
-                // 비활성화된 경우 열기
-                this.classList.add('active');
-                description.classList.add('show');
-            }
-        });
-        
-        // 기존 호버 효과는 그대로 유지
-        item.addEventListener('mouseenter', function() {
-            if (!this.classList.contains('active')) {
-                this.style.transform = 'translateX(clamp(3px, 0.6vw, 8px))';
-            }
-        });
-        
-        item.addEventListener('mouseleave', function() {
-            if (!this.classList.contains('active')) {
-                this.style.transform = '';
-            }
-        });
-    });
-});
-</script>
-</body>
-</html>
+    // 토픽 데이터
+    const topicData = {
+        'AIoT': {
+            title: 'Secure Distributed Artificial Intelligence Network for AIoT',
+            image: 'images/aiot-diagram.jpg',
+            description: 'AIoT systems require extensive sensor networks and sophisticated data processing capabilities, which makes wireless communication and distributed artificial intelligence research indispensable; moreover, the susceptibility of wireless channels to security threats such as eavesdro
