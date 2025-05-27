@@ -377,84 +377,83 @@
             }
         }
         
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: #1a1a1a;
+          @media (prefers-color-scheme: dark) {
+                body {
+                    background: #181a1b;
+                    color: #e0e0e0;
+                }
+                .main-content {
+                    background: #23272a;
+                    color: #e0e0e0;
+                }
+                h1, h2, h3 {
+                    color: #f3f6fa;
+                    border-bottom-color: #374151;
+                }
+                .publication-box summary {
+                    background: #23272a;
+                    color: #f3f6fa;
+                    border-color: #555;
+                }
+                .publication-box summary:hover {
+                    background: #29313a;
+                }
+                .publication-content {
+                    background: #23272a;
+                }
+                /* 리스트 스타일 개선 */
+                ul {
+                    background: none;
+                }
+                li {
+                    background: #2b2f33;
+                    color: #e0e0e0;
+                    border-color: #444;
+                    box-shadow: none;
+                }
+                li:hover {
+                    background: #353a40;
+                    color: #fff;
+                    box-shadow: 0 2px 8px rgba(52,152,219,0.08);
+                }
+                /* 카테고리별 리스트 border-left 색상도 밝은 파랑 계열로 */
+                .publication-box:nth-of-type(1) li {
+                    border-left-color: #4169e1;
+                }
+                .publication-box:nth-of-type(2) li {
+                    border-left-color: #5a7df5;
+                }
+                .publication-box:nth-of-type(3) li {
+                    border-left-color: #7391f7;
+                }
+                .publication-box:nth-of-type(4) li {
+                    border-left-color: #8ca5f9;
+                }
+                /* 리스트 아이콘(화살표)도 밝은 파랑 */
+                li::before {
+                    color: #60a5fa;
+                }
+                /* 강조 텍스트 */
+                li strong {
+                    color: #90cdf4;
+                    font-weight: bold;
+                    text-shadow: 0 0 2px #2563eb55;
+                }
+                li em, li i {
+                    color: #b6c4d3;
+                    font-style: italic;
+                }
+                /* 링크도 밝은 파랑 */
+                li a, .publication-content a {
+                    color: #8ecaff;
+                    text-decoration: underline;
+                }
+                li a:hover, .publication-content a:hover {
+                    color: #fff;
+                    background: #2563eb44;
+                }
             }
-            
-            .main-content {
-                background: #2a2a2a;
-                color: #e0e0e0;
-            }
-            
-            .publication-box summary {
-                background: #2a2a2a;
-                color: #e0e0e0;
-                border-color: #555;
-            }
-            
-            .publication-box summary:hover {
-                background: #333;
-            }
-            
-            .publication-content {
-                background: #333;
-            }
-            
-            li {
-                background: #2a2a2a;
-                border-color: #555;
-            }
-            
-            li:hover {
-                background: #333;
-            }
-            
-            h1 {
-                color: #e0e0e0;
-                border-bottom-color: #555;
-            }
-            
-            li strong {
-                color: #2563eb;
-                background: none;
-                text-shadow: 0 0 1px rgba(37, 99, 235, 0.4);
-            }
-            
-            /* 다크모드에서는 더 밝은 파란색 계열 사용 */
-            .publication-box:nth-of-type(1) summary {
-                border-left-color: #4169e1; /* Royal Blue - International Journal */
-            }
-            
-            .publication-box:nth-of-type(2) summary {
-                border-left-color: #5a7df5; /* 밝은 파란색 */
-            }
-            
-            .publication-box:nth-of-type(3) summary {
-                border-left-color: #7391f7; /* 더 밝은 파란색 */
-            }
-            
-            .publication-box:nth-of-type(4) summary {
-                border-left-color: #8ca5f9; /* 가장 밝은 파란색 */
-            }
-            
-            /* 리스트 아이템도 동일하게 적용 */
-            .publication-box:nth-of-type(1) li {
-                border-left-color: #4169e1;
-            }
-            
-            .publication-box:nth-of-type(2) li {
-                border-left-color: #5a7df5;
-            }
-            
-            .publication-box:nth-of-type(3) li {
-                border-left-color: #7391f7;
-            }
-            
-            .publication-box:nth-of-type(4) li {
-                border-left-color: #8ca5f9;
-            }
-        }
+
     </style>
 </head>
 
