@@ -346,69 +346,122 @@
             }
         }
         
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: #1a1a1a;
-            }
+       @media (prefers-color-scheme: dark) {
+                body {
+                    background: #181a1b !important;
+                    color: #e0e0e0 !important;
+                }
+                .container {
+                    background: none !important;
+                }
+                .sidebar {
+                    background: #232a33 !important;
+                    color: #f1f5f9 !important;
+                }
+                .sidebar h2 {
+                    color: #f1f5f9 !important;
+                }
+                .sidebar nav a {
+                    color: #d1d5db !important;
+                    background: none !important;
+                }
+                .sidebar nav a.active, .sidebar nav a:hover {
+                    color: #60a5fa !important;
+                    background: #1a2230 !important;
+                    border-left-color: #60a5fa !important;
+                }
             
-            .main-content {
-                background: #2a2a2a;
-                color: #e0e0e0;
-            }
+                .main-content {
+                    background: #22272a !important;
+                    color: #e0e0e0 !important;
+                }
+                h1, h2, h3 {
+                    color: #f3f6fa !important;
+                    border-bottom-color: #374151 !important;
+                }
+                h2 {
+                    border-bottom: 1px solid #374151 !important;
+                }
+                h3 {
+                    border-bottom: 2px solid #60a5fa !important;
+                }
             
-            .project-box summary {
-                background: #2a2a2a;
-                color: #e0e0e0;
-                border-color: #555;
-            }
+                /* 프로젝트/리스트 박스 */
+                .project-box summary {
+                    background: #23272a !important;
+                    color: #e0e0e0 !important;
+                    border-color: #555 !important;
+                }
+                .project-box summary:hover {
+                    background: #29313a !important;
+                }
+                .project-content {
+                    background: #23272a !important;
+                }
+                /* 리스트 스타일 */
+                ul {
+                    background: none !important;
+                }
+                li {
+                    background: #2b2f33 !important;
+                    color: #e0e0e0 !important;
+                    border-color: #444 !important;
+                    box-shadow: none !important;
+                }
+                li:hover {
+                    background: #353a40 !important;
+                    color: #fff !important;
+                    box-shadow: 0 2px 8px rgba(52,152,219,0.08) !important;
+                }
+                /* 카테고리별 리스트 border-left 색상도 밝은 파랑 계열로 */
+                .project-box:nth-of-type(1) li {
+                    border-left-color: #4169e1 !important;
+                }
+                .project-box:nth-of-type(2) li {
+                    border-left-color: #5a7df5 !important;
+                }
+                /* 리스트 아이콘(화살표)도 밝은 파랑 */
+                li::before {
+                    color: #60a5fa !important;
+                }
+                li:hover::before {
+                    color: #93c5fd !important;
+                }
+                /* 강조 텍스트 */
+                li strong, strong {
+                    color: #90cdf4 !important;
+                    font-weight: bold !important;
+                }
+                li em, li i, em, i {
+                    color: #b6c4d3 !important;
+                    font-style: italic !important;
+                }
+                /* 링크도 밝은 파랑 */
+                a, li a, .project-content a {
+                    color: #8ecaff !important;
+                    text-decoration: underline;
+                }
+                a:hover, li a:hover, .project-content a:hover {
+                    color: #fff !important;
+                    background: #2563eb44 !important;
+                }
             
-            .project-box summary:hover {
-                background: #333;
+                /* 기타 서브텍스트, 폼 등 */
+                .click-hint, .institution, .duration, .award-organization, .award-date, .thesis-info, label {
+                    color: #b6c4d3 !important;
+                }
+                .bio-text {
+                    color: #e0e0e0 !important;
+                    background: rgba(40,45,50,0.97) !important;
+                }
+                .form-group input,
+                .form-group select,
+                .form-group textarea {
+                    background: #23272f !important;
+                    color: #e0e0e0 !important;
+                    border-color: #374151 !important;
+                }
             }
-            
-            .project-content {
-                background: #333;
-            }
-            
-            li {
-                background: #2a2a2a;
-                border-color: #555;
-            }
-            
-            li:hover {
-                background: #333;
-            }
-            
-            h1 {
-                color: #e0e0e0;
-                border-bottom-color: #555;
-            }
-            
-            li::before {
-                color: #60a5fa;
-            }
-            
-            li:hover::before {
-                color: #93c5fd;
-            }
-                /* 다크모드에서는 paste.txt와 동일한 밝은 파란색 계열 사용 */
-            .project-box:nth-of-type(1) summary {
-                border-left-color: #4169e1; /* Royal Blue - Ongoing Projects */
-            }
-            
-            .project-box:nth-of-type(2) summary {
-                border-left-color: #5a7df5; /* 밝은 파란색 - Finished Projects */
-            }
-            
-            /* 리스트 아이템도 동일하게 적용 */
-            .project-box:nth-of-type(1) li {
-                border-left-color: #4169e1;
-            }
-            
-            .project-box:nth-of-type(2) li {
-                border-left-color: #5a7df5;
-            }
-        }
     </style>
 </head>
 
