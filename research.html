@@ -203,7 +203,7 @@
         
         .external-topic-display img {
             width: 100%;
-            max-width: clamp(300px, 50vw, 500px);
+            max-width: clamp(400px, 60vw, 700px); /* 크기 증가 */
             height: auto;
             border-radius: clamp(6px, 1.2vw, 10px);
             margin-bottom: clamp(15px, 3vw, 25px);
@@ -211,6 +211,10 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
+            
+            /* 흰색 배경 제거 */
+            mix-blend-mode: multiply;
+            background: transparent;
         }
         
         .external-topic-display p {
@@ -326,7 +330,9 @@
             }
             
             .external-topic-display img {
-                max-width: clamp(250px, 70vw, 400px);
+                max-width: clamp(350px, 80vw, 500px); /* 모바일에서도 크기 증가 */
+                mix-blend-mode: multiply;
+                background: transparent;
             }
             
             .external-topic-display p {
@@ -383,7 +389,9 @@
             }
             
             .external-topic-display img {
-                max-width: clamp(200px, 80vw, 350px);
+                max-width: clamp(300px, 90vw, 450px); /* 작은 모바일에서도 크기 증가 */
+                mix-blend-mode: multiply;
+                background: transparent;
             }
             
             .external-topic-display p {
