@@ -472,69 +472,66 @@
         }
         
         @media (prefers-color-scheme: dark) {
-            body {
-                background: #1a1a1a;
-                color: #e0e0e0;
-            }
-            
-            .main-content {
-                background: #2a2a2a;
-                color: #e0e0e0;
-            }
-            
-            .research-topics {
-                background: linear-gradient(135deg, #333 0%, #404040 100%);
-                border-left-color: #3498db;
-            }
-            
-            .member-recruitment {
-                background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-            }
-            
-            h1 {
-                color: #e0e0e0;
-                border-bottom-color: #555;
-            }
-            
-            .lab-philosophy p {
-                color: #d0d0d0;
-            }
-            
-            .lab-philosophy strong {
-                color: #2563eb;
-                text-shadow: 0 0 1px rgba(37, 99, 235, 0.4);
-            }
-            
-            li {
-                color: #d0d0d0;
-            }
-            
-            li:hover {
-                color: #fff;
-            }
-            
-            .application-form {
-                background: #2a2a2a;
-                color: #e0e0e0;
-            }
-            
-            .form-group label {
-                color: #e0e0e0;
-            }
-            
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                background: #333;
-                color: #e0e0e0;
-                border-color: #555;
-            }
-            
-            .form-group input:focus,
-            .form-group select:focus,
-            .form-group textarea:focus {
-                border-color: #3498db;
-            }
+               body {
+                    background: #1a1a1a;
+                    color: #e0e0e0;
+                }
+                .main-content {
+                    background: #222;
+                    color: #e0e0e0;
+                }
+                h1, h2, h3 {
+                    color: #f4f4f4;
+                    border-bottom-color: #444;
+                }
+                /* Lab Philosophy 섹션 */
+                .lab-philosophy p {
+                    color: #e0e0e0; /* 기존보다 더 밝게 */
+                }
+                .lab-philosophy strong {
+                    color: #90cdf4; /* 밝은 파랑으로 강조 */
+                    text-shadow: 0 0 2px #2563eb55;
+                }
+                /* Research Topics 박스 */
+                .research-topics {
+                    background: linear-gradient(135deg, #23272f 0%, #31343a 100%);
+                    border-left-color: #38bdf8; /* 밝은 블루 */
+                }
+                .research-topics h3 {
+                    color: #f1f5f9;
+                }
+                ul, li {
+                    color: #e0e0e0;
+                }
+                li::before {
+                    color: #38bdf8;
+                }
+                li:hover {
+                    color: #fff;
+                }
+                /* 버튼, 링크 등 포인트 컬러 */
+                .apply-button,
+                .submit-button {
+                    background: #2563eb;
+                    color: #fff;
+                    border-color: #60a5fa;
+                }
+                .apply-button:hover,
+                .submit-button:hover {
+                    background: #38bdf8;
+                    color: #222;
+                }
+                /* 폼 라벨 등 */
+                .form-group label {
+                    color: #cbd5e1;
+                }
+                .form-group input,
+                .form-group select,
+                .form-group textarea {
+                    background: #23272f;
+                    color: #e0e0e0;
+                    border-color: #444;
+                }
         }
     </style>
 </head>
