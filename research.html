@@ -161,34 +161,25 @@
             transform: translateY(-50%) scale(clamp(1.1, 0.05vw + 1.05, 1.2)); /* transform 조합 */
         }
         
-        /* 연구 이미지 스타일 - hover 효과 제거하고 크기 증가 */
-        .research-image {
+       .research-image {
             margin-bottom: clamp(20px, 4vw, 30px);
-            border-radius: clamp(6px, 1.2vw, 12px);
+            /* border-radius 제거 또는 최소화 */
+            border-radius: clamp(2px, 0.5vw, 4px);
             overflow: hidden;
-            box-shadow: 0 clamp(2px, 0.5vw, 6px) clamp(10px, 2vw, 20px) rgba(0,0,0,0.1);
+            /* box-shadow 최소화 */
+            box-shadow: 0 clamp(1px, 0.2vw, 2px) clamp(5px, 1vw, 10px) rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            border-left: clamp(4px, 0.8vw, 8px) solid #2c3e50; /* research-topics와 동일한 테두리 */
-        }
-        
-        .research-image:hover {
-            transform: translateY(clamp(-2px, -0.4vw, -4px));
-            box-shadow: 0 clamp(4px, 1vw, 10px) clamp(20px, 3vw, 30px) rgba(0,0,0,0.15);
+            /* border-left 제거 또는 최소화 */
+            border-left: clamp(2px, 0.4vw, 3px) solid #2c3e50;
         }
         
         .research-image img {
             width: 100%;
-            height: clamp(250px, 35vw, 450px); /* 기본 높이 크게 증가 (180px->250px, 300px->450px) */
+            height: auto; /* 완전히 자동 높이 */
             max-width: 100%;
-            object-fit: cover;
+            object-fit: none; /* 이미지 원본 그대로 */
             object-position: center;
             display: block;
-            /* hover 효과 제거 - transition 제거 */
-        }
-        
-        /* hover 효과 완전 제거 */
-        .research-image img:hover {
-            /* transform 제거 - hover 효과 없음 */
         }
         
         /* 반응형 미디어 쿼리 */
