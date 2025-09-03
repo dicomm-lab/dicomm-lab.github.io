@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery | Deep and Intelligent Communications Laboratory</title>
+  <style>
+    /* ====== 기존 스타일 요약 (필요 부분만 재사용) ====== */
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family:Arial,sans-serif;background:#f7f7f7;
+      font-size:clamp(14px,1.8vw,18px);line-height:clamp(1.4,0.2vw+1.3,1.7);color:#333
+    }
+    .container{display:flex;min-height:100vh}
+    .sidebar{
+      width:clamp(180px,22vw,280px);background:#2c3e50;color:#fff;
+      padding:clamp(20px,4vw,50px) clamp(15px,2.5vw,30px);min-height:100vh;position:sticky;top:0
+    }
+    .sidebar h2{color:#fff;font-size:clamp(1.1rem,2.5vw,1.8rem);margin-bottom:clamp(20px,4vw,40px);letter-spacing:clamp(.5px,.1vw,1.5px)}
+    .sidebar nav a{
+      display:block;color:#ecf0f1;text-decoration:none;
+      padding:clamp(8px,1.5vw,15px) 0;margin-bottom:clamp(6px,1.2vw,12px);
+      font-size:clamp(.9rem,1.8vw,1.3rem);
+      border-left:clamp(3px,.5vw,6px) solid transparent;transition:.3s;border-radius:clamp(2px,.3vw,4px)
+    }
+    .sidebar nav a.active,.sidebar nav a:hover{
+      color:#3498db;border-left:clamp(3px,.5vw,6px) solid #3498db;background:#222d36;
+      padding-left:clamp(12px,2vw,25px);transform:translateX(clamp(2px,.5vw,5px))
+    }
+    .main-content{flex:1;background:#fff;padding:clamp(20px,5vw,60px) clamp(25px,6vw,80px);min-width:0}
+    h1{
+      color:#333;border-bottom:clamp(2px,.3vw,4px) solid #333;
+      padding-bottom:clamp(8px,1.5vw,15px);font-size:clamp(1.8rem,4.5vw,3rem);
+      margin-bottom:clamp(20px,3.5vw,40px);font-weight:bold
+    }
+
+    /* ====== 갤러리 전용 스타일 ====== */
+    .toolbar{
+      display:flex;gap:clamp(8px,1.5vw,16px);align-items:center;flex-wrap:wrap;
+      margin-bottom:clamp(12px,2.5vw,24px)
+    }
+    .toolbar input[type="search"]{
+      flex:1;min-width:220px;padding:10px 12px;border:1px solid #ddd;border-radius:10px;
+      font-size:1rem
+    }
+    .toolbar select{
+      padding:10px 12px;border:1px solid #ddd;border-radius:10px;font-size:1rem;background:#fff
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(clamp(140px,22vw,240px),1fr));
+      gap:clamp(10px,2vw,18px)
+    }
+    .card{
+      position:relative;border-radius:clamp(8px,1vw,14px);overflow:hidden;background:#f2f2f2;
+      box-shadow:0 4px 18px rgba(0,0,0,.06);transition:transform .25s ease, box-shadow .25s ease
+    }
+    .card:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.10)}
+    .thumb{
+      width:100%;aspect-ratio:4/3;object-fit:cover;display:block
+    }
+    .caption{
+      padding:10px 12px;font-size:.95rem;color:#333;background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,.95))
+    }
+    .badge{
+      position:absolute;top:10px;left:10px;
+      background:rgba(44,62,80,.85);color:#fff;font-size:.8rem;padding:4px 8px;border-radius:999px
+    }
+
+    /* 라이트박스 */
+    .lightbox{
+      position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;
+      z-index:9999;padding:clamp(10px,3vw,24px)
+    }
+    .lightbox.open{display:flex}
+    .lightbox img{
+      max-width:90vw;max-height:85vh;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.5)
+    }
+    .lightbox .meta{
+      position:fixed;bottom:clamp(14px,3vw,24px);left:50%;transform:translateX(-50%);
+      background:rgba(0,0,0,.5);color:#fff;padding:8px 12px;border-radius:10px;font-size:.95rem
+    }
+    .lightbox .close,.lightbox .prev,.lightbox .next{
+      position:fixed;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);
+      color:#fff;border:none;font-size:1.2rem;padding:12px 14px;border-radius:10px;cursor:pointer
+    }
+    .lightbox .close{top:clamp(12px,3vw,24px);right:clamp(12px,3vw,24px);transform:none}
+    .lightbox .prev{left:clamp(12px,3vw,24px)}
+    .lightbox .next{right:clamp(12px,3vw,24px)}
+
+    /* 접근성 포커스 */
+    .card:focus-within,.lightbox .close:focus,.lightbox .prev:focus,.lightbox .next:focus{
+      outline:3px solid #3498db;outline-offset:2px
+    }
+
+    /* 다크모드 */
+    @media (prefers-color-scheme: dark){
+      body{background:#1a1a1a;color:#e0e0e0}
+      .main-content{background:#2a2a2a;color:#e0e0e0}
+      h1{border-bottom-color:#555}
+      .card{background:#222}
+      .caption{color:#eaeaea;background:linear-gradient(180deg,rgba(20,20,20,.6),rgba(20,20,20,.75))}
+      .toolbar input,.toolbar select{background:#1f1f1f;color:#e0e0e0;border-color:#444}
+    }
+
+    /* 모바일: 사이드바 접기 패턴을 기존과 동일하게 유지하려면 contact.html의 @media를 복사해와도 됩니다 */
+    @media (max-width: 768px){
+      .container{flex-direction:column}
+      .sidebar{width:100%;min-height:auto;position:static;padding:clamp(15px,3vw,25px) clamp(10px,2vw,20px)}
+      .main-content{padding:clamp(15px,4vw,30px)}
+      .sidebar nav{display:flex;flex-wrap:wrap;gap:clamp(8px,2vw,15px);justify-content:center}
+      .sidebar nav a{
+        flex:1;text-align:center;min-width:clamp(70px,15vw,120px);
+        padding:clamp(8px,2vw,12px);border-left:none;border-bottom:clamp(2px,.4vw,3px) solid transparent;border-radius:clamp(4px,1vw,8px)
+      }
+      .sidebar nav a.active,.sidebar nav a:hover{
+        border-left:none;border-bottom:clamp(2px,.4vw,3px) solid #3498db;padding-left:clamp(8px,2vw,12px);transform:translateY(clamp(-2px,-.4vw,-3px))
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Menu</h2>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="team.html">Team</a>
+        <a href="publications.html">Publications</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="gallery.html" class="active">Gallery</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <h1>Gallery</h1>
+
+      <!-- 툴바: 검색/정렬(옵션) -->
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="이미지 검색(파일명/캡션)..." aria-label="이미지 검색"/>
+        <select id="sort">
+          <option value="name-asc">이름 ▲</option>
+          <option value="name-desc">이름 ▼</option>
+          <option value="newest">최근 추가 순</option>
+          <option value="oldest">오래된 순</option>
+        </select>
+      </div>
+
+      <!-- 갤러리 그리드 -->
+      <section id="grid" class="gallery-grid" aria-live="polite" aria-busy="false"></section>
+    </main>
+  </div>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="이미지 확대 보기">
+    <button class="close" aria-label="닫기">✕</button>
+    <button class="prev" aria-label="이전">◀</button>
+    <img alt="확대 이미지"/>
+    <button class="next" aria-label="다음">▶</button>
+    <div class="meta" aria-live="polite"></div>
+  </div>
+
+  <script>
+    /* ===================== 이미지 목록 =====================
+       - GitHub Pages에 올릴 때는 images/ 폴더에 파일만 넣고,
+         아래 배열에 항목을 추가하세요.
+       - caption은 선택입니다. (미입력 시 파일명으로 대체)
+       - date는 정렬용(ISO 형태 권장, 예: "2025-09-03")
+    ======================================================= */
+    const IMAGES = [
+      // 예시: 저장소의 images 폴더 파일명에 맞춰 수정
+      { src: "images/lab_group_2025.jpg", caption: "Lab Group Photo (2025)", date: "2025-08-20" },
+      { src: "images/demo_robot_arm.jpg", caption: "Robot Arm Demo", date: "2025-07-02" },
+      { src: "images/poster_icassp.png", caption: "ICASSP Poster", date: "2025-05-10" },
+      { src: "images/antenna_array.png", caption: "Antenna Array Simulation", date: "2025-04-14" },
+      // { src: "images/파일명.ext", caption: "캡션", date: "YYYY-MM-DD" },
+    ];
+
+    /* ========== 헬퍼: 파일명에서 이름 추출 ========== */
+    function nameFromPath(p){ return p.split("/").pop().toLowerCase(); }
+
+    /* ========== 렌더러 ========== */
+    const grid = document.getElementById("grid");
+    const search = document.getElementById("search");
+    const sortSel = document.getElementById("sort");
+    let filtered = [...IMAGES];
+    let currentIndex = -1;
+
+    function applySort(arr){
+      const v = sortSel.value;
+      if(v === "name-asc") arr.sort((a,b)=> nameFromPath(a.src).localeCompare(nameFromPath(b.src)));
+      if(v === "name-desc") arr.sort((a,b)=> nameFromPath(b.src).localeCompare(nameFromPath(a.src)));
+      if(v === "newest") arr.sort((a,b)=> (b.date||"").localeCompare(a.date||""));
+      if(v === "oldest") arr.sort((a,b)=> (a.date||"").localeCompare(b.date||""));
+      return arr;
+    }
+
+    function render(){
+      grid.setAttribute("aria-busy","true");
+      grid.innerHTML = "";
+      applySort(filtered).forEach((item, idx)=>{
+        const card = document.createElement("article");
+        card.className = "card";
+        card.tabIndex = 0;
+
+        const img = document.createElement("img");
+        img.className = "thumb";
+        img.loading = "lazy";
+        img.src = item.src;
+        img.alt = item.caption || nameFromPath(item.src);
+
+        const cap = document.createElement("div");
+        cap.className = "caption";
+        cap.textContent = item.caption || nameFromPath(item.src);
+
+        // 선택 배지(예: NEW)
+        if(item.date){
+          const d = new Date(item.date);
+          const days = (Date.now() - d.getTime())/86400000;
+          if(days <= 30){
+            const badge = document.createElement("span");
+            badge.className = "badge";
+            badge.textContent = "NEW";
+            card.appendChild(badge);
+          }
+        }
+
+        // 클릭 시 라이트박스
+        card.addEventListener("click", ()=> openLightbox(idx));
+        card.addEventListener("keydown", (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openLightbox(idx);} });
+
+        card.appendChild(img);
+        card.appendChild(cap);
+        grid.appendChild(card);
+      });
+      grid.setAttribute("aria-busy","false");
+    }
+
+    function applyFilter(){
+      const q = (search.value || "").toLowerCase().trim();
+      filtered = IMAGES.filter(it=>{
+        const n = nameFromPath(it.src);
+        const c = (it.caption||"").toLowerCase();
+        return !q || n.includes(q) || c.includes(q);
+      });
+      render();
+    }
+
+    search.addEventListener("input", applyFilter);
+    sortSel.addEventListener("change", render);
+
+    /* ========== 라이트박스 ========== */
+    const lightbox = document.getElementById("lightbox");
+    const lbImg = lightbox.querySelector("img");
+    const lbMeta = lightbox.querySelector(".meta");
+    const btnClose = lightbox.querySelector(".close");
+    const btnPrev = lightbox.querySelector(".prev");
+    const btnNext = lightbox.querySelector(".next");
+
+    function openLightbox(idx){
+      currentIndex = idx;
+      const item = filtered[currentIndex];
+      lbImg.src = item.src;
+      lbImg.alt = item.caption || nameFromPath(item.src);
+      lbMeta.textContent = item.caption || nameFromPath(item.src);
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+      btnClose.focus();
+    }
+    function closeLightbox(){
+      lightbox.classList.remove("open");
+      document.body.style.overflow = "";
+      currentIndex = -1;
+    }
+    function prev(){ if(currentIndex>0) openLightbox(currentIndex-1); }
+    function next(){ if(currentIndex<filtered.length-1) openLightbox(currentIndex+1); }
+
+    btnClose.addEventListener("click", closeLightbox);
+    btnPrev.addEventListener("click", prev);
+    btnNext.addEventListener("click", next);
+    lightbox.addEventListener("click", (e)=>{ if(e.target===lightbox) closeLightbox(); });
+    window.addEventListener("keydown", (e)=>{
+      if(!lightbox.classList.contains("open")) return;
+      if(e.key==="Escape") closeLightbox();
+      else if(e.key==="ArrowLeft") prev();
+      else if(e.key==="ArrowRight") next();
+    });
+
+    // 초기 렌더
+    applyFilter();
+  </script>
+</body>
+</html>
