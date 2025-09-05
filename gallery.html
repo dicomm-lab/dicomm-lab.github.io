@@ -53,7 +53,7 @@
     
     .sidebar nav a.active,.sidebar nav a:hover{
       color:#3498db;
-      padding-left:clamp(3px,0.5vw,6px) solid #3498db;
+      border-left:clamp(3px,0.5vw,6px) solid #3498db;
       background:#222d36;
       padding-left:clamp(12px,2vw,25px);
       transform:translateX(clamp(2px,0.5vw,5px))
@@ -74,6 +74,23 @@
       margin-bottom:clamp(20px,3.5vw,40px);
       font-weight:bold;
     }
+     h2 {
+            color: #555;
+            margin-top: clamp(25px, 4vw, 45px);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: clamp(5px, 0.8vw, 10px);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+        }
+        
+       h3 {
+            color: #2c3e50;
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            margin-top: clamp(20px, 3.5vw, 35px);
+            margin-bottom: clamp(8px, 1.2vw, 15px);
+            font-weight: bold;
+            position: relative;
+            padding-left: clamp(25px, 4vw, 40px); /* 기존 clamp(15px, 2.5vw, 25px)에서 증가 */
+        }
 
     /* ====== 갤러리 전용 스타일 ====== */
     .toolbar{
