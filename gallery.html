@@ -63,23 +63,25 @@
             transform: translateX(clamp(2px, 0.5vw, 5px));
         }
         
-    .main-content{
-      flex:1;
-      background:#fff;
-      padding:clamp(20px,5vw,60px) clamp(25px,6vw,80px);
-      box-sizing: border-box;
-      min-width:0;
-    }
-    
-    h1{
-      color:#333;
-      border-bottom:clamp(2px,0.3vw,4px) solid #333;
-      padding-bottom:clamp(8px,1.5vw,15px);
-      font-size:clamp(1.8rem,4.5vw,3rem);
-      margin-bottom:clamp(20px,3.5vw,40px);
-      font-weight:bold;
-    }
-     h2 {
+     .main-content {
+            flex: 1;
+            background: #fff;
+            padding: clamp(20px, 5vw, 60px) clamp(25px, 6vw, 80px);
+            box-sizing: border-box;
+            min-width: 0;
+        }
+        
+        /* 유동적 제목들 */
+        h1 {
+            color: #333;
+            border-bottom: clamp(2px, 0.3vw, 4px) solid #333;
+            padding-bottom: clamp(8px, 1.5vw, 15px);
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            margin-bottom: clamp(20px, 3.5vw, 40px);
+            font-weight: bold;
+        }
+        
+        h2 {
             color: #555;
             margin-top: clamp(25px, 4vw, 45px);
             border-bottom: 1px solid #ddd;
