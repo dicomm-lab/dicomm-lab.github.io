@@ -19,50 +19,50 @@
             color: #333;
         }
     
-    .container{
-      display:flex;
-      min-height:100vh;
-    }
-    
-    .sidebar{
-      width:clamp(180px,22vw,280px);
-      background:#2c3e50;
-      color:#fff;
-      padding:clamp(20px,4vw,50px) clamp(15px,2.5vw,30px);
-      box-sizing: border-box;
-      min-height:100vh;
-      position:sticky;
-      top:0;
-    }
-    
-    .sidebar h2{
-      color:#fff;
-      font-size:clamp(1.1rem,2.5vw,1.8rem);
-      margin-bottom:clamp(20px,4vw,40px);
-      letter-spacing: 0.5px;
-    }
-    
-    .sidebar nav a{
-      display:block;
-      color:#ecf0f1;
-      text-decoration:none;
-      padding:clamp(8px,1.5vw,15px) clamp(12px,2vw,25px);;
-      margin-bottom:clamp(6px,1.2vw,12px);
-      font-size:clamp(0.9rem,1.8vw,1.3rem);
-      border-left:clamp(3px,0.5vw,6px) solid transparent;
-      transition: all 0.3s ease;
-      border-radius:clamp(2px,0.3vw,4px);
-    }
-    
-    .sidebar nav a.active,.sidebar nav a:hover{
-      color:#3498db;
-      border-left:clamp(3px,0.5vw,6px) solid #3498db;
-      background:#222d36;
-      padding-left:clamp(12px,2vw,25px);
-      transform:translateX(clamp(2px,0.5vw,5px));
-      transform: none;
-    }
-    
+    .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* 완전 유동적 사이드바 */
+        .sidebar {
+            width: clamp(180px, 22vw, 280px); /* 유동적 너비 */
+            background: #2c3e50;
+            color: #fff;
+            padding: clamp(20px, 4vw, 50px) clamp(15px, 2.5vw, 30px);
+            box-sizing: border-box;
+            min-height: 100vh;
+            position: sticky;
+            top: 0;
+        }
+        
+        .sidebar h2 {
+            color: #fff;
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem); /* 유동적 제목 크기 */
+            margin-bottom: clamp(20px, 4vw, 40px);
+            letter-spacing: clamp(0.5px, 0.1vw, 1.5px);
+        }
+        
+        .sidebar nav a {
+            display: block;
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: clamp(8px, 1.5vw, 15px) 0;
+            margin-bottom: clamp(6px, 1.2vw, 12px);
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem); /* 유동적 메뉴 폰트 */
+            border-left: clamp(3px, 0.5vw, 6px) solid transparent;
+            transition: all 0.3s ease;
+            border-radius: clamp(2px, 0.3vw, 4px);
+        }
+        
+        .sidebar nav a.active, .sidebar nav a:hover {
+            color: #3498db;
+            border-left: clamp(3px, 0.5vw, 6px) solid #3498db;
+            background: #222d36;
+            padding-left: clamp(12px, 2vw, 25px);
+            transform: translateX(clamp(2px, 0.5vw, 5px));
+        }
+        
     .main-content{
       flex:1;
       background:#fff;
