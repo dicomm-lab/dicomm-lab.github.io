@@ -224,7 +224,127 @@
            outline: clamp(2px, 0.3vw, 3px) solid #3498db;
             outline-offset: clamp(2px, 0.3vw, 4px);
     }
-
+ @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+                position: static;
+                padding: clamp(15px, 3vw, 25px) clamp(10px, 2vw, 20px);
+            }
+            
+            .main-content {
+                padding: clamp(15px, 4vw, 30px) clamp(15px, 4vw, 30px);
+            }
+            
+            /* 모바일에서 사이드바 메뉴 가로 배치 */
+            .sidebar nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: clamp(8px, 2vw, 15px);
+                justify-content: center;
+            }
+            
+            .sidebar nav a {
+                flex: 1;
+                text-align: center;
+                min-width: clamp(70px, 15vw, 120px);
+                padding: clamp(8px, 2vw, 12px);
+                border-left: none;
+                border-bottom: clamp(2px, 0.4vw, 3px) solid transparent;
+                border-radius: clamp(4px, 1vw, 8px);
+            }
+            
+            .sidebar nav a.active, .sidebar nav a:hover {
+                border-left: none;
+                border-bottom: clamp(2px, 0.4vw, 3px) solid #3498db;
+                padding-left: clamp(8px, 2vw, 12px);
+                transform: translateY(clamp(-2px, -0.4vw, -3px));
+            }
+            
+            .map-container iframe {
+                height: clamp(200px, 25vw, 300px);
+            }
+            h3 {
+                font-size: clamp(1rem, 4vw, 1.3rem);
+                padding-left: clamp(30px, 6vw, 35px); /* 모바일에서 더 많은 간격 */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .sidebar h2 {
+                text-align: center;
+                margin-bottom: clamp(15px, 3vw, 25px);
+            }
+            
+            .sidebar nav {
+                flex-direction: column;
+            }
+            
+            .sidebar nav a {
+                margin-bottom: clamp(8px, 2vw, 12px);
+                text-align: center;
+                font-size: clamp(1rem, 3.5vw, 1.2rem);
+            }
+            
+            h1 {
+                font-size: clamp(1.4rem, 6vw, 2rem);
+                text-align: center;
+            }
+            
+            h3 {
+                font-size: clamp(1rem, 4vw, 1.3rem);
+                padding-left: clamp(28px, 7vw, 32px); /* 작은 화면에서도 충분한 간격 */
+            }
+            
+            h3::before {
+                font-size: clamp(0.8rem, 3.5vw, 1.1rem);
+            }
+           
+            .map-container iframe {
+                height: clamp(180px, 40vw, 250px);
+            }
+        }
+        
+        /* 큰 화면에서의 최적화 */
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1800px;
+                margin: 0 auto;
+                box-shadow: 0 0 clamp(20px, 2vw, 40px) rgba(0,0,0,0.1);
+            }
+            
+            .main-content {
+                padding: clamp(40px, 5vw, 70px) clamp(60px, 7vw, 100px);
+            }
+        }
+        
+        /* 접근성 및 포커스 스타일 */
+        .sidebar nav a:focus, .address-link:focus {
+            outline: clamp(2px, 0.3vw, 3px) solid #3498db;
+            outline-offset: clamp(2px, 0.3vw, 4px);
+        }
+        
+        /* 프린트 미디어 최적화 */
+        @media print {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .map-container {
+                border: 1px solid #ddd;
+                box-shadow: none;
+            }
+        }
+        
+    
     /* 다크모드 */
     @media (prefers-color-scheme: dark){
       body{background:#1a1a1a;
