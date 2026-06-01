@@ -1,11 +1,568 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Site Maintenance</title>
-  <style>body{margin:0;background:#fff;color:#111;font-family:Georgia,"Times New Roman",Times,serif;line-height:1.6}main{max-width:720px;margin:80px auto;padding:0 24px}h1{font-size:30px;font-weight:normal;margin:0 0 12px;border-bottom:1px solid #d6d6d6;padding-bottom:8px}p{font-size:17px;color:#555}</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep and Intelligent Communications Laboratory</title>
+    <style>
+        /* 기본 설정 - 완전 유동형 */
+        * {
+            box-sizing: border-box;
+            /* 텍스트 선택 하이라이트 비활성화 */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            font-size: clamp(14px, 1.8vw, 18px);
+            line-height: clamp(1.4, 0.2vw + 1.3, 1.7);
+            color: #333;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* 완전 유동적 사이드바 */
+        .sidebar {
+            width: clamp(180px, 22vw, 280px);
+            background: #2c3e50;
+            color: #fff;
+            padding: clamp(20px, 4vw, 50px) clamp(15px, 2.5vw, 30px);
+            box-sizing: border-box;
+            min-height: 100vh;
+            position: sticky;
+            top: 0;
+        }
+        
+        .sidebar h2 {
+            color: #fff;
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+            margin-bottom: clamp(20px, 4vw, 40px);
+            letter-spacing: clamp(0.5px, 0.1vw, 1.5px);
+        }
+        
+        .sidebar nav a {
+            display: block;
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: clamp(8px, 1.5vw, 15px) 0;
+            margin-bottom: clamp(6px, 1.2vw, 12px);
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+            border-left: clamp(3px, 0.5vw, 6px) solid transparent;
+            transition: all 0.3s ease;
+            border-radius: clamp(2px, 0.3vw, 4px);
+        }
+        
+        .sidebar nav a.active, .sidebar nav a:hover {
+            color: #3498db;
+            border-left: clamp(3px, 0.5vw, 6px) solid #3498db;
+            background: #222d36;
+            padding-left: clamp(12px, 2vw, 25px);
+            transform: translateX(clamp(2px, 0.5vw, 5px));
+        }
+        
+        /* 완전 유동적 메인 콘텐츠 */
+        .main-content {
+            flex: 1;
+            background: #fff;
+            padding: clamp(20px, 5vw, 60px) clamp(25px, 6vw, 80px);
+            box-sizing: border-box;
+            min-width: 0;
+        }
+        
+        /* 유동적 제목들 */
+        h1 {
+            color: #333;
+            border-bottom: clamp(2px, 0.3vw, 4px) solid #333;
+            padding-bottom: clamp(8px, 1.5vw, 15px);
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            margin-bottom: clamp(25px, 4vw, 45px);
+            font-weight: bold;
+        }
+        
+        h2 {
+            color: #555;
+            margin-top: clamp(25px, 4vw, 45px);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: clamp(5px, 0.8vw, 10px);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+        }
+        
+        /* 주요 4개 섹션을 위한 Collapsible 박스 스타일 */
+        .publication-box {
+            margin-bottom: clamp(20px, 3.5vw, 35px);
+            border-radius: clamp(6px, 1.2vw, 12px);
+            overflow: hidden;
+            box-shadow: 0 clamp(2px, 0.5vw, 6px) clamp(10px, 2vw, 20px) rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .publication-box:hover {
+            box-shadow: 0 clamp(4px, 0.8vw, 10px) clamp(15px, 3vw, 30px) rgba(0,0,0,0.15);
+        }
+        
+        /* Summary 스타일 - 카테고리 아이콘 제거 */
+        .publication-box summary {
+            background: #ffffff;
+            color: #333;
+            padding: clamp(15px, 3vw, 25px);
+            cursor: pointer;
+            font-weight: bold;
+            font-size: clamp(1.1rem, 2.3vw, 1.6rem);
+            list-style: none;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid #ddd;
+            border-left: clamp(5px, 1vw, 8px) solid #3498db;
+        }
+        
+        .publication-box summary:hover {
+            background: #f8f9fa;
+            transform: translateY(clamp(-1px, -0.2vw, -2px));
+        }
+        
+        .publication-box summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .publication-box summary::after {
+            content: " ▼";
+            float: right;
+            transition: transform 0.3s ease;
+            font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+        }
+        
+        .publication-box[open] summary::after {
+            transform: rotate(180deg);
+        }
+        
+        /* 메뉴 색상 기준 점진적 명도 증가로 카테고리 구분 */
+        .publication-box:nth-of-type(1) summary {
+            border-left-color: #2c3e50; /* 100% 메뉴 색상 - International Journal (가장 어두운) */
+        }
+        
+        .publication-box:nth-of-type(1) summary:hover {
+            border-left-color: #253544; /* 호버 시 약간 어두운 색 */
+        }
+        
+        .publication-box:nth-of-type(2) summary {
+            border-left-color: #3d4f65; /* 125% 명도 - International Conference */
+        }
+        
+        .publication-box:nth-of-type(2) summary:hover {
+            border-left-color: #34495e;
+        }
+        
+        .publication-box:nth-of-type(3) summary {
+            border-left-color: #4e607a; /* 150% 명도 - Domestic Conference */
+        }
+        
+        .publication-box:nth-of-type(3) summary:hover {
+            border-left-color: #455a75;
+        }
+        
+        .publication-box:nth-of-type(4) summary {
+            border-left-color: #5f718f; /* 175% 명도 - Patents (가장 밝은) */
+        }
+        
+        .publication-box:nth-of-type(4) summary:hover {
+            border-left-color: #56688a; /* 가장 밝은 색 */
+        }
+          .publication-box:nth-of-type(5) summary {
+            border-left-color: #5f718f; /* 175% 명도 - Patents (가장 밝은) */
+        }
+        
+        .publication-box:nth-of-type(5) summary:hover {
+            border-left-color: #56688a; /* 가장 밝은 색 */
+        }
+        
+        .publication-content {
+            padding: clamp(15px, 3vw, 25px);
+            background: #f8f9fa;
+        }
+        
+        /* 심플한 목록을 위한 스타일 (향후 추가 섹션용) */
+        .simple-section {
+            margin-bottom: clamp(20px, 3.5vw, 35px);
+        }
+        
+        .simple-section h3 {
+            color: #2c3e50;
+            font-size: clamp(1.2rem, 2.8vw, 1.8rem);
+            margin-bottom: clamp(15px, 2.5vw, 25px);
+            font-weight: bold;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: clamp(8px, 1.2vw, 12px);
+        }
+        
+        /* 리스트 스타일 */
+        ul {
+            padding-left: clamp(25px, 4.5vw, 45px);
+            margin: clamp(15px, 2.5vw, 25px) 0;
+            list-style: none;
+        }
+        
+        li {
+            margin-bottom: clamp(12px, 2.5vw, 20px);
+            font-size: clamp(0.9rem, 1.8vw, 1.15rem);
+            line-height: clamp(1.5, 0.3vw + 1.4, 1.8);
+            color: #333;
+            padding: clamp(8px, 1.5vw, 15px);
+            padding-left: clamp(30px, 5vw, 45px); /* 화살표 공간 확보 */
+            background: #ffffff;
+            border-radius: clamp(4px, 0.8vw, 8px);
+            transition: all 0.3s ease;
+            position: relative;
+            text-align: justify;
+            border: 1px solid #eee;
+        }
+        
+        li:hover {
+            background: #f8f9fa;
+            transform: translateX(clamp(3px, 0.6vw, 8px));
+            box-shadow: 0 clamp(2px, 0.4vw, 6px) clamp(8px, 1.5vw, 15px) rgba(52, 152, 219, 0.2);
+        }
+        
+        /* 카테고리별 리스트 아이템 border-left 색상도 동일하게 적용 */
+        .publication-box:nth-of-type(1) li {
+            border-left: clamp(3px, 0.5vw, 5px) solid #2c3e50;
+        }
+        
+        .publication-box:nth-of-type(2) li {
+            border-left: clamp(3px, 0.5vw, 5px) solid #3d4f65;
+        }
+        
+        .publication-box:nth-of-type(3) li {
+            border-left: clamp(3px, 0.5vw, 5px) solid #4e607a;
+        }
+        
+        .publication-box:nth-of-type(4) li {
+            border-left: clamp(3px, 0.5vw, 5px) solid #5f718f;
+        }
+        
+        /* 리스트 아이템 화살표 아이콘 유지 */
+        li::before {
+            content: "▸";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: clamp(10px, 1.8vw, 15px);
+            top: clamp(12px, 2vw, 18px);
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+        }
+        
+        li strong {
+            color: #1e3a8a; /* 학구적인 진한 파란색 */
+            font-weight: 700;
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            text-shadow: 0 0 1px rgba(30, 58, 138, 0.4);
+        }
+        
+        li em, li i {
+            color: #555;
+            font-style: italic;
+        }
+        
+        /* 반응형 미디어 쿼리 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+                position: static;
+                padding: clamp(15px, 3vw, 25px) clamp(10px, 2vw, 20px);
+            }
+            
+            .main-content {
+                padding: clamp(15px, 4vw, 30px) clamp(15px, 4vw, 30px);
+            }
+            
+            .sidebar nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: clamp(8px, 2vw, 15px);
+                justify-content: center;
+            }
+            
+            .sidebar nav a {
+                flex: 1;
+                text-align: center;
+                min-width: clamp(70px, 15vw, 120px);
+                padding: clamp(8px, 2vw, 12px);
+                border-left: none;
+                border-bottom: clamp(2px, 0.4vw, 3px) solid transparent;
+                border-radius: clamp(4px, 1vw, 8px);
+            }
+            
+            .sidebar nav a.active, .sidebar nav a:hover {
+                border-left: none;
+                border-bottom: clamp(2px, 0.4vw, 3px) solid #3498db;
+                padding-left: clamp(8px, 2vw, 12px);
+                transform: translateY(clamp(-2px, -0.4vw, -3px));
+            }
+            
+            .publication-box summary {
+                padding: clamp(12px, 2.5vw, 20px);
+            }
+            
+            li {
+                font-size: clamp(0.85rem, 3.5vw, 1rem);
+                padding: clamp(10px, 3vw, 15px);
+                padding-left: clamp(35px, 7vw, 45px);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .sidebar h2 {
+                text-align: center;
+                margin-bottom: clamp(15px, 3vw, 25px);
+            }
+            
+            .sidebar nav {
+                flex-direction: column;
+            }
+            
+            .sidebar nav a {
+                margin-bottom: clamp(8px, 2vw, 12px);
+                text-align: center;
+                font-size: clamp(1rem, 3.5vw, 1.2rem);
+            }
+            
+            .publication-box summary {
+                padding: clamp(10px, 2vw, 18px);
+            }
+            
+            li {
+                font-size: clamp(0.8rem, 3.8vw, 0.95rem);
+                line-height: 1.6;
+                padding-left: clamp(32px, 8vw, 40px);
+            }
+        }
+        
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1800px;
+                margin: 0 auto;
+                box-shadow: 0 0 clamp(20px, 2vw, 40px) rgba(0,0,0,0.1);
+            }
+            
+            .main-content {
+                padding: clamp(40px, 5vw, 70px) clamp(60px, 7vw, 100px);
+            }
+        }
+        
+        .sidebar nav a:focus, .publication-box summary:focus {
+            outline: clamp(2px, 0.3vw, 3px) solid #3498db;
+            outline-offset: clamp(2px, 0.3vw, 4px);
+        }
+        
+        @media print {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .publication-box[open] .publication-content {
+                display: block;
+            }
+        }
+        
+          @media (prefers-color-scheme: dark) {
+                body {
+                    background: #181a1b;
+                    color: #e0e0e0;
+                }
+                .main-content {
+                    background: #23272a;
+                    color: #e0e0e0;
+                }
+                h1, h2, h3 {
+                    color: #f3f6fa;
+                    border-bottom-color: #374151;
+                }
+                .publication-box summary {
+                    background: #23272a;
+                    color: #f3f6fa;
+                    border-color: #555;
+                    border-left: clamp(5px, 1vw, 8px) solid #3498db !important;
+                }
+                .publication-box summary:hover {
+                    background: #29313a;
+                    border-left-color: #3498db !important;
+                }
+                .publication-content {
+                    background: #23272a;
+                }
+                /* 리스트 스타일 개선 */
+                ul {
+                    background: none;
+                }
+                li {
+                    background: #2b2f33;
+                    color: #e0e0e0;
+                    border-color: #444;
+                    box-shadow: none;
+                }
+                li:hover {
+                    background: #353a40;
+                    color: #fff;
+                    box-shadow: 0 2px 8px rgba(52,152,219,0.08);
+                }
+                /* 카테고리별 리스트 border-left 색상도 밝은 파랑 계열로 */
+                .publication-box:nth-of-type(1) li {
+                    border-left-color: #4169e1;
+                }
+                .publication-box:nth-of-type(2) li {
+                    border-left-color: #5a7df5;
+                }
+                .publication-box:nth-of-type(3) li {
+                    border-left-color: #7391f7;
+                }
+                .publication-box:nth-of-type(4) li {
+                    border-left-color: #8ca5f9;
+                }
+                /* 리스트 아이콘(화살표)도 밝은 파랑 */
+                li::before {
+                    color: #60a5fa;
+                }
+                /* 강조 텍스트 */
+                li strong {
+                    color: #90cdf4;
+                    font-weight: bold;
+                    text-shadow: 0 0 2px #2563eb55;
+                }
+                li em, li i {
+                    color: #b6c4d3;
+                    font-style: italic;
+                }
+                /* 링크도 밝은 파랑 */
+                li a, .publication-content a {
+                    color: #8ecaff;
+                    text-decoration: underline;
+                }
+                li a:hover, .publication-content a:hover {
+                    color: #fff;
+                    background: #2563eb44;
+                }
+            }
+
+    </style>
 </head>
-<body><main><h1>Site under maintenance</h1><p>This academic website is temporarily closed while its structure is being revised.</p></main></body>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Menu</h2>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="team.html">Team</a>
+                <a href="publications.html" class="active">Publications</a>
+                <a href="research.html">Research</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+                <a href="gallery.html">Gallery</a>
+            </nav>
+        </aside>
+        
+        <main class="main-content">
+            <h1>Publications</h1>
+            
+            <!-- 주요 4개 섹션 - 박스 형태 유지, 카테고리 아이콘 제거 -->
+            <details class="publication-box" open>
+                <summary>In Preparation & Submitted</summary>
+                <div class="publication-content">
+                    <ul>
+                        <li><strong>J. Lee, et al</strong>. "Toward Awareness-Driven Covert ISAC: Closed-Loop Sensing Beyond Fixed Tradeoff Boundaries" in preparation for IEEE Wireless Communications Magazine.</li>
+                        <li><strong>J. Lee, et al</strong>. "DPRIMO-FL: Differentially Private MIMO Over-the-Air Federated Learning for Wireless IoT Networks" in preparation for IEEE Internet Of Things Journal.</li>
+                        <li><strong>J. Lee, et al</strong>. "Challenge-Response Authentication for LEO Satellite Channels: Exploiting Orbit-Specific Uniqueness" in IEEE Wireless Communications Magazine. (Under Review) [IF: 11.6] (JCR 2.5%)</li>
+                        <li><strong>J. Lee, et al</strong>. "Multi-User Covert Communication in Spatially Heterogeneous Wireless Networks" in IEEE Transactions on Information Forensics and Security. (Under Review) [IF: 8.0] (JCR 7.8%)</li>
+                        <li><strong>J. Lee, et al</strong>. "Robust Single Packet Physical Layer Authentication for UAVs: A Spatial Challenge-Response Approach" in IEEE Wireless Communications Letters. (Under Review) [IF: 5.5] (JCR 15.3%)</li>
+                    </ul>
+                </div>
+            </details>
+            
+            <details class="publication-box">
+                <summary>International Journal Papers</summary>
+                <div class="publication-content">
+                    <ul>
+                        <li><strong>J. Lee</strong>, J. Park and S. Yun, "Statistical Indistinguishability in Multi-User Covert Communications without Secret Information," in <em>Mathematics</em>, vol. 14, no. 7, Art. no. 1227, 2026.</li>
+                        <li><strong>J. Lee</strong>, H. Yeom, S. -H. Lee and J. Ha, "Channel Correlation in Multi-User Covert Communication: Friend or Foe?," in <em>IEEE Transactions on Information Forensics and Security</em>, vol. 19, pp. 1469-1482, 2024.</li>
+                        <li><strong>J. Lee</strong>, D. T. Dinh, H. Yeom, S. -H. Lee and J. Ha, "Multiuser Cooperation for Covert Communication Under Quasi-Static Fading," in <em>IEEE Transactions on Information Forensics and Security</em>, vol. 18, pp. 4625-4639, 2023.</li>
+                        <li><strong>J. Lee</strong>, S. Yun, I. -M. Kim and J. Ha, "Deep Neural Network-Based Precoder for Fairness Aware Secure NOMA Scheme," in <em>IEEE Transactions on Vehicular Technology</em>, vol. 71, no. 5, pp. 5615-5620, May 2022.</li>
+                        <li><strong>J. Lee</strong>, K. Lee and J. Choi, “Standards for Smart Meters,” KEPCO Journal on Electric Power and Energy, Mar. 2017.</li>
+                    </ul>
+                </div>
+            </details>
+            
+            <details class="publication-box">
+                <summary>International Conference Papers</summary>
+                <div class="publication-content">
+                    <ul>
+                        <li>H. Yeom, <strong>J. Lee</strong>, S. -H. Lee and J. Ha, "Covert Communication with Multi-Users Cooperation at Unequal Distances," in <em>Proc. IEEE International Conference on Communications (ICC)</em>, Denver, CO, USA, 2024.</li>
+                        <li><strong>J. Lee</strong> and J. Choi, "Comparison of One-shot and Handshaking Systems for MTC in 5G," in <em>Proc. IEEE Vehicular Technology Conference (VTC Spring)</em>, Porto, Portugal, June 2018.</li>
+                        <li><strong>J. Lee</strong>, K. Lee, and J. Choi, "Compressive Random access using Distance based Resource Block Selection Scheme for Machine Type Communications," in <em>Proc. IEEE International Workshop on Signal Processing Advances in Wireless Communications (SPAWC)</em>, Sapporo, Japan, July. 2017.</li>
+                    </ul>
+                </div>
+            </details>
+            
+            <details class="publication-box">
+                <summary>Domestic Conference Papers</summary>
+                <div class="publication-content">
+                    <ul>
+                        <li><strong>J. Lee</strong>, H. Jung and G. Han, "A study on GAN-based Covert Communication Robust to Parameter Settings over AWGN Channels," in Proc. Korean Institute of Communications and Information Sciences (KICS) conference, Korea, Feb. 2026.</li>
+                        <li><strong>J. Lee</strong> "Optimality Condition Analysis of Energy Detectors for Covert Communications," in Proc. Korean Institute of Electromagnetic Engineering and Science (KIEES) Summer Conference, Korea, Aug. 2025.</li>
+                        <li><strong>J. Lee, et al</strong>. “Optimal Design of Adjacent Wave Field Estimation Using a Kalman Filter Based on Observed Wave Data,” in Proc. Korean Institute of Electromagnetic Engineering and Science (KIEES) Summer Conference, Korea, Aug. 2025.</li>
+                        <li><strong>J. Lee, et al</strong>. “Design of a Beam-Splitting-Controlled Multilayer Patch Array Antenna for Wave Detection Radar,” in Proc. Korean Institute of Electromagnetic Engineering and Science (KIEES) Summer Conference, Korea, Aug. 2025.</li>
+                        <li><strong>J. Lee, et al</strong>. “High-Gain Design of a 6×26 Slotted Waveguide Array Antenna Using a Dielectric Lens,” in Proc. Korean Institute of Electromagnetic Engineering and Science (KIEES) Summer Conference, Korea, Aug. 2025.</li>
+                        <li><strong>J. Lee, et al</strong>. “Analysis of Leakage Electric Field Strength According to MCR Door Opening Angle Based on EPRI TR-102323 Rev.4 for a Nuclear Power Plant Main Control Room,” in Proc. Korean Institute of Electromagnetic Engineering and Science (KIEES) Summer Conference, Korea, Aug. 2025.</li>
+                        <li><strong>J. Lee</strong>, "Analysis of Energy Detector’s Sufficiency for Covert Communications," in Proc. Joint Conference on Communications and Information (JCCI), Korea, April 2025.</li>
+                        <li><strong>J. Lee</strong>, S. Yun, and J. Ha, " Deep learning based Secure Beamforming Design for Secrecy Fairness of Non-orthogonal Multiple Access System," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, Jan. 2021.</li>
+                        <li><strong>J. Lee</strong>, and J. Ha, " Neural Network based Secure Beamforming for NOMA with Channel Estimation Error", in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, Aug. 2020.</li>
+                        <li><strong>J. Lee</strong>, S. Yun, and J. Ha, " Neural network based secure beamforming design for NOMA", in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, Feb. 2020.</li>
+                        <li>H. Yeom, <strong>J. Lee</strong>, J. Park, and J. Ha, " A study on the fairness of ergodic secrecy rate in uplink NOMA systems," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2019.</li>
+                        <li><strong>J. Lee</strong>, and J. Ha, "A Study on the Beamforming Design for Non-orthogonal Multiple Access System," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2019.</li>
+                        <li><strong>J. Lee</strong>, and J. Ha, "Analysis of Secrecy Outage Probability in Uplink Non-orthogonal Multiple Access," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, Jan. 2019.</li>
+                        <li><strong>J. Lee</strong>, Y. Lee, and J. Choi, "Unique ID based on Time-Frequency Offset for Massive Connectivity in MTC," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2018.</li>
+                        <li><strong>J. Lee</strong>, and J. Choi, "Maximum Throughput of One-shot and Handshaking Systems According to Packet Size," in <em>Proc. Joint Conference on Communications and Information (JCCI)</em>, Korea, May 2018.</li>
+                        <li>H. Noh, <strong>J. Lee</strong>, and J. Choi, "Performance Analysis of Information Recovery Using Spatial Correlated Source through NB-IoT," in <em>Proc. Joint Conference on Communications and Information (JCCI)</em>, Korea, May 2018.</li>
+                        <li><strong>J. Lee</strong>, K. Lee, H. Noh, and J. Choi, "Delay Analysis of NB-IoT," in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2017.</li>
+                        <li>K. Lee, <strong>J. Lee</strong>, N. Yu, and J. Choi, "A GPU Implementation of Compressive Sensing based Multiuser Channel Estimation", in <em>Proc. Korean Institute of Communications and Information Sciences (KICS) conference</em>, Korea, June 2016.</li>
+                    </ul>
+                </div>
+            </details>
+            
+            <details class="publication-box">
+                <summary>Patents</summary>
+                <div class="publication-content">
+                    <ul>
+                        <li>"Intelligent Physical Layer Authentication Method and Apparatus for Drone Networks to Realize Zero-Trust Architecture," PCT International Application No. PCT/KR2026/002591, Application date: Feb. 2026.</li>
+                        <li>“Intelligent Physical Layer Authentication Method and Apparatus for Drone Networks to Realize Zero-Trust Architecture," Korea, Patent No. 10-2026-0026825, Application date: Feb. 2026.</li>
+                        <li>"Method and System for Covert Communication using Distributed Intelligence and Multi-user Cooperation," Korea, Patent No. 10-2025-0169753, Application date: Nov. 2025.</li>
+                        <li>"Cooperative Multi-User based Covert Communication System," Korea, Patent No. 1027342320000, Registration date: Nov. 2024.</li>
+                        <li>"TWO-STAGE DEEP LEARNING BASED SECURE PRECODER FOR INFORMATION AND ARTIFICIAL NOISE SIGNAL IN NONORTHOGONAL MULTIPLE ACCESS SYSTEM," US, Patent No. 17317633, Application date: May 2021. </li>
+                        <li>"METHOD AND SYSTEM FOR TRANSMITTING SECURE DATA USING POWER BACK-OFF," Korea, Patent No. 1022257500000, Registration date: Mar. 2021.</li>
+                    </ul>
+                </div>
+            </details>
+            
+        </main>
+    </div>
+</body>
 </html>

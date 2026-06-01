@@ -1,11 +1,400 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Site Maintenance</title>
-  <style>body{margin:0;background:#fff;color:#111;font-family:Georgia,"Times New Roman",Times,serif;line-height:1.6}main{max-width:720px;margin:80px auto;padding:0 24px}h1{font-size:30px;font-weight:normal;margin:0 0 12px;border-bottom:1px solid #d6d6d6;padding-bottom:8px}p{font-size:17px;color:#555}</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep and Intelligent Communications Laboratory</title>
+    <style>
+        /* 기본 설정 - 완전 유동형 */
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            font-size: clamp(14px, 1.8vw, 18px); /* 기본 폰트도 유동적 */
+            line-height: clamp(1.4, 0.2vw + 1.3, 1.7);
+            color: #333;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* 완전 유동적 사이드바 */
+        .sidebar {
+            width: clamp(180px, 22vw, 280px); /* 유동적 너비 */
+            background: #2c3e50;
+            color: #fff;
+            padding: clamp(20px, 4vw, 50px) clamp(15px, 2.5vw, 30px);
+            box-sizing: border-box;
+            min-height: 100vh;
+            position: sticky;
+            top: 0;
+        }
+        
+        .sidebar h2 {
+            color: #fff;
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem); /* 유동적 제목 크기 */
+            margin-bottom: clamp(20px, 4vw, 40px);
+            letter-spacing: clamp(0.5px, 0.1vw, 1.5px);
+        }
+        
+        .sidebar nav a {
+            display: block;
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: clamp(8px, 1.5vw, 15px) 0;
+            margin-bottom: clamp(6px, 1.2vw, 12px);
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem); /* 유동적 메뉴 폰트 */
+            border-left: clamp(3px, 0.5vw, 6px) solid transparent;
+            transition: all 0.3s ease;
+            border-radius: clamp(2px, 0.3vw, 4px);
+        }
+        
+        .sidebar nav a.active, .sidebar nav a:hover {
+            color: #3498db;
+            border-left: clamp(3px, 0.5vw, 6px) solid #3498db;
+            background: #222d36;
+            padding-left: clamp(12px, 2vw, 25px);
+            transform: translateX(clamp(2px, 0.5vw, 5px));
+        }
+        
+        /* 완전 유동적 메인 콘텐츠 */
+        .main-content {
+            flex: 1;
+            background: #fff;
+            padding: clamp(20px, 5vw, 60px) clamp(25px, 6vw, 80px);
+            box-sizing: border-box;
+            min-width: 0;
+        }
+        
+        /* 유동적 제목들 */
+        h1 {
+            color: #333;
+            border-bottom: clamp(2px, 0.3vw, 4px) solid #333;
+            padding-bottom: clamp(8px, 1.5vw, 15px);
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            margin-bottom: clamp(20px, 3.5vw, 40px);
+            font-weight: bold;
+        }
+        
+        h2 {
+            color: #555;
+            margin-top: clamp(25px, 4vw, 45px);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: clamp(5px, 0.8vw, 10px);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+        }
+        
+       h3 {
+            color: #2c3e50;
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            margin-top: clamp(20px, 3.5vw, 35px);
+            margin-bottom: clamp(8px, 1.2vw, 15px);
+            font-weight: bold;
+            position: relative;
+            padding-left: clamp(25px, 4vw, 40px); /* 기존 clamp(15px, 2.5vw, 25px)에서 증가 */
+        }
+        
+        /* 연락처 정보별 아이콘 추가 */
+        h3:nth-of-type(1)::before {
+            content: "📧"; /* Email */
+            position: absolute;
+            left: 0;
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+        }
+        
+        h3:nth-of-type(2)::before {
+            content: "📞"; /* Tel */
+            position: absolute;
+            left: 0;
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+        }
+        
+        h3:nth-of-type(3)::before {
+            content: "🏢"; /* Office */
+            position: absolute;
+            left: 0;
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+        }
+        
+        /* 유동적 문단 */
+        p {
+            font-size: clamp(0.9rem, 1.9vw, 1.2rem);
+            line-height: clamp(1.5, 0.3vw + 1.4, 1.7);
+            margin-bottom: clamp(12px, 2vw, 20px);
+            color: #444;
+        }
+        
+        .intro {
+            margin-bottom: clamp(25px, 4vw, 40px);
+        }
+        
+        .research-topics {
+            background-color: #f9f9f9;
+            padding: clamp(15px, 3vw, 35px);
+            border-left: clamp(4px, 0.8vw, 8px) solid #333;
+            margin: clamp(20px, 4vw, 40px) 0;
+            border-radius: clamp(6px, 1.2vw, 12px);
+        }
+        
+        ul {
+            padding-left: clamp(20px, 4vw, 40px);
+        }
+        
+        li {
+            margin-bottom: clamp(8px, 1vw, 16px);
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+        }
+        
+        /* 완전 유동적 지도 관련 스타일 */
+        .map-container {
+            margin-top: clamp(20px, 4vw, 40px);
+            border-radius: clamp(8px, 1.5vw, 15px);
+            overflow: hidden;
+            box-shadow: 0 clamp(4px, 1vw, 10px) clamp(15px, 3vw, 30px) rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .map-container:hover {
+            transform: translateY(clamp(-2px, -0.4vw, -5px));
+            box-shadow: 0 clamp(8px, 1.5vw, 20px) clamp(25px, 4vw, 45px) rgba(0,0,0,0.15);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: clamp(250px, 30vw, 400px);
+            border: none;
+        }
+        
+        .address-link {
+            color: #3498db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            padding: clamp(2px, 0.4vw, 5px) clamp(4px, 0.8vw, 8px);
+            border-radius: clamp(3px, 0.5vw, 6px);
+            background: linear-gradient(120deg, rgba(52, 152, 219, 0.05) 0%, rgba(52, 152, 219, 0.1) 100%);
+        }
+        
+        .address-link:hover {
+            color: #2980b9;
+            text-decoration: underline;
+            background: linear-gradient(120deg, rgba(52, 152, 219, 0.1) 0%, rgba(52, 152, 219, 0.2) 100%);
+            transform: translateX(clamp(2px, 0.4vw, 5px));
+        }
+        
+        /* 반응형 미디어 쿼리 (추가 조정용) */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+                position: static;
+                padding: clamp(15px, 3vw, 25px) clamp(10px, 2vw, 20px);
+            }
+            
+            .main-content {
+                padding: clamp(15px, 4vw, 30px) clamp(15px, 4vw, 30px);
+            }
+            
+            /* 모바일에서 사이드바 메뉴 가로 배치 */
+            .sidebar nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: clamp(8px, 2vw, 15px);
+                justify-content: center;
+            }
+            
+            .sidebar nav a {
+                flex: 1;
+                text-align: center;
+                min-width: clamp(70px, 15vw, 120px);
+                padding: clamp(8px, 2vw, 12px);
+                border-left: none;
+                border-bottom: clamp(2px, 0.4vw, 3px) solid transparent;
+                border-radius: clamp(4px, 1vw, 8px);
+            }
+            
+            .sidebar nav a.active, .sidebar nav a:hover {
+                border-left: none;
+                border-bottom: clamp(2px, 0.4vw, 3px) solid #3498db;
+                padding-left: clamp(8px, 2vw, 12px);
+                transform: translateY(clamp(-2px, -0.4vw, -3px));
+            }
+            
+            .map-container iframe {
+                height: clamp(200px, 25vw, 300px);
+            }
+            h3 {
+                font-size: clamp(1rem, 4vw, 1.3rem);
+                padding-left: clamp(30px, 6vw, 35px); /* 모바일에서 더 많은 간격 */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .sidebar h2 {
+                text-align: center;
+                margin-bottom: clamp(15px, 3vw, 25px);
+            }
+            
+            .sidebar nav {
+                flex-direction: column;
+            }
+            
+            .sidebar nav a {
+                margin-bottom: clamp(8px, 2vw, 12px);
+                text-align: center;
+                font-size: clamp(1rem, 3.5vw, 1.2rem);
+            }
+            
+            h1 {
+                font-size: clamp(1.4rem, 6vw, 2rem);
+                text-align: center;
+            }
+            
+            h3 {
+                font-size: clamp(1rem, 4vw, 1.3rem);
+                padding-left: clamp(28px, 7vw, 32px); /* 작은 화면에서도 충분한 간격 */
+            }
+            
+            h3::before {
+                font-size: clamp(0.8rem, 3.5vw, 1.1rem);
+            }
+           
+            .map-container iframe {
+                height: clamp(180px, 40vw, 250px);
+            }
+        }
+        
+        /* 큰 화면에서의 최적화 */
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1800px;
+                margin: 0 auto;
+                box-shadow: 0 0 clamp(20px, 2vw, 40px) rgba(0,0,0,0.1);
+            }
+            
+            .main-content {
+                padding: clamp(40px, 5vw, 70px) clamp(60px, 7vw, 100px);
+            }
+        }
+        
+        /* 접근성 및 포커스 스타일 */
+        .sidebar nav a:focus, .address-link:focus {
+            outline: clamp(2px, 0.3vw, 3px) solid #3498db;
+            outline-offset: clamp(2px, 0.3vw, 4px);
+        }
+        
+        /* 프린트 미디어 최적화 */
+        @media print {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .map-container {
+                border: 1px solid #ddd;
+                box-shadow: none;
+            }
+        }
+        
+        /* 다크모드 대응 (선택사항) */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1a1a1a;
+                color: #e0e0e0;
+            }
+            
+            .main-content {
+                background: #2a2a2a;
+                color: #e0e0e0;
+            }
+            
+            h1, h3 {
+                color: #e0e0e0;
+            }
+            
+            h1 {
+                border-bottom-color: #555;
+            }
+            
+            p {
+                color: #d0d0d0;
+            }
+            
+            .address-link {
+                color: #4fc3f7;
+                background: rgba(79, 195, 247, 0.1);
+            }
+            
+            .address-link:hover {
+                color: #29b6f6;
+                background: rgba(79, 195, 247, 0.2);
+            }
+            
+            .map-container {
+                border: 1px solid #444;
+            }
+        }
+    </style>
 </head>
-<body><main><h1>Site under maintenance</h1><p>This academic website is temporarily closed while its structure is being revised.</p></main></body>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Menu</h2>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="team.html">Team</a>
+                <a href="publications.html">Publications</a>
+                <a href="research.html">Research</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html" class="active">Contact</a>
+                <a href="gallery.html">Gallery</a>
+            </nav>
+        </aside>
+        
+        <main class="main-content">
+            <h1>Contact</h1>
+            
+            <h3>Email</h3>
+            <p>jylee120@kmou.ac.kr</p>
+            
+            <h3>Tel.</h3>
+            <p>+82-51-410-4421</p>
+            
+            <h3>Office</h3>
+            <p>
+                <a href="https://www.google.co.kr/maps/place/%ED%95%9C%EA%B5%AD%ED%95%B4%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90+%EA%B3%B5%EB%8C%801%ED%98%B8%EA%B4%80/data=!3m1!4b1!4m6!3m5!1s0x3568eec6b2e7e663:0xfb6c7f4d5dc311b1!8m2!3d35.0751782!4d129.0866156!16s%2Fg%2F11sskrbc40?hl=ko&entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoASAFQAw%3D%3D" 
+                   target="_blank" class="address-link">
+                   457, Engineering Building 1 (B1), National Korea Maritime & Ocean University
+                </a>
+            </p>
+            
+            <!-- Google Maps 임베드 -->
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3258.7742894446697!2d129.08441412604297!3d35.07517818025359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3568eec6b2e7e663%3A0xfb6c7f4d5dc311b1!2z7ZWc6rWt7ZW07JaR64yA7ZWZ6rWQIOqzteuMgDHtmLjqtIA!5e0!3m2!1sko!2skr!4v1699000000000!5m2!1sko!2skr"
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </main>
+    </div>
+</body>
 </html>
